@@ -1,11 +1,5 @@
-import CommonWrapper from "../common/CommonWrapper";
-
 const Home = () => {
-  return (
-    <CommonWrapper>
-      <div className="h-screen bg-website-color-lightGreen">Home page</div>
-    </CommonWrapper>
-  );
+  return <div className="h-screen bg-primary-bg">Home page</div>;
 };
 
 export default Home;
