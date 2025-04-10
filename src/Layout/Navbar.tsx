@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-website-color-green shadow-lg">
+    <nav className="bg-primary-blue shadow-lg">
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -29,27 +29,31 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex space-x-4">
             <Link
               to="/"
-              className="text-white hover:bg-website-color-lightGray hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
             >
               Home
+              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
             <Link
               to="/about"
-              className="text-white hover:bg-website-color-lightGray hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
             >
               About
+              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
             <Link
               to="/services"
-              className="text-white hover:bg-website-color-lightGray hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
             >
               Services
+              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
             <Link
               to="/contact"
-              className="text-white hover:bg-website-color-lightGray hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
             >
               Contact
+              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
 
             <Popover>
