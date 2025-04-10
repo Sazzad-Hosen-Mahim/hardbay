@@ -8,6 +8,9 @@ import AdminRoute from "./AdminRoutes";
 import AdminDashboard from "@/pages/Admin/AdminDashboard";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
+import Service from "@/pages/Service";
+import Blog from "@/pages/Blog";
+import CaseStudies from "@/pages/CaseStudies";
 
 const routes = createBrowserRouter([
   {
@@ -27,6 +30,18 @@ const routes = createBrowserRouter([
         element: <Contact />,
       },
       {
+        path: "/service",
+        element: <Service />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/Case Studies",
+        element: <CaseStudies />,
+      },
+      {
         path: "/login",
         element: <Login />,
       },
@@ -36,10 +51,8 @@ const routes = createBrowserRouter([
       },
       {
         path: "/admin",
-        element: <AdminRoute />, // This will check if the user is an admin
-        children: [
-          { path: "", element: <AdminDashboard /> }, // Admin Dashboard
-        ],
+        element: <AdminRoute />,
+        children: [{ path: "", element: <AdminDashboard /> }],
       },
     ],
   },
