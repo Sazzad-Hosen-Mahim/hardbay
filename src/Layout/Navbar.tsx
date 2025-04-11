@@ -1,11 +1,9 @@
-import UserAvatar from "@/ui/UserAvatar";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { IoSearchSharp } from "react-icons/io5";
+import { FaHeart } from "react-icons/fa";
+import { IoBagSharp } from "react-icons/io5";
+import { IoPersonOutline } from "react-icons/io5";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,92 +17,92 @@ const Navbar: React.FC = () => {
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link to="/" className="text-white text-2xl font-bold">
-              HardBay
-            </Link>
+          <div className="flex gap-16">
+            <div>
+              <Link to="/" className="text-white text-2xl font-bold ms-8">
+                HardBay
+              </Link>
+            </div>
+            <div className="hidden md:flex space-x-4">
+              <Link
+                to="/"
+                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
+              >
+                Home
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
+              </Link>
+              <Link
+                to="/about"
+                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
+              >
+                About Us
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
+              </Link>
+              <Link
+                to="/products"
+                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
+              >
+                Products
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
+              </Link>
+
+              {/* Services Link with Popover */}
+              <div className="relative group flex items-center">
+                <Link
+                  to="/service"
+                  className="relative mb-1 text-white hover:text-primary-orange px-3 py-2 rounded-none text-md font-medium"
+                >
+                  Services
+                  <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
+                </Link>
+                {/* Custom Popover Menu */}
+                <div className="absolute left-0 top-10 mt-2 w-[160px] bg-primary-blue text-white rounded-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Link
+                    to="/service/custom-server-build"
+                    className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
+                  >
+                    Custom Server Build
+                  </Link>
+                  <Link
+                    to="/service/gpu-rental"
+                    className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
+                  >
+                    GPU Rental
+                  </Link>
+                  <Link
+                    to="/service/enterprise-storage"
+                    className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
+                  >
+                    Enterprise Storage
+                  </Link>
+                  <Link
+                    to="/service/it-hardware-consult"
+                    className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
+                  >
+                    IT Hardware Consult
+                  </Link>
+                </div>
+              </div>
+
+              {/* Navigation service end  */}
+              <Link
+                to="/Partners"
+                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
+              >
+                Partners
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
+              </Link>
+              <Link
+                to="/contact"
+                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
+              >
+                Contact Us
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
+              </Link>
+            </div>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-4">
-            <Link
-              to="/"
-              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Home
-              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-            </Link>
-            <Link
-              to="/about"
-              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
-            >
-              About
-              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-            </Link>
-            <Link
-              to="/products"
-              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Products
-              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-            </Link>
-
-            {/* Services Link with Popover */}
-            <div className="relative group flex items-center">
-              <Link
-                to="/services"
-                className="relative mb-1 text-white hover:text-primary-orange px-3 py-2 rounded-none text-sm font-medium"
-              >
-                Services
-                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
-              {/* Custom Popover Menu */}
-              <div className="absolute left-0 top-10 mt-2 w-[160px] bg-primary-blue text-white rounded-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Link
-                  to="/custom-server-build"
-                  className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
-                >
-                  Custom Server Build
-                </Link>
-                <Link
-                  to="/gpu-rental"
-                  className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
-                >
-                  GPU Rental
-                </Link>
-                <Link
-                  to="/enterprise-storage"
-                  className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
-                >
-                  Enterprise Storage
-                </Link>
-                <Link
-                  to="/it-hardware-consult"
-                  className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
-                >
-                  IT Hardware Consult
-                </Link>
-              </div>
-            </div>
-
-            {/* Navigation service end  */}
-            <Link
-              to="/contact"
-              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Contact
-              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-            </Link>
-
-            <Popover>
-              <PopoverTrigger>
-                <UserAvatar userName="Mahim" />
-              </PopoverTrigger>
-              <PopoverContent className="mr-3 bg-website-color-darkGray border-none text-white">
-                Place content for the popover here.
-              </PopoverContent>
-            </Popover>
-          </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
@@ -136,6 +134,32 @@ const Navbar: React.FC = () => {
                 )}
               </svg>
             </button>
+          </div>
+          <div className="hidden md:flex items-center me-10 gap-3">
+            <Link
+              to="/search"
+              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
+            >
+              <IoSearchSharp className="text-2xl text-primary-orange hover:text-primary-bg" />
+            </Link>
+            <Link
+              to="/wishlist"
+              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
+            >
+              <FaHeart className="text-2xl text-primary-orange hover:text-primary-bg" />
+            </Link>
+            <Link
+              to="/wishlist"
+              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
+            >
+              <IoBagSharp className="text-2xl text-primary-orange hover:text-primary-bg" />
+            </Link>
+            <Link
+              to="/wishlist"
+              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
+            >
+              <IoPersonOutline className="text-2xl text-primary-orange hover:text-primary-bg" />
+            </Link>
           </div>
         </div>
       </div>
