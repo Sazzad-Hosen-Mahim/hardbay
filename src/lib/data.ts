@@ -2,22 +2,21 @@ export const accordionItems = [
   {
     id: "server",
     title: "Custom Server Build",
-    content: "We provide customized server configurations based on your needs.",
+    filters: ["High Performance", "Budget Build", "Rack Mounted"],
   },
   {
     id: "gpu",
     title: "GPU Rental",
-    content: "High-performance GPUs available for short and long-term rental.",
+    filters: ["NVIDIA A100", "RTX 4090", "RTX 3080"],
   },
   {
     id: "storage",
     title: "Enterprise Storage",
-    content: "Secure and scalable enterprise storage solutions.",
+    filters: ["NAS Solutions", "SAN Storage", "SSD Arrays"],
   },
   {
     id: "consult",
     title: "IT Hardware Consult",
-    content:
-      "Expert advice and consultation for enterprise hardware solutions.",
+    filters: ["Server Design", "Network Planning", "Cost Optimization"],
   },
 ];

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPlus } from "react-icons/fa6";
+
 interface AccordionItem {
   id: string;
   title: string;
-  content: React.ReactNode;
+  filters: string[];
 }
 
 interface CustomAccordionProps {
@@ -28,9 +29,13 @@ const CustomAccordion = ({
     }
   };
 
+  const handleCheckboxChange = (label: string) => {
+    console.log(label); // You can expand this to set filters
+  };
+
   return (
     <div className="w-full space-y-2">
-      {items.map(({ id, title, content }) => {
+      {items.map(({ id, title, filters }) => {
         const isOpen = openItems.includes(id);
         return (
           <div
@@ -59,7 +64,21 @@ const CustomAccordion = ({
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden px-4"
                 >
-                  <div className="py-3 text-gray-600">{content}</div>
+                  <div className="py-3 text-gray-600 flex flex-col gap-2">
+                    {filters.map((label) => (
+                      <label
+                        key={label}
+                        className="flex items-center gap-2 cursor-pointer"
+                      >
+                        <input
+                          type="checkbox"
+                          onChange={() => handleCheckboxChange(label)}
+                          className="accent-primary-orange"
+                        />
+                        {label}
+                      </label>
+                    ))}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
