@@ -13,6 +13,11 @@ import Blog from "@/pages/Blog";
 import CaseStudies from "@/pages/CaseStudies";
 import Products from "@/pages/Products";
 import BlogPostDetail from "@/components/blog/BlogpostDetail";
+import ServiceLayout from "@/pages/Service/ServiceLayout";
+import CustomServer from "@/pages/Service/CustomServer";
+import GpuRental from "@/pages/Service/GpuRental";
+import EnterpriseStorage from "@/pages/Service/EnterpriseStorage";
+import ITHardwareConsult from "@/pages/Service/ITHardwareConsult";
 
 const routes = createBrowserRouter([
   {
@@ -37,15 +42,37 @@ const routes = createBrowserRouter([
       },
       {
         path: "/service",
-        element: <Service />,
+        element: <ServiceLayout />,
+        children: [
+          {
+            path: "",
+            element: <Service />,
+          },
+          {
+            path: "custom-server-build",
+            element: <CustomServer />,
+          },
+          {
+            path: "gpu-rental",
+            element: <GpuRental />,
+          },
+          {
+            path: "enterprise-storage",
+            element: <EnterpriseStorage />,
+          },
+          {
+            path: "it-hardware-consult",
+            element: <ITHardwareConsult />,
+          },
+        ],
       },
       {
         path: "/blog",
         element: <Blog />,
-      }, 
-       {
+      },
+      {
         path: "/blog/:id",
-        element: <BlogPostDetail/>,
+        element: <BlogPostDetail />,
       },
       {
         path: "/Case Studies",
