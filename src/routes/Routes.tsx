@@ -12,6 +12,7 @@ import Service from "@/pages/Service";
 import Blog from "@/pages/Blog";
 import CaseStudies from "@/pages/CaseStudies";
 import Products from "@/pages/Products";
+import BlogPostDetail from "@/components/blog/BlogpostDetail";
 
 const routes = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const routes = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+      }, 
+       {
+        path: "/blog/:id",
+        element: <BlogPostDetail/>,
       },
       {
         path: "/Case Studies",
