@@ -1,11 +1,5 @@
 import CommonWrapper from "@/common/CommonWrapper";
 import { Outlet, NavLink } from "react-router-dom";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { accordionItems } from "@/lib/data";
 import CustomAccordion from "@/components/blog/CustomAccordion/CustomAccordion";
 
@@ -62,34 +56,10 @@ const ServiceLayout = () => {
               </NavLink>
             </div>
             <hr className="mt-3" />
-            {/* accordion start  */}
             <div>
-              {/* <Accordion type="single" collapsible>
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>Generation</AccordionTrigger>
-                  <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-2">
-                  <AccordionTrigger>Memory Slots</AccordionTrigger>
-                  <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-3">
-                  <AccordionTrigger>Drive Form Factor</AccordionTrigger>
-                  <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion> */}
               <CustomAccordion items={accordionItems} />
             </div>
-            {/* accordion end  */}
           </aside>
-
-          {/* Dynamic Content */}
           <main className="flex-1">
             <Outlet />
           </main>
