@@ -48,13 +48,46 @@ const Navbar: React.FC = () => {
               Products
               <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
-            <Link
-              to="/service"
-              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Services
-              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-            </Link>
+
+            {/* Services Link with Popover */}
+            <div className="relative group flex items-center">
+              <Link
+                to="/services"
+                className="relative mb-1 text-white hover:text-primary-orange px-3 py-2 rounded-none text-sm font-medium"
+              >
+                Services
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
+              </Link>
+              {/* Custom Popover Menu */}
+              <div className="absolute left-0 top-10 mt-2 w-[160px] bg-primary-blue text-white rounded-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <Link
+                  to="/custom-server-build"
+                  className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
+                >
+                  Custom Server Build
+                </Link>
+                <Link
+                  to="/gpu-rental"
+                  className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
+                >
+                  GPU Rental
+                </Link>
+                <Link
+                  to="/enterprise-storage"
+                  className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
+                >
+                  Enterprise Storage
+                </Link>
+                <Link
+                  to="/it-hardware-consult"
+                  className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
+                >
+                  IT Hardware Consult
+                </Link>
+              </div>
+            </div>
+
+            {/* Navigation service end  */}
             <Link
               to="/contact"
               className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
