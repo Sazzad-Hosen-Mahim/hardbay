@@ -1,9 +1,23 @@
 import CommonWrapper from "@/common/CommonWrapper";
 import { Outlet, NavLink } from "react-router-dom";
 import { accordionItems } from "@/lib/data";
-import CustomAccordion from "@/components/blog/CustomAccordion/CustomAccordion";
+import CustomAccordion from "@/components/CustomAccordion/CustomAccordion";
+import ServiceTopBar from "@/components/service/ServiceTopBar";
+import React, { useState } from "react";
+
+type ViewContextType = {
+  currentView: "list" | "grid";
+  setCurrentView: (view: "list" | "grid") => void;
+};
+
+export const ViewContext = React.createContext<ViewContextType>({
+  currentView: "list",
+  setCurrentView: () => {},
+});
 
 const ServiceLayout = () => {
+  const [currentView, setCurrentView] = useState<"list" | "grid">("list");
+
   return (
     <div className="px-6 py-4">
       <CommonWrapper>
@@ -77,7 +91,11 @@ const ServiceLayout = () => {
             </div>
           </aside>
           <main className="flex-1">
-            <Outlet />
+            <ViewContext.Provider value={{ currentView, setCurrentView }}>
+              <ServiceTopBar />
+              <Outlet />
+            </ViewContext.Provider>
+            {/* <Outlet /> */}
           </main>
         </div>
       </CommonWrapper>

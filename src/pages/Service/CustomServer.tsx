@@ -1,5 +1,11 @@
+import CustomServerTemp from "./Temp/CustomServerTemp";
+
 const CustomServer = () => {
-  return <div>CustomServer</div>;
+  return (
+    <div>
+      <CustomServerTemp />
+    </div>
+  );
 };
 
 export default CustomServer;
