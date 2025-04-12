@@ -7,7 +7,7 @@ const AboutPage = () => {
 			{/* Top Navigation */}
 
 			{/* About Header */}
-			<header className="text-center py-20 px-4 bg-yellow-200">
+			<header className="text-center py-20 px-4 bg-yellow-100">
 				<motion.h2
 					className="text-4xl font-bold mb-4"
 					initial={{ opacity: 0, y: -20 }}
