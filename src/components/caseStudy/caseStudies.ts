@@ -1,4 +1,4 @@
-// caseStudies.ts
+
 import { Zap, TrendingUp, Users, Server, Database, Cpu, Clock, Shield, Cloud, Brain } from 'lucide-react';
 
 export const caseStudies = [
