@@ -52,7 +52,7 @@ function CaseStudyComponent() {
                         <button
                             key={study.id}
                             onClick={() => setCurrentStudyIndex(index)}
-                            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentStudyIndex ? 'bg-primary-orange scale-110' : 'bg-gray-300 hover:bg-primary-yellow'
+                            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentStudyIndex ? 'bg-primary-orange scale-110' : 'bg-gray-400 hover:bg-primary-yellow'
                                 }`}
                             aria-label={`Go to case study ${index + 1}`}
                         />
@@ -138,6 +138,7 @@ function CaseStudyComponent() {
                         ))}
                     </div>
                 </div>
+
 
                 {/* Technical Implementation */}
                 <div className="mb-16">

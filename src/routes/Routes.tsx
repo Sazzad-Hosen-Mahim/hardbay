@@ -18,6 +18,17 @@ import CustomServer from "@/pages/Service/CustomServer";
 import GpuRental from "@/pages/Service/GpuRental";
 import EnterpriseStorage from "@/pages/Service/EnterpriseStorage";
 import ITHardwareConsult from "@/pages/Service/ITHardwareConsult";
+import PartnersLayout from "@/pages/partners/PartnersLayout";
+
+import NVIDIA from "@/pages/partners/NVIDIA";
+import Micron from "@/pages/partners/Micron";
+import Supermicro from "@/pages/partners/Supermicro";
+import Gigabyte from "@/pages/partners/Gigabyte";
+import Asus from "@/pages/partners/Asus";
+import WekaIO from "@/pages/partners/WekaIO";
+import Intel from "@/pages/partners/Intel";
+import Amd from "@/pages/partners/Amd";
+import Partners from "@/pages/Partners";
 
 const routes = createBrowserRouter([
   {
@@ -63,6 +74,48 @@ const routes = createBrowserRouter([
           {
             path: "it-hardware-consult",
             element: <ITHardwareConsult />,
+          },
+        ],
+      },
+      {
+        path: "/partners",
+        element: <PartnersLayout />,
+        children: [
+          {
+            path: "",
+            element: <Partners/>,
+          },
+          {
+            path: "NVIDIA",
+            element: <NVIDIA />,
+          },
+          {
+            path: "micron",
+            element: <Micron />,
+          },
+          {
+            path: "supermicro",
+            element: <Supermicro />,
+          },
+          {
+            path: "gigabyte",
+            element: <Gigabyte />,
+          },
+           {
+            path: "asus",
+            element: <Asus />,
+          }, 
+          {
+            path: "wekaIO",
+            element: <WekaIO />,
+          }, 
+          {
+            path: "intel",
+            element: <Intel />,
+          }, 
+          {
+            path: "amd",
+            element: <Amd />,
           },
         ],
       },
