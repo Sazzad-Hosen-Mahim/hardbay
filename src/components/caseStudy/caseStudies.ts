@@ -6,7 +6,7 @@ export const caseStudies = [
     id: 1,
     title: "Enabling AI Compute at Scale",
     subtitle: "How we helped an AI startup achieve 3x faster training times while reducing costs by 30%",
-    backgroundImage: "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80",
     challenge: "Our client, a cutting-edge AI startup, needed to build a real-time LLM platform that required significant computational resources. They faced challenges with accessing high-performance GPUs and maintaining zero downtime while scaling their operations.",
     solution: "We implemented a sophisticated 8-node GPU cluster powered by NVIDIA H100s, complemented by 1PB of DAOS-backed storage. This architecture was designed to handle intensive computational workloads while ensuring optimal performance.",
     metrics: [
@@ -66,7 +66,8 @@ export const caseStudies = [
     id: 2,
     title: "Building a Secure Cloud Infrastructure",
     subtitle: "Transforming a financial services company's infrastructure with 99.99% uptime and enhanced security",
-    backgroundImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80",
+ 
+    backgroundImage: "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80",
     challenge: "A rapidly growing fintech company needed to scale their infrastructure while maintaining strict security compliance and ensuring zero downtime for their critical financial services.",
     solution: "We designed and implemented a multi-region cloud architecture with automated failover, enhanced security measures, and real-time monitoring systems.",
     metrics: [

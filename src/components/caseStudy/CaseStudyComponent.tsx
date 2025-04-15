@@ -69,7 +69,7 @@ function CaseStudyComponent() {
                     backgroundPosition: 'center',
                 }}
             >
-                <div className="absolute inset-0 bg-indigo-900/90" />
+                <div className="absolute inset-0 " />
 
                 {/* Navigation Arrows */}
                 {/* Navigation Arrows */}
