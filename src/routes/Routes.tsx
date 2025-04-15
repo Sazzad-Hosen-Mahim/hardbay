@@ -29,6 +29,7 @@ import WekaIO from "@/pages/partners/WekaIO";
 import Intel from "@/pages/partners/Intel";
 import Amd from "@/pages/partners/Amd";
 import Partners from "@/pages/Partners";
+import ProductDetails from "@/pages/ProductDetails";
 
 const routes = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const routes = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+      },
+      {
+        path: "/product-details/:id",
+        element: <ProductDetails />,
       },
       {
         path: "/contact",
@@ -83,7 +88,7 @@ const routes = createBrowserRouter([
         children: [
           {
             path: "",
-            element: <Partners/>,
+            element: <Partners />,
           },
           {
             path: "NVIDIA",
@@ -101,18 +106,18 @@ const routes = createBrowserRouter([
             path: "gigabyte",
             element: <Gigabyte />,
           },
-           {
+          {
             path: "asus",
             element: <Asus />,
-          }, 
+          },
           {
             path: "wekaIO",
             element: <WekaIO />,
-          }, 
+          },
           {
             path: "intel",
             element: <Intel />,
-          }, 
+          },
           {
             path: "amd",
             element: <Amd />,
@@ -128,7 +133,7 @@ const routes = createBrowserRouter([
         element: <BlogPostDetail />,
       },
       {
-        path: "/Case Studies",
+        path: "/case-studies",
         element: <CaseStudies />,
       },
       {

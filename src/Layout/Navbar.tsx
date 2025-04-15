@@ -106,6 +106,13 @@ const Navbar: React.FC = () => {
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
               <Link
+                to="/case-studies"
+                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
+              >
+                Case Studies
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
+              </Link>
+              <Link
                 to="/contact"
                 className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
               >
