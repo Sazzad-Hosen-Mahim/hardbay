@@ -14,12 +14,12 @@ const BlogComponent = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {/* Left column: blog posts */}
         <div className="col-span-3 space-y-10">
-          {blogPosts.map((post, index) => {
-            const [month, day, year] = post.date.split(/\s+/);
+          {blogPosts.map((post) => {
+            const [month, day, ] = post.date.split(/\s+/);
 
             return (
               <div
-                key={post.id} // Use post id as the key
+                key={post.id} 
                 className="bg-white border border-gray-300 rounded-2xl shadow-md p-6 flex flex-col md:flex-row md:items-start gap-6"
               >
                 <div className="flex-shrink-0 text-center">
