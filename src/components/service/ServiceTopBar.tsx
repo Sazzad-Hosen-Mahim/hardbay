@@ -10,19 +10,9 @@ import { useContext } from "react";
 import { FaList } from "react-icons/fa";
 import { TfiLayoutGrid3Alt } from "react-icons/tfi";
 
-// interface serviceTopBarProps {
-//   onViewChange?: (view: "list" | "grid") => void;
-// }
-
 const ServiceTopBar = () => {
   const { currentView, setCurrentView } = useContext(ViewContext);
 
-  //   const handleViewChange = (view: "list" | "grid") => {
-  //     setActiveView(view);
-  //     if (onViewChange) {
-  //       onViewChange(view);
-  //     }
-  //   };
   return (
     <div className="w-full bg-gray-300 h-[70px] rounded-xs p-3 flex items-center justify-between">
       <div className="flex items-center gap-2">
@@ -33,10 +23,10 @@ const ServiceTopBar = () => {
           </SelectTrigger>
           <SelectContent className="rounded-none">
             <SelectItem value="light" className="!hover:bg-primary-orange ">
-              Light
+              A-Z
             </SelectItem>
-            <SelectItem value="dark">Dark</SelectItem>
-            <SelectItem value="system">System</SelectItem>
+            <SelectItem value="dark">Price</SelectItem>
+            <SelectItem value="system">Rating</SelectItem>
           </SelectContent>
         </Select>
       </div>

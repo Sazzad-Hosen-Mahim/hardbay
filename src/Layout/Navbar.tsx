@@ -38,13 +38,13 @@ const Navbar: React.FC = () => {
                 About Us
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
-              <Link
+              {/* <Link
                 to="/products"
                 className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
               >
                 Products
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
+              </Link> */}
 
               {/* Services Link with Popover */}
               <div
@@ -90,14 +90,6 @@ const Navbar: React.FC = () => {
                 )}
               </div>
 
-              {/* Navigation service end  */}
-              <Link
-                to="/Partners"
-                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
-              >
-                Partners
-                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
               <Link
                 to="/blog"
                 className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
@@ -110,6 +102,13 @@ const Navbar: React.FC = () => {
                 className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
               >
                 Case Studies
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
+              </Link>
+              <Link
+                to="/Partners"
+                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
+              >
+                Partners
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
               <Link

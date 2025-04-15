@@ -11,7 +11,7 @@ import Signup from "@/pages/Signup";
 import Service from "@/pages/Service";
 import Blog from "@/pages/Blog";
 import CaseStudies from "@/pages/CaseStudies";
-import Products from "@/pages/Products";
+// import Products from "@/pages/Products";
 import BlogPostDetail from "@/components/blog/BlogpostDetail";
 import ServiceLayout from "@/pages/Service/ServiceLayout";
 import CustomServer from "@/pages/Service/CustomServer";
@@ -44,10 +44,10 @@ const routes = createBrowserRouter([
         path: "/about",
         element: <About />,
       },
-      {
-        path: "/products",
-        element: <Products />,
-      },
+      // {
+      //   path: "/products",
+      //   element: <Products />,
+      // },
       {
         path: "/product-details/:id",
         element: <ProductDetails />,
