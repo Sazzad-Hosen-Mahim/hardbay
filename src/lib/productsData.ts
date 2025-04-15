@@ -1,4 +1,10 @@
 // src/lib/data/products.ts
+import image1 from "@/assets/products/server1.jpg";
+import image2 from "@/assets/products/gpu1.jpg";
+import image3 from "@/assets/products/storage1.jpg";
+import image4 from "@/assets/products/server2.jpeg";
+import image5 from "@/assets/products/gpu2.jpg";
+import image6 from "@/assets/products/storage2.jpg";
 export interface Product {
   id: string;
   name: string;
@@ -24,7 +30,7 @@ export const products: Product[] = [
     category: "server",
     price: 12500,
     rating: 4.8,
-    image: "/images/servers/x9000.jpg",
+    image: image1,
     specs: {
       cpu: "Dual Intel Xeon Platinum 8380",
       gpu: "NVIDIA RTX A6000",
@@ -42,7 +48,7 @@ export const products: Product[] = [
     category: "gpu",
     price: 4.99, // per hour
     rating: 4.9,
-    image: "/images/gpus/a100.jpg",
+    image: image2,
     specs: {
       gpu: "NVIDIA A100 80GB",
       warranty: "24/7 Support",
@@ -57,7 +63,7 @@ export const products: Product[] = [
     category: "storage",
     price: 85000,
     rating: 4.7,
-    image: "/images/storage/petabyte-array.jpg",
+    image: image3,
     specs: {
       storage: "1PB (expandable to 4PB)",
       warranty: "Lifetime Support",
@@ -72,7 +78,7 @@ export const products: Product[] = [
     category: "consulting",
     price: 200, // per hour
     rating: 4.9,
-    image: "/images/services/consulting.jpg",
+    image: image4,
     specs: {
       warranty: "Project-based",
     },
@@ -86,7 +92,7 @@ export const products: Product[] = [
     category: "server",
     price: 8900,
     rating: 4.6,
-    image: "/images/servers/high-density.jpg",
+    image: image5,
     specs: {
       cpu: "AMD EPYC 7763",
       ram: "128GB DDR4",
@@ -103,7 +109,7 @@ export const products: Product[] = [
     category: "gpu",
     price: 6.99, // per hour
     rating: 5.0,
-    image: "/images/gpus/h100.jpg",
+    image: image6,
     specs: {
       gpu: "NVIDIA H100 80GB",
       warranty: "24/7 Support",
