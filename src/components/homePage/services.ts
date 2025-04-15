@@ -3,6 +3,7 @@
 import { Server, Cpu, Database, Building2 } from 'lucide-react';
 
 export const services = [
+
   {
     title: "Custom Servers & Clusters",
     description: "Engineered for compute-intensive environments. Our custom server solutions are built to handle your most demanding workloads with maximum efficiency and reliability.",
