@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
           <div className="flex gap-16">
             <div>
               <Link to="/" className="text-white text-2xl font-bold ms-8">
-                HardBay
+                Hard<span className="text-primary-orange">bay</span>
               </Link>
             </div>
             <div className="hidden md:flex space-x-4">
