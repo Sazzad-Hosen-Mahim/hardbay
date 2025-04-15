@@ -11,7 +11,7 @@ import Signup from "@/pages/Signup";
 import Service from "@/pages/Service";
 import Blog from "@/pages/Blog";
 import CaseStudies from "@/pages/CaseStudies";
-import Products from "@/pages/Products";
+// import Products from "@/pages/Products";
 import BlogPostDetail from "@/components/blog/BlogpostDetail";
 import ServiceLayout from "@/pages/Service/ServiceLayout";
 import CustomServer from "@/pages/Service/CustomServer";
@@ -29,6 +29,7 @@ import WekaIO from "@/pages/partners/WekaIO";
 import Intel from "@/pages/partners/Intel";
 import Amd from "@/pages/partners/Amd";
 import Partners from "@/pages/Partners";
+import ProductDetails from "@/pages/ProductDetails";
 
 const routes = createBrowserRouter([
   {
@@ -43,9 +44,13 @@ const routes = createBrowserRouter([
         path: "/about",
         element: <About />,
       },
+      // {
+      //   path: "/products",
+      //   element: <Products />,
+      // },
       {
-        path: "/products",
-        element: <Products />,
+        path: "/product-details/:id",
+        element: <ProductDetails />,
       },
       {
         path: "/contact",
@@ -83,7 +88,7 @@ const routes = createBrowserRouter([
         children: [
           {
             path: "",
-            element: <Partners/>,
+            element: <Partners />,
           },
           {
             path: "NVIDIA",
@@ -101,18 +106,18 @@ const routes = createBrowserRouter([
             path: "gigabyte",
             element: <Gigabyte />,
           },
-           {
+          {
             path: "asus",
             element: <Asus />,
-          }, 
+          },
           {
             path: "wekaIO",
             element: <WekaIO />,
-          }, 
+          },
           {
             path: "intel",
             element: <Intel />,
-          }, 
+          },
           {
             path: "amd",
             element: <Amd />,
@@ -128,7 +133,7 @@ const routes = createBrowserRouter([
         element: <BlogPostDetail />,
       },
       {
-        path: "/Case Studies",
+        path: "/case-studies",
         element: <CaseStudies />,
       },
       {

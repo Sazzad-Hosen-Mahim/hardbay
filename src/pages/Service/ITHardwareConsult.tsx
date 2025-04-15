@@ -1,5 +1,16 @@
+import { useContext } from "react";
+import { ViewContext } from "./ServiceLayout";
+import { products } from "@/lib/productsData";
+import ProductsView from "@/components/Product/ProductView";
+
 const ITHardwareConsult = () => {
-  return <div>ITHardwareConsult</div>;
+  const { currentView } = useContext(ViewContext);
+  const itProducts = products.filter((p) => p.category === "consulting");
+  return (
+    <div>
+      <ProductsView products={itProducts} view={currentView} />
+    </div>
+  );
 };
 
 export default ITHardwareConsult;
