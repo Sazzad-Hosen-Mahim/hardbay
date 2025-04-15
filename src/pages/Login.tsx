@@ -5,7 +5,7 @@ const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
-	const [isSubmitLogin, setIsSubmitLogin] = useState(false);
+	const [isSubmitLogin, ] = useState(false);
 
 	const navigate = useNavigate(); // 👈 initialize navigate
 

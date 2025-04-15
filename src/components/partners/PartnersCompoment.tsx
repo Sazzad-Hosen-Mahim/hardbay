@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Grid, List, ChevronUp, ChevronDown, ChevronRight } from 'lucide-react';
 
 interface Product {

@@ -1,5 +1,16 @@
+import HeroSection from "@/components/homePage/HeroSection";
+import ServicesSection from "@/components/homePage/ServicesSection";
+
 const Home = () => {
-  return <div className="h-screen bg-primary-bg">Home page</div>;
+  return <div className=" bg-primary-bg">
+
+    <HeroSection/>
+   
+
+    <ServicesSection/>
+ 
+  
+  </div>;
 };
 
 export default Home;

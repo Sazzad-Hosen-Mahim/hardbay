@@ -1,4 +1,6 @@
+
 import { motion } from "framer-motion";
+
 
 const AboutPage = () => {
   return (
