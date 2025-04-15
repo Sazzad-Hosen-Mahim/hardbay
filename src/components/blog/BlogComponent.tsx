@@ -53,17 +53,27 @@ const BlogComponent = () => {
           })}
         </div>
 
-        {/* Right column: Blog Headlines */}
-        <div className="col-span-1 space-y-6 border border-gray-300 rounded-2xl shadow-md p-4  ">
-          <h2 className="text-2xl font-semibold text-primary-orange">Headlines</h2>
-          <ul className="space-y-3">
-            {blogPosts.map((post) => (
-              <li key={post.id} className="text-lg font-semibold hover:underline cursor-pointer hover:text-primary-orange">
-                <Link to={`/blog/${post.id}`}>{post.title}</Link>
-              </li>
-            ))}
-          </ul>
+{/* Right column: Blog Headlines */}
+<div className="col-span-1 space-y-6 border border-gray-300 rounded-2xl shadow-md p-4">
+  <h2 className="text-2xl font-semibold text-primary-orange">Headlines</h2>
+  <ul className="space-y-3">
+    {blogPosts.map((post) => (
+      <li key={post.id}>
+        <Link
+          to={`/blog/${post.id}`}
+          className="text-lg font-semibold hover:underline hover:text-primary-orange block"
+        >
+          {post.title}
+        </Link>
+        <div className="text-sm text-primary-orange">
+          {post.date}
         </div>
+      </li>
+    ))}
+  </ul>
+</div>
+
+
       </div>
     </div>
 

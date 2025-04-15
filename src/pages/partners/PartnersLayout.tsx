@@ -68,6 +68,7 @@ const PartnersLayout = () => {
                     ? "text-white bg-primary-orange font-bold"
                     : "text-white"
                 }`
+                
                 }
               >
                Supermicro
