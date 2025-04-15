@@ -1,14 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-	Database,
-	Cloud,
-	FileText,
-	Cpu,
-	HardDrive,
-	Download,
-} from 'lucide-react';
+import { Database, Cloud, FileText, Cpu, HardDrive } from 'lucide-react';
 import img1 from '@/assets/products/1.webp';
 import img2 from '@/assets/products/2.webp';
 import img3 from '@/assets/products/3.webp';
@@ -104,7 +97,6 @@ const productData = {
 
 const ProductDetails = () => {
 	const [selectedImage, setSelectedImage] = useState(0);
-
 	return (
 		<div className="mx-auto max-w-7xl p-4 font-sans">
 			<div className="mb-6 border-b border-gray-200 pb-4">
@@ -178,7 +170,7 @@ const ProductDetails = () => {
 
 					{/* Actions */}
 					<div className="mt-4 flex justify-between items-center gap-4">
-						<button className="rounded bg-red-800 px-4 py-2 font-medium text-white transition hover:bg-red-900">
+						<button className="rounded bg-primary-orange px-4 py-2 font-medium text-white transition hover:bg-primary-orange/70">
 							Get Pricing
 						</button>
 						<div className="flex items-center gap-2">
@@ -189,19 +181,6 @@ const ProductDetails = () => {
 						</div>
 					</div>
 				</div>
-			</div>
-
-			{/* Tabs */}
-			<div className="mt-10">
-				<div className="flex border-b border-gray-200">
-					<button className="relative border-b-2 border-blue-800 px-4 py-2 font-medium text-blue-800">
-						Specifications
-					</button>
-					<button className="flex items-center gap-2 px-4 py-2 font-medium text-gray-600 hover:text-gray-800">
-						<Download className="h-4 w-4" /> Resources & Downloads
-					</button>
-				</div>
-				<div className="py-6">{/* Tab content would go here */}</div>
 			</div>
 		</div>
 	);
