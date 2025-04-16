@@ -30,6 +30,8 @@ import Intel from "@/pages/partners/Intel";
 import Amd from "@/pages/partners/Amd";
 import Partners from "@/pages/Partners";
 import ProductDetails from "@/pages/ProductDetails";
+import Cart from "@/pages/Service/Cart";
+import Checkout from "@/pages/Checkout";
 
 const routes = createBrowserRouter([
   {
@@ -82,6 +84,14 @@ const routes = createBrowserRouter([
             element: <ITHardwareConsult />,
           },
         ],
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
       {
         path: "/partners",
