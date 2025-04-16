@@ -7,7 +7,7 @@ const Service = () => {
   const { currentView } = useContext(ViewContext);
 
   return (
-    <div className="">
+    <div className="mt-16">
       {products.map((p) => (
         <div key={p.id}>
           <ProductsView products={products} view={currentView} />
