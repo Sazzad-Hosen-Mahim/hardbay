@@ -38,10 +38,10 @@ const AboutPage = () => {
           {/* Image Gallery */}
           <div className="mt-8 md:mt-12 flex flex-wrap justify-center gap-2 md:gap-4 px-2">
             {[
-              "/src/assets/about/server.png",
-              "/src/assets/about/storage.avif",
-              "/src/assets/about/workstation.jpg",
-              "/src/assets/about/service.jpg",
+              "images/server.png",
+              "images/storage.avif",
+              "images/workstation.jpg",
+              "images/service.jpg",
             ].map((src, i) => (
               <motion.img
                 key={i}
