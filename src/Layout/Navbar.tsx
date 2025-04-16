@@ -4,9 +4,14 @@ import { IoSearchSharp } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
 import { IoBagSharp } from "react-icons/io5";
 import { IoPersonOutline } from "react-icons/io5";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [showSearchInput, setShowSearchInput] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -180,12 +185,39 @@ const Navbar: React.FC = () => {
             </button>
           </div>
           <div className="hidden md:flex items-center me-10 gap-3">
-            <Link
-              to="/search"
-              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
-            >
-              <IoSearchSharp className="text-2xl text-primary-orange hover:text-primary-bg" />
-            </Link>
+            <div className="relative flex items-center">
+              {/* Search Trigger */}
+              <motion.div
+                initial={{ x: 0 }}
+                animate={{ x: isSearchOpen ? -155 : 0 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                className="z-10"
+              >
+                <button
+                  onClick={() => setIsSearchOpen(!isSearchOpen)}
+                  className="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none"
+                >
+                  <IoSearchSharp className="text-2xl text-primary-orange hover:text-primary-bg" />
+                </button>
+              </motion.div>
+
+              {/* Search Input */}
+              <AnimatePresence>
+                {isSearchOpen && (
+                  <motion.input
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: "200px", opacity: 1 }}
+                    exit={{ width: 0, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    type="text"
+                    placeholder="Search products"
+                    className="absolute -left-38 bg-white text-black px-10 py-2 rounded-md outline-none shadow-lg"
+                    style={{ zIndex: 0 }}
+                  />
+                )}
+              </AnimatePresence>
+            </div>
+
             <Link
               to="/wishlist"
               className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
@@ -193,7 +225,7 @@ const Navbar: React.FC = () => {
               <FaHeart className="text-2xl text-primary-orange hover:text-primary-bg" />
             </Link>
             <Link
-              to="/wishlist"
+              to="/cart"
               className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
             >
               <IoBagSharp className="text-2xl text-primary-orange hover:text-primary-bg" />
