@@ -1,5 +1,6 @@
 // components/products/ProductContent.tsx
 import { Product } from "@/lib/productsData";
+import { Link } from "react-router-dom";
 
 interface ProductContentProps {
   product: Product;
@@ -8,7 +9,9 @@ interface ProductContentProps {
 const ProductContent = ({ product }: ProductContentProps) => {
   return (
     <>
-      <h3 className="font-bold text-lg">{product.name}</h3>
+      <Link to={`/service/product-details/${product.id}`}>
+        <h3 className="font-bold text-lg">{product.name}</h3>
+      </Link>
       <div className="flex items-center my-2">
         {[...Array(5)].map((_, i) => (
           <svg

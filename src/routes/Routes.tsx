@@ -48,10 +48,7 @@ const routes = createBrowserRouter([
       //   path: "/products",
       //   element: <Products />,
       // },
-      {
-        path: "/product-details/:id",
-        element: <ProductDetails />,
-      },
+
       {
         path: "/contact",
         element: <Contact />,
@@ -63,6 +60,10 @@ const routes = createBrowserRouter([
           {
             path: "",
             element: <Service />,
+          },
+          {
+            path: "product-details/:id",
+            element: <ProductDetails />,
           },
           {
             path: "custom-server-build",

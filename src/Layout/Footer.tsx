@@ -4,8 +4,8 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 const Footer: React.FC = () => {
   return (
     <footer className="bg-[#212a31] text-white py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {/* About Section */}
           <div>
             <h3 className="text-lg font-bold mb-4">About Us</h3>
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
           {/* Social Media Section */}
           <div>
             <h3 className="text-lg font-bold mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-4">
               <a
                 href="https://facebook.com"
                 target="_blank"
@@ -87,15 +87,15 @@ const Footer: React.FC = () => {
             <p className="text-sm mb-4">
               Subscribe to our newsletter to get the latest updates.
             </p>
-            <form className="flex">
+            <form className="flex flex-col sm:flex-row sm:items-center gap-2">
               <input
                 type="email"
                 placeholder="Your email"
-                className="p-2 mr-2 rounded-md border-1 border-white  text-white focus:outline-none"
+                className="flex-grow p-2 rounded-md border border-white bg-transparent text-white focus:outline-none w-full sm:w-auto"
               />
               <button
                 type="submit"
-                className="bg-[#124e66] text-[#d3d9d4] px-4 rounded-md hover:bg-[#124e66]/50"
+                className="bg-[#124e66] text-[#d3d9d4] px-4 py-2 rounded-md hover:bg-[#124e66]/50 w-full sm:w-auto"
               >
                 Subscribe
               </button>
@@ -103,7 +103,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Copyright Section */}
+        {/* Copyright */}
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className="text-sm">
             &copy; {new Date().getFullYear()} Sazzad Mahim. All rights reserved.
