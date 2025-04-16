@@ -9,8 +9,6 @@ import { motion, AnimatePresence } from "framer-motion";
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [showSearchInput, setShowSearchInput] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const [showNavbar, setShowNavbar] = useState(true);
@@ -218,24 +216,18 @@ const Navbar: React.FC = () => {
               </AnimatePresence>
             </div>
 
-            <Link
-              to="/wishlist"
-              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
-            >
+            <button className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium">
               <FaHeart className="text-2xl text-primary-orange hover:text-primary-bg" />
-            </Link>
+            </button>
             <Link
               to="/cart"
               className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
             >
               <IoBagSharp className="text-2xl text-primary-orange hover:text-primary-bg" />
             </Link>
-            <Link
-              to="/wishlist"
-              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
-            >
+            <button className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium">
               <IoPersonOutline className="text-2xl text-primary-orange hover:text-primary-bg" />
-            </Link>
+            </button>
           </div>
         </div>
       </div>
