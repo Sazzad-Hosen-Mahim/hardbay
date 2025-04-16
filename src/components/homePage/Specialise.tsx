@@ -2,14 +2,15 @@
 import { ArrowRight } from 'lucide-react';
 import { serviceData } from './serviceData'; 
 import { Link } from 'react-router-dom';
+import CommonWrapper from '@/common/CommonWrapper';
 
 function Specialise() {
   return (
     <div className=" ">
-      <div className="container mx-auto px-4 md:py-16 py-4">
+      <div className="container mx-auto px-4 md:py-10 py-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-semibold mb-6 ">
+          <h1 className="text-2xl md:text-4xl font-semibold mb-6 ">
           What We Specialise In 
            
           </h1>
@@ -17,7 +18,8 @@ function Specialise() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+       <CommonWrapper>
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {serviceData.map((service, index) => (
             <div
               key={index}
@@ -60,6 +62,7 @@ function Specialise() {
             </div>
           ))}
         </div>
+       </CommonWrapper>
       </div>
     </div>
   );
