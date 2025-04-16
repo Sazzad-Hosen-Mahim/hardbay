@@ -13,7 +13,7 @@ const AboutPage = () => {
         <div
           className="absolute inset-0 bg-cover bg-center blur-sm md:blur"
           style={{
-            backgroundImage: `url("/about-bg.jpg")`,
+            backgroundImage: `url("images/about-bg.jpg")`,
           }}
         ></div>
         <div className="relative z-10">
@@ -97,7 +97,7 @@ const AboutPage = () => {
             className="mt-8 md:mt-0"
           >
             <img
-              src="src/assets/about/founder.jpg"
+              src="images/founder.jpg"
               alt="Founder"
               className="rounded-lg shadow-md w-full h-auto"
             />
