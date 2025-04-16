@@ -5,7 +5,7 @@ import icon3 from "@/assets/about/icon/success.png";
 
 const AboutPage = () => {
   return (
-    <div className="text-gray-800  font-sans">
+    <div className="text-gray-800 mt-14 font-sans">
       {/* Top Navigation */}
 
       {/* About Header */}
