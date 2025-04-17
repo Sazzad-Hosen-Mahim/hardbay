@@ -1,10 +1,24 @@
-// BlogComponent.js or BlogComponent.tsx
 import { CalendarDays } from "lucide-react";
 import { Link } from "react-router-dom";
-import { blogPosts } from "../blog/blogpost"; // Import the blogPosts array
+// import { blogPosts } from "../blog/blogpost"; // Import the blogPosts array
 import CommonWrapper from "@/common/CommonWrapper";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
+import { useEffect } from "react";
+import { fetchPosts } from "@/store/Slices/BlogSlice/blogSlice";
 
 const BlogComponent = () => {
+  const dispatch = useAppDispatch();
+  const { posts } = useAppSelector((state) => state.blog);
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [dispatch]);
+
+  console.log(posts?.data);
+
+  // if (loading) return <div>Loading...</div>;
+  // if (error) return <div>{error}</div>;
+
   return (
     <div className="">
       <CommonWrapper>
@@ -15,8 +29,8 @@ const BlogComponent = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {/* Left column: blog posts */}
             <div className="col-span-3 space-y-10">
-              {blogPosts.map((post) => {
-                const [month, day] = post.date.split(/\s+/);
+              {posts?.data.map((post) => {
+                // const [month, day] = post.date.split(/\s+/);
 
                 return (
                   <div
@@ -26,10 +40,12 @@ const BlogComponent = () => {
                     <div className="flex-shrink-0 text-center">
                       <div className="bg-gray-100 rounded-lg px-3 py-2 w-16 mx-auto">
                         <div className="text-xl font-bold text-primary-orange">
-                          {day.replace(",", "")}
+                          {post?.createdAt.slice(8, 10)}
                         </div>
                         <div className="text-xs uppercase text-primary-blue font-semibold ">
-                          {month.slice(0, 3)}
+                          {new Date(post?.createdAt).toLocaleString("default", {
+                            month: "short",
+                          })}
                         </div>
                       </div>
                     </div>
@@ -38,11 +54,11 @@ const BlogComponent = () => {
                         <Link to={`/blog/${post.id}`}>{post.title}</Link>
                       </h2>
                       <p className="text-sm text-gray-600 mt-1">
-                        {post.excerpt}
+                        {post?.content}
                       </p>
                       <div className="mt-2 flex items-center text-sm text-gray-500">
                         <CalendarDays className="w-4 h-4 mr-1" />
-                        {post.date}
+                        {post?.createdAt.slice(0, 10)}
                       </div>
                       <Link
                         to={`/blog/${post.id}`}
@@ -62,7 +78,7 @@ const BlogComponent = () => {
                 Headlines
               </h2>
               <ul className="space-y-3">
-                {blogPosts.map((post) => (
+                {posts?.data.map((post) => (
                   <li key={post.id}>
                     <Link
                       to={`/blog/${post.id}`}
@@ -71,7 +87,11 @@ const BlogComponent = () => {
                       {post.title}
                     </Link>
                     <div className="text-sm text-primary-orange">
-                      {post.date}
+                      {new Date(post?.createdAt).toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "2-digit",
+                        year: "numeric",
+                      })}
                     </div>
                   </li>
                 ))}
