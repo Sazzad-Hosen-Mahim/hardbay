@@ -9,15 +9,15 @@ import Testimonials from "@/components/homePage/Testimonials";
 
 const Home = () => {
   return (
-    <div className=" bg-primary-bg flex flex-col gap-4">
+    <div className=" bg-primary-bg flex flex-col gap-4 mt-16">
       <HeroSection />
       <ServicesSection />
       <SuccessStoryBanner />
       <Specialise />
-      <Enterprise/>
-      <Testimonials/>
-      <Experts/>
-      <HomePartners/>
+      <Enterprise />
+      <Testimonials />
+      <Experts />
+      <HomePartners />
     </div>
   );
 };
