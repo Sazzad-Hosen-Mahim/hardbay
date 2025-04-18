@@ -1,19 +1,29 @@
 import { useParams, Link } from "react-router-dom";
 import { blogPosts } from "../blog/blogpost";
 import CommonWrapper from "@/common/CommonWrapper";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
+import { useEffect } from "react";
+import { fetchBlogDetails } from "@/store/Slices/BlogSlice/blogDetailsSlice";
 
 const BlogPostDetail = () => {
   const { id } = useParams<{ id?: string }>();
+  const dispatch = useAppDispatch();
+
+  const { post } = useAppSelector((state) => state.blogDetails);
 
   if (!id) {
     return <div>Post not found!</div>;
   }
 
-  const post = blogPosts.find((post) => post.id === parseInt(id));
+  useEffect(() => {
+    dispatch(fetchBlogDetails(id));
+  }, [dispatch, id]);
 
   if (!post) {
     return <div>Post not found!</div>;
   }
+
+  console.log(post);
 
   return (
     <CommonWrapper>
@@ -23,7 +33,16 @@ const BlogPostDetail = () => {
           <h1 className="text-3xl md:text-4xl font-bold mb-6 text-primary-blue">
             {post.title}
           </h1>
-          <p className="text-base text-primary-orange">{post.date}</p>
+          <p className="text-base text-primary-orange">
+            {new Date(post?.createdAt).toLocaleDateString("en-US", {
+              month: "long",
+              day: "2-digit",
+              year: "numeric",
+            })}
+          </p>
+          <div>
+            <img src={post.image} alt="" className="w-[90%] lg:h-[500px]" />
+          </div>
           <div className="text-lg text-primary-blue">{post.content}</div>
         </div>
 
