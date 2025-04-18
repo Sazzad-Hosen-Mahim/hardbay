@@ -3,16 +3,20 @@ import { Link } from "react-router-dom";
 // import { blogPosts } from "../blog/blogpost"; // Import the blogPosts array
 import CommonWrapper from "@/common/CommonWrapper";
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchPosts } from "@/store/Slices/BlogSlice/blogSlice";
 
 const BlogComponent = () => {
   const dispatch = useAppDispatch();
   const { posts } = useAppSelector((state) => state.blog);
+  const [currentPage, setCurrentPage] = useState(1);
+  const limit = 5;
 
   useEffect(() => {
-    dispatch(fetchPosts());
-  }, [dispatch]);
+    dispatch(fetchPosts({ limit, page: currentPage }));
+  }, [dispatch, currentPage]);
+
+  const totalPages = posts?.lastPage || 0;
 
   console.log(posts?.data);
 
@@ -70,6 +74,41 @@ const BlogComponent = () => {
                   </div>
                 );
               })}
+              <div className="flex justify-center items-center mt-10 space-x-2">
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1}
+                  className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                >
+                  Prev
+                </button>
+
+                {[...Array(totalPages)].map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentPage(i + 1)}
+                    className={`px-4 py-2 rounded ${
+                      currentPage === i + 1
+                        ? "bg-primary-orange text-white"
+                        : "bg-gray-200"
+                    }`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                  className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                >
+                  Next
+                </button>
+              </div>
             </div>
 
             {/* Right column: Blog Headlines */}

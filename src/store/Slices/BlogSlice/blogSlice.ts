@@ -31,11 +31,13 @@ const initialState: BlogState = {
 
 export const fetchPosts = createAsyncThunk<
   BlogResponse,
-  void,
+  { page: number; limit: number },
   { rejectValue: string }
->("fetchPosts", async (__, thunkAPI) => {
+>("fetchPosts", async ({ page, limit }, thunkAPI) => {
   try {
-    const response = await axios.get(`${baseUrl}/blog`);
+    const response = await axios.get(
+      `${baseUrl}/blog?limit=${limit}&page=${page}`
+    );
     return response.data;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.message || "Failed to fetch posts");
