@@ -38,10 +38,6 @@ const partners = [
     name: 'AMD',
     logo: amd,
   },
- 
- 
- 
- 
   
 ];
 
