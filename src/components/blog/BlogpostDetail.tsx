@@ -11,13 +11,15 @@ const BlogPostDetail = () => {
 
   const { post } = useAppSelector((state) => state.blogDetails);
 
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchBlogDetails(id));
+    }
+  }, [dispatch, id]);
+
   if (!id) {
     return <div>Post not found!</div>;
   }
-
-  useEffect(() => {
-    dispatch(fetchBlogDetails(id));
-  }, [dispatch, id]);
 
   if (!post) {
     return <div>Post not found!</div>;
