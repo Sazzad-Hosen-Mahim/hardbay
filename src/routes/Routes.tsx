@@ -32,6 +32,7 @@ import Partners from "@/pages/Partners";
 import ProductDetails from "@/pages/ProductDetails";
 import Cart from "@/pages/Service/Cart";
 import Checkout from "@/pages/Checkout";
+import Configure from "@/pages/Configure";
 
 const routes = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const routes = createBrowserRouter([
       //   element: <Products />,
       // },
 
+      {
+        path: "/configure",
+        element: <Configure />,
+      },
       {
         path: "/contact",
         element: <Contact />,
