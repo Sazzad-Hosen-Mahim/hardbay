@@ -32,10 +32,11 @@ export const fetchBlogDetails = createAsyncThunk<
   try {
     const response = await axios.get(`${baseUrl}/blog/${id}`);
     return response.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(
-      error.message || "Failed to fetch blog details"
-    );
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error) && error.message) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+    return thunkAPI.rejectWithValue("Failed to fetch blog details");
   }
 });
 

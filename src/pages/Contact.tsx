@@ -1,12 +1,31 @@
+import axios from "axios";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
+
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Contact = () => {
   const [showSupportForm, setShowSupportForm] = useState(false);
   const [showReturnForm, setShowReturnForm] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert("Form submitted!");
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    console.log(data);
+
+    try {
+      const response = await axios.post(`${baseUrl}/contact`);
+      if (response.status === 200) {
+        toast.success("Form submitted successfully!");
+        e.currentTarget.reset();
+      } else {
+        toast.error("Failed to submit the form. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Failed to submit the form. Please try again.");
+    }
   };
 
   return (
@@ -25,30 +44,35 @@ const Contact = () => {
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
+              name="name"
               type="text"
-              placeholder="First Name"
+              placeholder="Full Name"
               className="w-full p-3 border rounded-xl"
               required
             />
-            <input
+            {/* <input
+              name="lastName"
               type="text"
               placeholder="Last Name"
               className="w-full p-3 border rounded-xl"
               required
-            />
+            /> */}
             <input
+              name="email"
               type="email"
               placeholder="Your Email"
               className="w-full p-3 border rounded-xl"
               required
             />
-            <input
+            {/* <input
+              name="phone"
               type="string"
               placeholder="Phone Number"
               className="w-full p-3 border rounded-xl"
               required
-            />
+            /> */}
             <textarea
+              name="message"
               placeholder="How can we help you?"
               className="w-full p-3 border rounded-xl"
               rows={5}

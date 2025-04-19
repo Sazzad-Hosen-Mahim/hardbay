@@ -1,6 +1,5 @@
 import { CalendarDays } from "lucide-react";
 import { Link } from "react-router-dom";
-// import { blogPosts } from "../blog/blogpost"; // Import the blogPosts array
 import CommonWrapper from "@/common/CommonWrapper";
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
 import { useEffect, useState } from "react";
