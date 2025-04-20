@@ -1,5 +1,4 @@
 
-
 import { CartItem } from './product';
 import { formatPrice, calculateTotal } from './cartUtils';
 import { Link } from 'react-router-dom';
@@ -30,7 +29,6 @@ const ProductSummary: React.FC<ProductSummaryProps> = ({ items }) => {
       </div>
    <Link to="/cart">
    <button className="w-full cursor-pointer mt-4 bg-primary-blue text-white py-2 rounded-md hover:bg-primary-orange">
-    
     Add to Cart
   </button>
    </Link>

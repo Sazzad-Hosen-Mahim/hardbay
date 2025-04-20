@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Product, CartItem } from './product';
 import ProductCategory from './ProductCategory';
 import ProductSummary from './ProductSummary';
-import { products } from './Products';
+import { products } from './products';
 
 const ProductConfigurator: React.FC = () => {
   const [selectedProducts, setSelectedProducts] = useState<Set<string>>(new Set());
