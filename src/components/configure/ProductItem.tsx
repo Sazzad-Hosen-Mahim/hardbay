@@ -18,7 +18,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, selected, onSelect }
         onChange={(e) => onSelect(product, e.target.checked)}
         className="h-4 w-4 text-blue-600 rounded"
       />
-      <span className="ml-3 flex-grow text-sm">{product.name}</span>
+      <span className="ml-3 flex-grow text-base">{product.name}</span>
       <span className="text-sm font-medium">{formatPrice(product.price)}</span>
     </div>
   );
