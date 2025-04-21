@@ -15,7 +15,7 @@ const Contact = () => {
     console.log(data);
 
     try {
-      const response = await axios.post(`${baseUrl}/contact`);
+      const response = await axios.post(`${baseUrl}/contact`, data);
       if (response.status === 200) {
         toast.success("Form submitted successfully!");
         e.currentTarget.reset();
@@ -64,13 +64,13 @@ const Contact = () => {
               className="w-full p-3 border rounded-xl"
               required
             />
-            {/* <input
+            <input
               name="phone"
               type="string"
               placeholder="Phone Number"
               className="w-full p-3 border rounded-xl"
               required
-            /> */}
+            />
             <textarea
               name="message"
               placeholder="How can we help you?"
