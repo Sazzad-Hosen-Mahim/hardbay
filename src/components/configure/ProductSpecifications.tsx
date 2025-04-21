@@ -48,7 +48,7 @@ export default function ProductSpecifications() {
           tabData.more.map((row, idx) => (
             <div
               key={idx}
-              className="grid grid-cols-12 border-b border-gray-200 pt-4"
+              className="grid grid-cols-12 border-b border-gray-200 p-4 "
             >
               <div className="col-span-3 p-2 text-gray-700">{row.label}</div>
               <div className="col-span-9 p-2 text-gray-700">{row.value}</div>
