@@ -33,6 +33,7 @@ import ProductDetails from "@/pages/ProductDetails";
 import Cart from "@/pages/Service/Cart";
 import Checkout from "@/pages/Checkout";
 import Configure from "@/pages/Configure";
+import NewDetails from "@/pages/Service/NewDetails";
 
 const routes = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const routes = createBrowserRouter([
       //   path: "/products",
       //   element: <Products />,
       // },
+      {
+        path: "new-details",
+        element: <NewDetails />,
+      },
 
       {
         path: "/configure",
