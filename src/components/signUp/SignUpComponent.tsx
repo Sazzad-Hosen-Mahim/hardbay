@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 function SignUpComponent() {
 	const [formData, setFormData] = useState({
@@ -15,17 +16,20 @@ function SignUpComponent() {
 	const [errors, setErrors] = useState<Record<string, string>>({});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
+	const navigate = useNavigate();
+
 	const validateForm = () => {
 		const newErrors: Record<string, string> = {};
 
-		if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
+		if (!formData.firstName.trim())
+			newErrors.firstName = 'First name is required';
 		if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
 
 		if (!formData.email.trim()) {
 			newErrors.email = 'Email is required';
 		} else if (!/\S+@\S+\.\S+/.test(formData.email)) {
 			newErrors.email = 'Please enter a valid email';
-		} 
+		}
 
 		if (!formData.contactNo.trim()) {
 			newErrors.contactNo = 'Contact number is required';
@@ -52,13 +56,16 @@ function SignUpComponent() {
 
 		setIsSubmitting(true);
 		try {
-			const response = await fetch('https://tortuga7-backend.onrender.com/auth/signup', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(formData),
-			});
+			const response = await fetch(
+				'https://tortuga7-backend.onrender.com/auth/signup',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(formData),
+				}
+			);
 
 			if (!response.ok) {
 				const errorData = await response.json();
@@ -66,6 +73,7 @@ function SignUpComponent() {
 			}
 
 			toast.success('Account created successfully!');
+			navigate('/login');
 			setFormData({
 				firstName: '',
 				lastName: '',
@@ -73,8 +81,10 @@ function SignUpComponent() {
 				contactNo: '',
 				password: '',
 			});
-		} catch (error: any) {
-			toast.error(error.message || 'Something went wrong.');
+		} catch (error) {
+			toast.error(
+				error instanceof Error ? error.message : 'Something went wrong.'
+			);
 		} finally {
 			setIsSubmitting(false);
 		}
@@ -101,7 +111,12 @@ function SignUpComponent() {
 					<div className="rounded-md shadow-[0px_0px_1px_2px_rgba(0,0,0,.04)] space-y-4 p-4">
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 							<div>
-								<label htmlFor="firstName" className="block text-sm font-medium text-gray-700">First Name</label>
+								<label
+									htmlFor="firstName"
+									className="block text-sm font-medium text-gray-700"
+								>
+									First Name
+								</label>
 								<input
 									id="firstName"
 									name="firstName"
@@ -113,11 +128,20 @@ function SignUpComponent() {
 									value={formData.firstName}
 									onChange={handleChange}
 								/>
-								{errors.firstName && <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>}
+								{errors.firstName && (
+									<p className="mt-1 text-sm text-red-600">
+										{errors.firstName}
+									</p>
+								)}
 							</div>
 
 							<div>
-								<label htmlFor="lastName" className="block text-sm font-medium text-gray-700">Last Name</label>
+								<label
+									htmlFor="lastName"
+									className="block text-sm font-medium text-gray-700"
+								>
+									Last Name
+								</label>
 								<input
 									id="lastName"
 									name="lastName"
@@ -129,12 +153,19 @@ function SignUpComponent() {
 									value={formData.lastName}
 									onChange={handleChange}
 								/>
-								{errors.lastName && <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>}
+								{errors.lastName && (
+									<p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
+								)}
 							</div>
 						</div>
 
 						<div>
-							<label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</label>
+							<label
+								htmlFor="email"
+								className="block text-sm font-medium text-gray-700"
+							>
+								Email address
+							</label>
 							<input
 								id="email"
 								name="email"
@@ -147,11 +178,18 @@ function SignUpComponent() {
 								value={formData.email}
 								onChange={handleChange}
 							/>
-							{errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+							{errors.email && (
+								<p className="mt-1 text-sm text-red-600">{errors.email}</p>
+							)}
 						</div>
 
 						<div>
-							<label htmlFor="contactNo" className="block text-sm font-medium text-gray-700">Contact Number</label>
+							<label
+								htmlFor="contactNo"
+								className="block text-sm font-medium text-gray-700"
+							>
+								Contact Number
+							</label>
 							<input
 								id="contactNo"
 								name="contactNo"
@@ -163,11 +201,18 @@ function SignUpComponent() {
 								value={formData.contactNo}
 								onChange={handleChange}
 							/>
-							{errors.contactNo && <p className="mt-1 text-sm text-red-600">{errors.contactNo}</p>}
+							{errors.contactNo && (
+								<p className="mt-1 text-sm text-red-600">{errors.contactNo}</p>
+							)}
 						</div>
 
 						<div>
-							<label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+							<label
+								htmlFor="password"
+								className="block text-sm font-medium text-gray-700"
+							>
+								Password
+							</label>
 							<div className="mt-1 relative">
 								<input
 									id="password"
@@ -192,7 +237,9 @@ function SignUpComponent() {
 									)}
 								</button>
 							</div>
-							{errors.password && <p className="mt-1 text-sm text-red-600">{errors.password}</p>}
+							{errors.password && (
+								<p className="mt-1 text-sm text-red-600">{errors.password}</p>
+							)}
 						</div>
 					</div>
 
