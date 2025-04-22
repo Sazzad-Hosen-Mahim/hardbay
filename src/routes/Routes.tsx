@@ -34,6 +34,7 @@ import Cart from '@/pages/Service/Cart';
 import Checkout from '@/pages/Checkout';
 import Configure from '@/pages/Configure';
 import NewDetails from '@/pages/Service/NewDetails';
+import ForgetPassword from '@/pages/ForgetPassword';
 
 const routes = createBrowserRouter([
 	{
@@ -164,6 +165,10 @@ const routes = createBrowserRouter([
 			{
 				path: '/signup',
 				element: <Signup />,
+			},
+			{
+				path: '/forget-password',
+				element: <ForgetPassword />,
 			},
 			{
 				path: '/admin',
