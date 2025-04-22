@@ -31,7 +31,7 @@ const ForgetPassword = () => {
 				throw new Error('Failed to send password reset email');
 			}
 			console.log('Password reset email sent successfully');
-			navigate('/login'); // Navigate to login page after successful email submission
+			navigate('/reset-password'); // Navigate to login page after successful email submission
 		} catch (error) {
 			console.error('Error sending password reset email:', error);
 		}
