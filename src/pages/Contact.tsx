@@ -88,8 +88,8 @@ const Contact = () => {
         </section>
 
         <div className="grid gap-8  md:grid-rows-2">
-          {/* Contact Information Section */}
-          {/* Support Section */}
+          {/* Contact Information Section  */}
+           {/* Support Section  */}
           <section className="bg-white p-6 rounded-2xl shadow-md ">
             <h2 className="text-4xl font-bold text-center text-black-800 my-3">
               <span className="text-primary-orange">HardBay</span> Support
@@ -133,8 +133,8 @@ const Contact = () => {
               </form>
             )}
           </section>
-
-          {/* Product Return Section */}
+{/* 
+           Product Return Section  */}
           <section className="bg-white p-6 rounded-2xl shadow-md">
             <h2 className="text-4xl font-bold text-center text-black-800 my-3">
               Product <span className="text-primary-orange">Returns</span>
@@ -181,7 +181,7 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Global Office Addresses */}
+      {/* Global Office Addresses  */}
       <section className="bg-white p-6 rounded-2xl shadow-md">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Our Global Offices
@@ -205,7 +205,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Stay Updated Section */}
+       {/* Stay Updated Section  */}
       <section className="bg-white p-6 rounded-2xl shadow-md text-center">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Stay Up to Date
