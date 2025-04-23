@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ViewContext } from "./Service/ServiceLayout";
+import { ViewContext } from "../pages/partners/PartnersLayout";
 import { products } from "@/lib/productsData";
 import ProductsView from "@/components/Product/ProductView";
 
