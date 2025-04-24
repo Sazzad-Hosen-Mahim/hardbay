@@ -2,19 +2,7 @@
 // import { Product } from '@/lib/productsData';
 import ProductCardList from './ProductCardList';
 import ProductCardGrid from './ProductCardGrid';
-
-interface Product {
-	id: string;
-	title: string;
-	description: string;
-	createdAt: string;
-	// add other fields as needed
-}
-
-interface ProductsViewProps {
-	products: Product[];
-	view: 'list' | 'grid';
-}
+import { ProductsViewProps } from '@/types/ProductInterface';
 
 const ProductsView = ({ products, view }: ProductsViewProps) => {
 	return (
@@ -25,14 +13,6 @@ const ProductsView = ({ products, view }: ProductsViewProps) => {
 					: 'space-y-6'
 			}`}
 		>
-			{/* {products.map(product =>
-				view === 'list' ? (
-					<ProductCardList key={product.id} product={product} />
-				) : (
-					<ProductCardGrid key={product.id} product={product} />
-				)
-			)} */}
-
 			{view === 'list'
 				? products?.map(product => {
 						return <ProductCardList key={product.id} product={product} />;

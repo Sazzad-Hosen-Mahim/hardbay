@@ -2,17 +2,11 @@ import { useContext, useEffect, useState } from 'react';
 import { ViewContext } from './Service/ServiceLayout';
 // import { products } from '@/lib/productsData';
 import ProductsView from '@/components/Product/ProductView';
+import { Product } from '@/types/ProductInterface';
 
 const Service = () => {
 	const { currentView } = useContext(ViewContext);
 	const [products, setProducts] = useState<Product[]>([]);
-
-	interface Product {
-		id: string;
-		title: string;
-		description: string;
-		// add other fields as needed
-	}
 
 	useEffect(() => {
 		const fetchProducts = async () => {
