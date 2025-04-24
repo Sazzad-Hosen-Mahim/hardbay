@@ -12,7 +12,7 @@ import Service from '@/pages/Service';
 import Blog from '@/pages/Blog';
 import CaseStudies from '@/pages/CaseStudies';
 // import Products from "@/pages/Products";
-import BlogPostDetail from '@/components/blog/BlogpostDetail';
+
 import ServiceLayout from '@/pages/Service/ServiceLayout';
 import CustomServer from '@/pages/Service/CustomServer';
 import GpuRental from '@/pages/Service/GpuRental';
@@ -114,7 +114,7 @@ const routes = createBrowserRouter([
 						element: <NewDetails />,
 					},
 					{
-						path: 'nvidia',
+						path: 'NVIDIA',
 						element: <NVIDIA />,
 					},
 					{
@@ -151,10 +151,10 @@ const routes = createBrowserRouter([
 				path: '/blog',
 				element: <Blog />,
 			},
-			{
-				path: '/blog/:id',
-				element: <BlogPostDetail />,
-			},
+			// {
+			// 	path: '/blog/:id',
+			// 	element: <BlogPostDetail/>,
+			// },
 			{
 				path: '/case-studies',
 				element: <CaseStudies />,

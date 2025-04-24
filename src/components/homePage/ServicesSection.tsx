@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import CommonWrapper from '@/common/CommonWrapper';
-import { services } from './services'; 
+import { services } from './services';
 import { Link } from 'react-router-dom';
 
 const ServicesSection = () => {
@@ -50,8 +50,14 @@ const ServicesSection = () => {
 
               {/* Modal */}
               {openIndex === index && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
-                  <div className="bg-white rounded-lg p-6 max-w-md w-full shadow-xl relative">
+                <div
+                  className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/40"
+                  onClick={handleClose}
+                >
+                  <div
+                    className="bg-white rounded-lg p-6 max-w-md w-full shadow-xl relative"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <button
                       onClick={handleClose}
                       className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-xl font-bold"
@@ -68,8 +74,8 @@ const ServicesSection = () => {
                     </ul>
                     <Link
                       to={service.link}
-                      className="block text-center bg-primary-orange text-white px-4 py-2 rounded hover:bg-primary-orange-dark transition-colors cursor-pointer"
-                      onClick={handleClose} 
+                      className="block text-center bg-primary-orange text-white px-4 py-2 rounded hover:bg-primary-orange-dark transition-colors hover:bg-primary-blue cursor-pointer"
+                      onClick={handleClose}
                     >
                       {service.modal.cta}
                     </Link>
