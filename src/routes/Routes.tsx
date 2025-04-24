@@ -36,6 +36,7 @@ import Configure from '@/pages/Configure';
 import NewDetails from '@/pages/Service/NewDetails';
 import ForgetPassword from '@/pages/ForgetPassword';
 import ResetPassword from '@/pages/ResetPassword';
+import PartnerDetailsPage from '@/components/pertners/PartnersDetails';
 
 const routes = createBrowserRouter([
 	{
@@ -151,10 +152,10 @@ const routes = createBrowserRouter([
 				path: '/blog',
 				element: <Blog />,
 			},
-			// {
-			// 	path: '/blog/:id',
-			// 	element: <BlogPostDetail/>,
-			// },
+			{
+				path: '/blog/:id',
+				element: <PartnerDetailsPage/>,
+			},
 			{
 				path: '/case-studies',
 				element: <CaseStudies />,
