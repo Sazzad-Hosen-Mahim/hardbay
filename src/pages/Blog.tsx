@@ -1,9 +1,10 @@
-import BlogComponent from "@/components/blog/BlogComponent";
+import PartnersPage from "@/components/pertners/PartnersPage";
+
 
 const Blog = () => {
   return (
     <div className="mt-16">
-      <BlogComponent />
+ <PartnersPage/>
     </div>
   );
 };
