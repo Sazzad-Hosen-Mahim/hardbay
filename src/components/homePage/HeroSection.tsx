@@ -1,8 +1,7 @@
-// HeroSection.tsx
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { slides } from "./slides";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -42,22 +41,33 @@ const HeroSection = () => {
                   })()}
                 </h1>
 
-                <p className="text-lg md:text-xl text-white mb-8 ">
+                <p className="text-lg md:text-xl text-white mb-8">
                   {slide.description}
                 </p>
+
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  {slide.buttons.map((button, btnIndex) => (
-                    <button
-                      key={btnIndex}
-                      className={`px-8 py-3 rounded-md text-lg font-semibold transition-colors ${
-                        button.primary
-                          ? "bg-primary-blue hover:bg-primary-orange text-white border border-transparent"
-                          : "bg-white hover:bg-primary-blue hover:text-white"
-                      }`}
-                    >
-                      {button.text}
-                    </button>
-                  ))}
+                  {slide.buttons.map((button, btnIndex) => {
+                    const to =
+                      button.text === "Explore Our Services"
+                        ? "/service"
+                        : button.text === "Request a Consultation"
+                        ? "/contact"
+                        : "#";
+
+                    return (
+                      <Link key={btnIndex} to={to}>
+                        <button
+                          className={`px-8 py-3 rounded-md text-lg font-semibold transition-colors ${
+                            button.primary
+                              ? "bg-primary-blue hover:bg-primary-orange text-white border border-transparent"
+                              : "bg-white hover:bg-primary-blue hover:text-white"
+                          }`}
+                        >
+                          {button.text}
+                        </button>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>

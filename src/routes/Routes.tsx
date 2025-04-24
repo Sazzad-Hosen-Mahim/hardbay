@@ -114,7 +114,7 @@ const routes = createBrowserRouter([
 						element: <NewDetails />,
 					},
 					{
-						path: 'NVIDIA',
+						path: 'nvidia',
 						element: <NVIDIA />,
 					},
 					{

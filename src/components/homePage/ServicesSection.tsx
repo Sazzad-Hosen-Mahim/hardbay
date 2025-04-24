@@ -1,9 +1,14 @@
+import { useState } from 'react';
 import CommonWrapper from '@/common/CommonWrapper';
 import { services } from './services'; 
 import { Link } from 'react-router-dom';
 
-
 const ServicesSection = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const handleOpen = (index: number) => setOpenIndex(index);
+  const handleClose = () => setOpenIndex(null);
+
   return (
     <CommonWrapper>
       <div className="mx-auto px-4 py-4">
@@ -30,20 +35,47 @@ const ServicesSection = () => {
                       {service.title}
                     </h3>
                   </div>
-                  <p className="text-gray-600">
-                    {service.description}
-                  </p>
+                  <p className="text-gray-600">{service.description}</p>
                 </div>
 
                 <div className="mt-auto pt-6">
-                  <Link
-                  to={service.link}
-                    className="block text-center w-full bg-primary-blue hover:bg-primary-orange text-white px-4 py-2 rounded transition-colors"
+                  <button
+                    onClick={() => handleOpen(index)}
+                    className="w-full bg-primary-blue hover:bg-primary-orange text-white px-4 py-2 rounded transition-colors"
                   >
-                    Learn More
-                  </Link>
+                    View Details
+                  </button>
                 </div>
               </div>
+
+              {/* Modal */}
+              {openIndex === index && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-opacity-50">
+                  <div className="bg-white rounded-lg p-6 max-w-md w-full shadow-xl relative">
+                    <button
+                      onClick={handleClose}
+                      className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-xl font-bold"
+                    >
+                      &times;
+                    </button>
+                    <h2 className="text-xl font-bold mb-2">{service.modal.heading}</h2>
+                    <p className="text-gray-700 mb-4">{service.modal.body}</p>
+                    <h4 className="font-semibold text-gray-800 mb-2">{service.modal.featuresTitle}</h4>
+                    <ul className="list-disc pl-5 text-gray-600 mb-4 space-y-1">
+                      {service.modal.features.map((feature, i) => (
+                        <li key={i}>{feature}</li>
+                      ))}
+                    </ul>
+                    <Link
+                      to={service.link}
+                      className="block text-center bg-primary-orange text-white px-4 py-2 rounded hover:bg-primary-orange-dark transition-colors cursor-pointer"
+                      onClick={handleClose} 
+                    >
+                      {service.modal.cta}
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>

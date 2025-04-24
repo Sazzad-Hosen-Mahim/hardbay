@@ -32,8 +32,8 @@ export const slides: Slide[] = [
     image:
       "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&q=80&w=2000",
     buttons: [
-      { text: "View Solutions", primary: true },
-      { text: "Contact Sales", primary: false },
+      { text: "Explore Our Services", primary: true },
+      { text: "Request a Consultation", primary: false },
     ],
   },
 ];
