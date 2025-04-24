@@ -1,15 +1,5 @@
-// components/products/ProductContent.tsx
-// import { Product } from '@/lib/productsData';
 import { Link } from 'react-router-dom';
-
-interface Product {
-	id: string;
-	title: string;
-	description: string;
-	rating?: number;
-	createdAt: string;
-	// add other fields as needed
-}
+import { Product } from '@/types/ProductInterface';
 
 interface ProductContentProps {
 	product: Product;
