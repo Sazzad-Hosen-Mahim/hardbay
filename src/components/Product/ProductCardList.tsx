@@ -1,5 +1,3 @@
-// components/products/ProductCardList.tsx
-// import { Product } from '@/lib/productsData';
 import ProductContent from './ProductContent';
 import { Product } from '@/types/ProductInterface';
 

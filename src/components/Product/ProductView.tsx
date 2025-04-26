@@ -1,10 +1,9 @@
-// components/products/ProductsView.tsx
-// import { Product } from '@/lib/productsData';
 import ProductCardList from './ProductCardList';
 import ProductCardGrid from './ProductCardGrid';
 import { ProductsViewProps } from '@/types/ProductInterface';
 
 const ProductsView = ({ products, view }: ProductsViewProps) => {
+	// console.log('ProductsView', products, view);
 	return (
 		<div
 			className={`mt-5 ${

@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import { ViewContext } from './Service/ServiceLayout';
-// import { products } from '@/lib/productsData';
 import ProductsView from '@/components/Product/ProductView';
 import { Product } from '@/types/ProductInterface';
 
@@ -12,7 +11,7 @@ const Service = () => {
 		const fetchProducts = async () => {
 			try {
 				const response = await fetch(
-					'https://tortuga7-backend.onrender.com/services'
+					'https://tortuga7-backend.onrender.com/items'
 				);
 				if (!response.ok) {
 					throw new Error('Product fetch failed');
