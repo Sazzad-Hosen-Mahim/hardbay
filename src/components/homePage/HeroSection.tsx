@@ -60,7 +60,7 @@ const HeroSection = () => {
                           className={`px-8 py-3 rounded-md text-lg font-semibold transition-colors ${
                             button.primary
                               ? "bg-primary-blue hover:bg-primary-orange text-white border border-transparent"
-                              : "bg-white hover:bg-primary-blue hover:text-white"
+                              : "bg-white hover:bg-primary-orange hover:text-white"
                           }`}
                         >
                           {button.text}
