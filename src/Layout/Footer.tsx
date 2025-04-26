@@ -4,6 +4,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
+
     <footer className="bg-[#212a31] text-white py-8">
       <CommonWrapper>
         <div className="mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -43,6 +44,7 @@ const Footer: React.FC = () => {
                 </li>
               </ul>
             </div>
+
 
             {/* Social Media Section */}
             <div>
