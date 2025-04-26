@@ -6,6 +6,7 @@ interface ProductContentProps {
 }
 
 const ProductContent = ({ product }: ProductContentProps) => {
+	// console.log(product, 'product in ProductContent');
 	return (
 		<>
 			<Link to={`/service/product-details/${product.id}`}>

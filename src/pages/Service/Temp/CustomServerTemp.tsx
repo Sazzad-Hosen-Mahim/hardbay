@@ -1,4 +1,3 @@
-// components/CustomServerTemp.tsx
 import { useContext, useEffect, useState } from 'react';
 import { ViewContext } from '../ServiceLayout';
 import { products } from '@/lib/productsData';
@@ -13,7 +12,7 @@ const CustomServerTemp = () => {
 		const fetchProducts = async () => {
 			try {
 				const response = await fetch(
-					'https://tortuga7-backend.onrender.com/items '
+					'https://tortuga7-backend.onrender.com/items'
 				);
 				if (!response.ok) {
 					throw new Error('Product fetch failed');
