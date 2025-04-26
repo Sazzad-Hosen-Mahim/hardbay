@@ -34,10 +34,10 @@ const features = [
 
 const Testimonials = () => {
   return (
-    <CommonWrapper>
+    <CommonWrapper className="overflow-x-hidden">
         <div className=" md:py-10 px-4 py-4">
-      <div className=" mx-auto">  
-        <div className="flex justify-center md:gap-8 gap-4 md:mb-10 mb-4">
+      <div className=" mx-auto ">  
+        <div className="flex flex-wrap justify-center md:gap-8 gap-4 md:mb-10 mb-4">
           {features.map((feature, index) => (
             <div key={index} className="flex items-center gap-2">
               <feature.icon className="w-5 h-5 text-primary-orange" />
