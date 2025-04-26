@@ -59,13 +59,13 @@ const Navbar: React.FC = () => {
                 Home
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
-              <Link
+              {/* <Link
                 to="/about"
                 className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
               >
                 About Us
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
+              </Link> */}
               {/* <Link
                 to="/products"
                 className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
@@ -122,7 +122,7 @@ const Navbar: React.FC = () => {
                 to="/blog"
                 className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
               >
-                Blog
+                Partners
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
               <Link
@@ -136,7 +136,7 @@ const Navbar: React.FC = () => {
                 to="/partners"
                 className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
               >
-                Partners
+            Solutions
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
               <Link
@@ -242,12 +242,12 @@ const Navbar: React.FC = () => {
             >
               Home
             </Link>
-            <Link
+            {/* <Link
               to="/about"
               className="text-white block hover:bg-purple-700 px-3 py-2 rounded-md text-base font-medium"
             >
               About
-            </Link>
+            </Link> */}
             <Link
               to="/service"
               className="text-white block hover:bg-purple-700 px-3 py-2 rounded-md text-base font-medium"
@@ -258,7 +258,7 @@ const Navbar: React.FC = () => {
               to="/blog"
               className="text-white block hover:bg-purple-700 px-3 py-2 rounded-md text-base font-medium"
             >
-              Blog
+              Partners
             </Link>
             <Link
               to="/case-studies"
@@ -270,7 +270,7 @@ const Navbar: React.FC = () => {
               to="/partners"
               className="text-white block hover:bg-purple-700 px-3 py-2 rounded-md text-base font-medium"
             >
-              Partners
+            Solutions
             </Link>
             <Link
               to="/contact"
