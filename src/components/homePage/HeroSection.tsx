@@ -10,7 +10,7 @@ const HeroSection = () => {
       navigation
       pagination={{ clickable: true }}
       autoplay={{ delay: 5000 }}
-      className="h-[500px] w-full"
+      className="h-[600px] md:h-[500px] w-full"
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
