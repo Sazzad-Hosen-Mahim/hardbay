@@ -1,7 +1,7 @@
 
 import { useParams } from "react-router-dom"
 import { partners } from "./partners"
-import { ArrowLeft,} from "lucide-react"
+import { ArrowLeft, } from "lucide-react"
 import { Link } from "react-router-dom"
 import CommonWrapper from "@/common/CommonWrapper"
 import { Button } from "@/components/ui/button"
@@ -34,9 +34,9 @@ export default function PartnerDetailsPage() {
 
   return (
     <CommonWrapper>
-      <div className="mx-auto py-8 px-4 md:px-6 lg:py-18">
+      <div className="mx-auto py-8 px-4 md:px-6 md:py-12 lg:py-18">
         <div className="mb-6">
-   
+
 
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-primary-blue">
             Partner <span className="text-primary-orange">Details</span>
@@ -46,29 +46,28 @@ export default function PartnerDetailsPage() {
         <Card className="overflow-hidden border-0 shadow-lg">
           <CardHeader className="bg-gradient-to-r from-slate-50 to-slate-100 pb-8 p-4">
             <div className=" mx-auto">
-            <div className="w-full h-auto max-w-[150px] sm:max-w-[200px] md:max-w-[250px]">
-  <img
-    src={partner.logo || "/placeholder.svg"}
-    alt={`${partner.name} logo`}
-    className="w-full h-auto object-contain"
-  />
-</div>
-            </div>
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-            
-              <div className="flex-1 text-center md:text-left">
-            
-             
-                <div className="mt-4">
-                  <p className="text-slate-700 leading-relaxed">{partner.description}</p>
-            
-                </div>
-   
-            
+              <div className="w-full h-auto max-w-[150px] sm:max-w-[200px] md:max-w-[250px]">
+                <img
+                  src={partner.logo || "/placeholder.svg"}
+                  alt={`${partner.name} logo`}
+                  className="w-full h-auto object-contain"
+                />
               </div>
             </div>
-          
-            
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+
+              <div className="flex-1 text-center md:text-left">
+
+                <div className="mt-4">
+                  <p className="text-slate-700 leading-relaxed">{partner.description}</p>
+
+                </div>
+
+
+              </div>
+            </div>
+
+
           </CardHeader>
 
           <CardContent className="pt-6 pb-8 px-6">
@@ -81,10 +80,10 @@ export default function PartnerDetailsPage() {
                 </p>
 
                 <div className="mt-4 text-end">
-      <button  className="px-3 py-2 rounded-lg bg-primary-blue text-white hover:bg-primary-orange" >
-        More Details
-      </button>
-    </div>
+                  <button className="px-3 py-2 rounded-lg bg-primary-blue text-white hover:bg-primary-orange" >
+                    More Details
+                  </button>
+                </div>
               </div>
 
               <div className="pt-4">
