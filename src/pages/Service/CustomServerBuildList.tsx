@@ -1,10 +1,15 @@
 import { customServerBuildApi, Product } from '@/api/customServerBuildApi';
-import { useEffect, useState } from 'react';
+import ProductCardList from '@/components/Product/ProductCardList';
+import ProductContent from '@/components/Product/ProductContent';
+import ProductsView from '@/components/Product/ProductView';
+import { useContext, useEffect, useState } from 'react';
+import { ViewContext } from './ServiceLayout';
 
 
 function CustomServerBuildList() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const { currentView } = useContext(ViewContext);
 
   useEffect(() => {
     fetchProducts();
@@ -29,11 +34,12 @@ function CustomServerBuildList() {
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Custom Server Builds</h1>
       {products.map((product) => (
-        <div key={product.id} className="border rounded p-4 mb-4 shadow">
-          <h2 className="text-xl font-semibold">{product.productName}</h2>
-          <p>Model: {product.productModel}</p>
-          <p>Price: ${product.price}</p>
-        </div>
+     <ProductsView products={[product]} view={currentView}/>
+        // <div key={product.id} className="border rounded p-4 mb-4 shadow">
+        //   <h2 className="text-xl font-semibold">{product.productName}</h2>
+        //   <p>Model: {product.productModel}</p>
+        //   <p>Price: ${product.price}</p>
+        // </div>
       ))}
     </div>
   );

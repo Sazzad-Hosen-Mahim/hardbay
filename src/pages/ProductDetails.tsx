@@ -13,7 +13,7 @@ const ProductDetails = () => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          "https://tortuga7-backend.onrender.com/items/"
+          "https://tortuga7-backend.onrender.com/custom-server-build"
         );
         if (!response.ok) {
           throw new Error("Product fetch failed");
@@ -24,7 +24,7 @@ const ProductDetails = () => {
         // 	'1111111111111'
         // );
         console.log(data);
-        setProducts(data?.services);
+        setProducts(data);
         // setProducts(data);
       } catch (error) {
         console.error("Error fetching Products", error);

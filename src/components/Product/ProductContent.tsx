@@ -10,7 +10,7 @@ const ProductContent = ({ product }: ProductContentProps) => {
 	return (
 		<>
 			<Link to={`/service/product-details/${product.id}`}>
-				<h3 className="font-bold text-lg">{product.title}</h3>
+				<h3 className="font-bold text-lg">{product.productName}</h3>
 			</Link>
 			<div className="text-sm text-primary-orange">
 				{new Date(product.createdAt).toLocaleDateString('en-US', {
