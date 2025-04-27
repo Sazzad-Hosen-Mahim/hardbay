@@ -138,7 +138,7 @@ const ProductDetails = () => {
             <img
               src={productData.images[selectedImage].src || "/placeholder.svg"}
               alt={productData.images[selectedImage].alt}
-              className="h-full w-full object-contain"
+              className="h-1/2 w-1/2 object-contain"
             />
           </div>
         </div>
@@ -176,12 +176,6 @@ const ProductDetails = () => {
                 Get Pricing
               </button>
             </Link>
-            <div className="flex items-center gap-2">
-              <input type="checkbox" id="compare" className="h-4 w-4" />
-              <label htmlFor="compare" className="text-gray-700">
-                Compare
-              </label>
-            </div>
           </div>
         </div>
       </div>
