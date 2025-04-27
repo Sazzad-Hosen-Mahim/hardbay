@@ -74,7 +74,7 @@ const ContactUsComponent = () => {
               name="message"
               placeholder="How can we help you?"
               className="w-full p-3 border rounded-xl resize-none"
-              rows={5}
+              rows={3 }
               required
             ></textarea>
             <button
@@ -124,7 +124,7 @@ const ContactUsComponent = () => {
                 name="message"
                 placeholder="Describe your issue"
                 className="w-full p-3 border rounded-xl resize-none"
-                rows={5}
+                rows={3}
                 required
               ></textarea>
               <button
@@ -173,7 +173,7 @@ const ContactUsComponent = () => {
                 name="message"
                 placeholder="Product details and reason for return"
                 className="w-full p-3 border rounded-xl resize-none"
-                rows={5}
+                rows={3}
                 required
               ></textarea>
               <button

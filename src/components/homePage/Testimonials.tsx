@@ -76,7 +76,7 @@ const Testimonials = () => {
                 <Star className="w-5 h-5 fill-current" />
               </div>
             </div>
-            
+             
           ))}
         </div>
       </div>
