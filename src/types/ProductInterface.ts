@@ -10,3 +10,7 @@ export interface ProductsViewProps {
 	products: Product[];
 	view: 'list' | 'grid';
 }
+
+export type ProductDetailProps = {
+	product: Product;
+};
