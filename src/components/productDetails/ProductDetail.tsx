@@ -1,6 +1,5 @@
 // 'use client';
 
-
 import { useState } from "react";
 import { Database, Cloud, FileText, Cpu, HardDrive } from "lucide-react";
 import img1 from "@/assets/products/1.webp";
@@ -115,78 +114,77 @@ const ProductDetails = (product) => {
         <p className="text-gray-600">{productData.description}</p>
       </div>
 
+      <div className="grid gap-8 md:grid-cols-2">
+        <div className="flex flex-col-reverse gap-4 md:flex-row">
+          {/* Thumbnails */}
+          <div className="flex gap-2 overflow-x-auto pb-2 md:flex-col md:overflow-visible md:pb-0">
+            {productData.images.map((image, index) => (
+              <div
+                key={image.id}
+                className={`flex-shrink-0 cursor-pointer overflow-hidden rounded ${
+                  selectedImage === index
+                    ? "ring-2 ring-blue-800"
+                    : "border border-gray-200"
+                }`}
+                onClick={() => setSelectedImage(index)}
+              >
+                <img
+                  src={image.src || "/placeholder.svg"}
+                  alt={image.alt}
+                  className="h-16 w-16 object-cover"
+                />
+              </div>
+            ))}
+          </div>
 
-			<div className="grid gap-8 md:grid-cols-2">
-				<div className="flex flex-col-reverse gap-4 md:flex-row">
-					{/* Thumbnails */}
-					{/* <div className="flex gap-2 overflow-x-auto pb-2 md:flex-col md:overflow-visible md:pb-0">
-						{productData.images.map((image, index) => (
-							<div
-								key={image.id}
-								className={`flex-shrink-0 cursor-pointer overflow-hidden rounded ${
-									selectedImage === index
-										? 'ring-2 ring-blue-800'
-										: 'border border-gray-200'
-								}`}
-								onClick={() => setSelectedImage(index)}
-							>
-								<img
-									src={image.src || '/placeholder.svg'}
-									alt={image.alt}
-									className="h-16 w-16 object-cover"
-								/>
-							</div>
-						))}
-					</div> */}
+          {/* Main Image */}
+          <div className="flex-grow overflow-hidden rounded border border-gray-200">
+            <img
+              src={productData.images[selectedImage].src || "/placeholder.svg"}
+              alt={productData.images[selectedImage].alt}
+              className="h-1/2 w-1/2 object-contain"
+            />
+          </div>
+        </div>
 
-					{/* Main Image */}
-					{/* <div className="flex-grow overflow-hidden rounded border border-gray-200">
-						<img
-							src={productData.images[selectedImage].src || '/placeholder.svg'}
-							alt={productData.images[selectedImage].alt}
-							className="h-1/2 w-1/2 object-contain"
-						/>
-					</div> */}
-				</div>
+        <div className="flex flex-col gap-6">
+          {/* Key Applications */}
+          <div>
+            <h2 className="mb-3 text-lg font-semibold">Key Applications</h2>
+            <ul className="space-y-2">
+              {productData.applications.map((app) => (
+                <li key={app.id} className="flex items-start gap-2">
+                  <span className="mt-0.5 text-blue-800">{app.icon}</span>
+                  <span>{app.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-				<div className="flex flex-col gap-6">
-					{/* Key Applications */}
-					{/* <div>
-						<h2 className="mb-3 text-lg font-semibold">Key Applications</h2>
-						<ul className="space-y-2">
-							{productData.applications.map(app => (
-								<li key={app.id} className="flex items-start gap-2">
-									<span className="mt-0.5 text-blue-800">{app.icon}</span>
-									<span>{app.text}</span>
-								</li>
-							))}
-						</ul>
-					</div> */}
+          {/* Key Features */}
+          <div>
+            <h2 className="mb-3 text-lg font-semibold">Key Features</h2>
+            <ol className="list-decimal space-y-2 pl-6">
+              {productData.features.map((feature, index) => (
+                <li key={index} className="leading-relaxed">
+                  {feature}
+                </li>
+              ))}
+            </ol>
+          </div>
 
-					{/* Key Features */}
-					{/* <div>
-						<h2 className="mb-3 text-lg font-semibold">Key Features</h2>
-						<ol className="list-decimal space-y-2 pl-6">
-							{productData.features.map((feature, index) => (
-								<li key={index} className="leading-relaxed">
-									{feature}
-								</li>
-							))}
-						</ol>
-					</div> */}
-
-					{/* Actions */}
-					{/* <div className="mt-4 flex justify-between items-center gap-4">
-						<Link to={`/cart`}>
-							<button className="rounded bg-primary-orange px-4 py-2 font-medium text-white transition hover:bg-primary-orange/70">
-								Get Pricing
-							</button>
-						</Link>
-					</div> */}
-				</div>
-			</div>
-		</div>
-	);
+          {/* Actions */}
+          <div className="mt-4 flex justify-between items-center gap-4">
+            <Link to={`/cart`}>
+              <button className="rounded bg-primary-orange px-4 py-2 font-medium text-white transition hover:bg-primary-orange/70">
+                Get Pricing
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ProductDetails;
