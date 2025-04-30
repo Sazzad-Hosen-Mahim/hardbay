@@ -2,8 +2,10 @@
 import { useState } from "react";
 import CommonWrapper from "@/common/CommonWrapper";
 
-const ProductTabSpecifications = () => {
+const ProductTabSpecifications = (product) => {
   const [activeTab, setActiveTab] = useState("specifications");
+
+  console.log(product, "product from tab specifications");
 
   return (
     <CommonWrapper>
