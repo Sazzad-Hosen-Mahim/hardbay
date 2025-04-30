@@ -7,6 +7,7 @@ import { fetchProducts } from "@/store/Slices/ProductSlice/productSlice";
 // import { Product } from '@/types/ProductInterface';
 
 const Service = () => {
+
   const { currentView } = useContext(ViewContext);
   const dispatch = useAppDispatch();
 
@@ -35,6 +36,7 @@ const Service = () => {
       <ProductsView products={products} view={currentView} />
     </div>
   );
+
 };
 
 export default Service;
