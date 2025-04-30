@@ -1,3 +1,4 @@
+
 import ProductDetail from "@/components/productDetails/ProductDetail";
 import ProductTabSpecifications from "@/components/productDetails/ProductTabSpecifications";
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
@@ -25,6 +26,7 @@ const ProductDetails = () => {
       <ProductTabSpecifications data={product} />
     </div>
   );
+
 };
 
 export default ProductDetails;
