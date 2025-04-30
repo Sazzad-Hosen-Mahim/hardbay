@@ -96,8 +96,10 @@ const productData = {
   ],
 };
 
-const ProductDetails = () => {
+const ProductDetails = (product) => {
   const [selectedImage, setSelectedImage] = useState(0);
+
+  console.log("Product details for key app and key features", product);
   return (
     <div className="mx-auto max-w-7xl p-4 font-sans">
       <div className="mb-6 border-b border-gray-200 pb-4">
