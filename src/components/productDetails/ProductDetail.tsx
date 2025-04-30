@@ -1,4 +1,4 @@
-"use client";
+// 'use client';
 
 import { useState } from "react";
 import { Database, Cloud, FileText, Cpu, HardDrive } from "lucide-react";
@@ -9,9 +9,11 @@ import img4 from "@/assets/products/4.webp";
 import img5 from "@/assets/products/5.webp";
 import img6 from "@/assets/products/6.webp";
 import img7 from "@/assets/products/7.webp";
-import { Link } from "react-router-dom";
 
 // Define the product data
+
+import { Link } from "react-router-dom";
+
 const productData = {
   name: "Storage SuperServer SSG-542B-E1CR60",
   status: "Coming Soon",
