@@ -3,7 +3,9 @@ import CommonWrapper from "@/common/CommonWrapper";
 import { accordionItems } from "@/lib/data";
 import CustomAccordion from "@/components/CustomAccordion/CustomAccordion";
 import ServiceTopBar from "@/components/service/ServiceTopBar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
+import { fetchService } from "@/store/Slices/ServiceSlice/serviceSlice";
 
 type ViewContextType = {
   currentView: "list" | "grid";
@@ -17,7 +19,24 @@ export const ViewContext = React.createContext<ViewContextType>({
 
 const ServiceLayout = () => {
   const [currentView, setCurrentView] = useState<"list" | "grid">("list");
-  const location = useLocation(); // 👈
+  const location = useLocation();
+  const dispatch = useAppDispatch();
+
+  const { service, loading, error } = useAppSelector((state) => state.service);
+
+  console.log(service, "service from reduxxxxxxxxxx");
+
+  useEffect(() => {
+    dispatch(fetchService());
+  }, [dispatch]);
+
+  if (loading) {
+    return <div className="text-center mt-16">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center mt-20">Error: {error}</div>;
+  }
 
   // Check if we're inside a product details page
   const isProductDetailsPage = location.pathname.includes("product-details");
@@ -37,58 +56,23 @@ const ServiceLayout = () => {
             <aside className="flex flex-col md:w-1/4 space-y-1 border border-gray-300 rounded-sm p-2">
               <h2 className="text-lg font-semibold mb-2">Our Services</h2>
               <div className="flex flex-col space-y-1">
-                <NavLink
-                  to="custom-server-build"
-                  className={({ isActive }) =>
-                    `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
+                {Array.isArray(service) &&
+                  service.map((serviceItem) => (
+                    <NavLink
+                      to="custom-server-build"
+                      key={serviceItem.id}
+                      className={({ isActive }) =>
+                        `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
                   ${
                     isActive
                       ? "text-white bg-primary-orange font-bold"
                       : "text-white"
                   }`
-                  }
-                >
-                  Custom Server Build
-                </NavLink>
-                <NavLink
-                  to="gpu-rental"
-                  className={({ isActive }) =>
-                    `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
-                  ${
-                    isActive
-                      ? "text-white bg-primary-orange font-bold"
-                      : "text-white"
-                  }`
-                  }
-                >
-                  GPU Rental
-                </NavLink>
-                <NavLink
-                  to="enterprise-storage"
-                  className={({ isActive }) =>
-                    `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
-                  ${
-                    isActive
-                      ? "text-white bg-primary-orange font-bold"
-                      : "text-white"
-                  }`
-                  }
-                >
-                  Enterprise Storage
-                </NavLink>
-                <NavLink
-                  to="it-hardware-consult"
-                  className={({ isActive }) =>
-                    `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
-                  ${
-                    isActive
-                      ? "text-white bg-primary-orange font-bold"
-                      : "text-white"
-                  }`
-                  }
-                >
-                  IT Hardware Consult
-                </NavLink>
+                      }
+                    >
+                      {serviceItem.title}
+                    </NavLink>
+                  ))}
               </div>
               <hr className="mt-3" />
               <div>
