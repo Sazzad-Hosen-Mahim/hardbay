@@ -1,36 +1,40 @@
-import { useContext, useEffect, useState } from 'react';
-import { ViewContext } from './Service/ServiceLayout';
-import ProductsView from '@/components/Product/ProductView';
-import { Product } from '@/types/ProductInterface';
+import { useContext, useEffect } from "react";
+import { ViewContext } from "./Service/ServiceLayout";
+import ProductsView from "@/components/Product/ProductView";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
+import { fetchProducts } from "@/store/Slices/ProductSlice/productSlice";
+
+// import { Product } from '@/types/ProductInterface';
 
 const Service = () => {
-	const { currentView } = useContext(ViewContext);
-	const [products, setProducts] = useState<Product[]>([]);
+  const { currentView } = useContext(ViewContext);
+  const dispatch = useAppDispatch();
 
-	useEffect(() => {
-		const fetchProducts = async () => {
-			try {
-				const response = await fetch(
-					'https://tortuga7-backend.onrender.com/items'
-				);
-				if (!response.ok) {
-					throw new Error('Product fetch failed');
-				}
-				const data = await response.json();
-				console.log(data);
-				setProducts(data);
-			} catch (error) {
-				console.error('Error fetching Products', error);
-			}
-		};
-		fetchProducts();
-	}, []);
+  const { products, loading, error, currentPage, limit } = useAppSelector(
+    (state) => state.product
+  );
 
-	return (
-		<div className="mt-16">
-			<ProductsView products={products} view={currentView} />
-		</div>
-	);
+  //   const [localProducts, setLocalProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    dispatch(fetchProducts({ page: currentPage, limit }));
+  }, [dispatch, currentPage, limit]);
+
+  console.log("Product from reduxxxxxxx", products);
+
+  if (loading) {
+    return <div className="text-center mt-16">Loading Products...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center mt-20">Error: {error}</div>;
+  }
+
+  return (
+    <div className="mt-16">
+      <ProductsView products={products} view={currentView} />
+    </div>
+  );
 };
 
 export default Service;
