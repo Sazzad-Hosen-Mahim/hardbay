@@ -1,17 +1,19 @@
 import { Product } from '@/types/ProductInterface';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const ProductDetails = ({ productData }: { productData: Product }) => {
-	// const [selectedImage, setSelectedImage] = useState(0);
+	const [selectedImage, setSelectedImage] = useState(0);
 	console.log(productData, 'productData in ProductDetails');
 	const {
 		productName,
 		available,
 		description,
-		//images,
+		images,
 		keyApplications,
 		keyFeatures,
 	} = productData;
+	console.log(images, 'images in ProductDetails');
 
 	if (!productData) {
 		return <div>No product found.</div>;
@@ -31,10 +33,10 @@ const ProductDetails = ({ productData }: { productData: Product }) => {
 			<div className="grid gap-8 md:grid-cols-2">
 				<div className="flex flex-col-reverse gap-4 md:flex-row">
 					{/* Thumbnails */}
-					{/* <div className="flex gap-2 overflow-x-auto pb-2 md:flex-col md:overflow-visible md:pb-0">
+					<div className="flex gap-2 overflow-x-auto pb-2 md:flex-col md:overflow-visible md:pb-0">
 						{productData.images.map((image, index) => (
 							<div
-								key={image.id}
+								key={index}
 								className={`flex-shrink-0 cursor-pointer overflow-hidden rounded ${
 									selectedImage === index
 										? 'ring-2 ring-blue-800'
@@ -43,22 +45,22 @@ const ProductDetails = ({ productData }: { productData: Product }) => {
 								onClick={() => setSelectedImage(index)}
 							>
 								<img
-									src={image.src || '/placeholder.svg'}
-									alt={image.alt}
+									src={image || '/placeholder.svg'}
+									alt={productData.productName}
 									className="h-16 w-16 object-cover"
 								/>
 							</div>
 						))}
-					</div> */}
+					</div>
 
 					{/* Main Image */}
-					{/* <div className="flex-grow overflow-hidden rounded border border-gray-200">
+					<div className="flex-grow overflow-hidden rounded border border-gray-200">
 						<img
-							src={productData.images[selectedImage].src || '/placeholder.svg'}
-							alt={productData.images[selectedImage].alt}
-							className="h-1/2 w-1/2 object-contain"
+							src={images[selectedImage] || '/placeholder.svg'}
+							alt={productData.productName}
+							className="h-full w-full object-contain"
 						/>
-					</div> */}
+					</div>
 				</div>
 
 				<div className="flex flex-col gap-6">

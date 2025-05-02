@@ -7,6 +7,8 @@ export interface Product {
 	keyFeatures: string[];
 	specs: specs[];
 	available: boolean;
+	price: number;
+	images: string[];
 
 	// add other fields as needed
 }
