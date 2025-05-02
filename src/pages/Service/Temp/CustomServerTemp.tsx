@@ -1,33 +1,28 @@
-import { useContext, useEffect, useState } from 'react';
-import { ViewContext } from '../ServiceLayout';
-import { products } from '@/lib/productsData';
-import ProductsView from '@/components/Product/ProductView';
+import { useContext, useEffect } from "react";
+import { ViewContext } from "../ServiceLayout";
+
+import ProductsView from "@/components/Product/ProductView";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
+import { fetchProducts } from "@/store/Slices/ProductSlice/productSlice";
 
 const CustomServerTemp = () => {
-	const { currentView } = useContext(ViewContext);
-	const [products, setProducts] = useState<Product[]>([]);
-	const serverProducts = products.filter(p => p.category === 'server');
+  const { currentView } = useContext(ViewContext);
+  const dispatch = useAppDispatch();
 
-	useEffect(() => {
-		const fetchProducts = async () => {
-			try {
-				const response = await fetch(
-					'https://tortuga7-backend.onrender.com/items'
-				);
-				if (!response.ok) {
-					throw new Error('Product fetch failed');
-				}
-				const data = await response.json();
-				console.log(data);
-				setProducts(data);
-			} catch (error) {
-				console.error('Error fetching Products', error);
-			}
-		};
-		fetchProducts();
-	}, []);
+  const { products } = useAppSelector((state) => state.product);
 
-	return <ProductsView products={serverProducts} view={currentView} />;
+  const customServerProd = products
+    .filter((p) => p.service && p.service.title === "Custom Server")
+    .map((p) => ({
+      ...p,
+      title: p.service?.title || "Untitled",
+    }));
+
+  useEffect(() => {
+    dispatch(fetchProducts({ page: 1, limit: 10 }));
+  }, [dispatch]);
+
+  return <ProductsView products={customServerProd} view={currentView} />;
 };
 
 export default CustomServerTemp;
