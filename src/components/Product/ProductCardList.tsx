@@ -6,13 +6,13 @@ interface ProductCardListProps {
 }
 
 const ProductCardList = ({ product }: ProductCardListProps) => {
-	console.log(product, 'product in ProductCardList');
-	const { id, title, description, price, images } = product;
+	// console.log(product, 'product in ProductCardList');
+	const { id, productName, description, price, images } = product;
 	return (
 		<div className="flex border rounded-xs overflow-hidden">
 			<img
-				src={images}
-				alt={title}
+				src={images[0].src}
+				alt={productName}
 				className="w-1/3 object-cover min-w-[200px]"
 			/>
 			<div className="w-2/3 p-4">
