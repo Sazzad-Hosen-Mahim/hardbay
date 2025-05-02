@@ -7,8 +7,7 @@ interface ProductContentProps {
 
 const ProductContent = ({ product }: ProductContentProps) => {
 	console.log(product, 'product in ProductContent');
-	const { id, productName, description, price, images, specs, createdAt } =
-		product;
+	const { id, productName, description, price, specs, createdAt } = product;
 	console.log(specs, 'specs in ProductContent');
 
 	const processorSpec = specs.find(spec => spec.title === 'Processor');

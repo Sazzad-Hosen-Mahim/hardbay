@@ -6,12 +6,12 @@ interface ProductCardGridProps {
 }
 
 const ProductCardGrid = ({ product }: ProductCardGridProps) => {
-	const { id, title, description, price, images, productName } = product;
+	const { images, productName } = product;
 	console.log(product, 'product in ProductCardGrid');
 	return (
 		<div className="flex flex-col h-full border rounded-xs overflow-hidden">
 			<img
-				src={images[0].src}
+				src={images[0]}
 				alt={productName}
 				// alt={productName}
 				className="w-full h-48 object-cover"
