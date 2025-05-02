@@ -1,4 +1,5 @@
 export interface Product {
+
   id: string;
   productName: string;
   productModel: string;
@@ -21,6 +22,17 @@ export interface Product {
     createdAt: string;
     updatedAt: string;
   };
+
+}
+
+export interface specs {
+	id: string;
+	title: string;
+	description: string;
+	data: Record<string, string>[];
+	productId: string;
+	createdAt: string;
+	updatedAt: string;
 }
 
 export interface ProductsViewProps {
