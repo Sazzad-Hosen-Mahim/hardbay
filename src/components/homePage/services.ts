@@ -1,4 +1,4 @@
-import { Server, Cpu, Database, Building2 } from 'lucide-react';
+import { Server, Cpu, Database, Building2 } from "lucide-react";
 
 export const services = [
   {
@@ -8,7 +8,7 @@ export const services = [
     icon: Server,
     image:
       "https://images.unsplash.com/photo-1600267175161-cfaa711b4a81?auto=format&fit=crop&q=80&w=400",
-    link: "/service/custom-server-build",
+    link: "/service/custom-server",
     modal: {
       heading: "Enterprise-Grade Performance",
       body: "Our custom server solutions are engineered specifically for compute-intensive environments, delivering unparalleled performance for your most demanding workloads.",

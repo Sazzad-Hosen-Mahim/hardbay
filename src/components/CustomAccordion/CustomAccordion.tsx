@@ -11,11 +11,15 @@ interface AccordionItem {
 interface CustomAccordionProps {
   items: AccordionItem[];
   allowMultiple?: boolean;
+  onFilterChange: (name: string, value: string, checked: boolean) => void;
+  selectedFilters: Record<string, string[]>;
 }
 
 const CustomAccordion = ({
   items,
   allowMultiple = false,
+  onFilterChange,
+  selectedFilters,
 }: CustomAccordionProps) => {
   const [openItems, setOpenItems] = useState<string[]>([]);
 
@@ -29,9 +33,9 @@ const CustomAccordion = ({
     }
   };
 
-  const handleCheckboxChange = (label: string) => {
-    console.log(label); // You can expand this to set filters
-  };
+  // const handleCheckboxChange = (label: string) => {
+  //   console.log(label); // You can expand this to set filters
+  // };
 
   return (
     <div className="w-full space-y-2">
@@ -72,7 +76,12 @@ const CustomAccordion = ({
                       >
                         <input
                           type="checkbox"
-                          onChange={() => handleCheckboxChange(label)}
+                          checked={
+                            selectedFilters[title]?.includes(label) || false
+                          }
+                          onChange={(e) =>
+                            onFilterChange(title, label, e.target.checked)
+                          }
                           className="accent-primary-orange"
                         />
                         {label}
