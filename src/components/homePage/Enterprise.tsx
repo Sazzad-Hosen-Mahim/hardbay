@@ -43,11 +43,13 @@ const Enterprise = () => {
                   <Server className="w-5 h-5 text-primary-orange group-hover:text-white" />
                   Browse Servers
                 </button>
-             </Link>
-             <Link to="service/custom-server-build">
-                <button className="bg-transparent border-2 border-white hover:bg-white hover:text-slate-900 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 text-lg">
-                  Custom Builds
-                </button>
+
+                <Link
+                  to="/solution"
+                  className="bg-transparent border-2 border-white hover:bg-white hover:text-slate-900 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 text-lg"
+                >
+                  Browse Solutions
+
                 </Link>
               </div>
             </div>

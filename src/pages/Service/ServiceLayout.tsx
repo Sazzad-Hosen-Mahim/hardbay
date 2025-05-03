@@ -1,4 +1,4 @@
-import { Outlet, NavLink, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import CommonWrapper from "@/common/CommonWrapper";
 import CustomAccordion from "@/components/CustomAccordion/CustomAccordion";
 import ServiceTopBar from "@/components/service/ServiceTopBar";
@@ -104,6 +104,8 @@ const ServiceLayout = () => {
       });
     };
 
+    console.log(selectedFilters, "Selected Filters");
+
     return (
       <CustomAccordion
         items={items}
@@ -150,20 +152,16 @@ const ServiceLayout = () => {
                       .replace(/\s+/g, "-");
 
                     return (
-                      <NavLink
-                        to={slug}
+                      <button
+                        onClick={() => {
+                          const path = `/service/${slug}`;
+                          window.location.href = path;
+                        }}
                         key={serviceItem.id}
-                        className={({ isActive }) =>
-                          `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
-                  ${
-                    isActive
-                      ? "text-white bg-primary-orange font-bold"
-                      : "text-white"
-                  }`
-                        }
+                        className={`bg-primary-blue py-2 text-white text-start px-4 hover:bg-primary-orange hover:text-black`}
                       >
                         {serviceItem.title}
-                      </NavLink>
+                      </button>
                     );
                   })}
               </div>
