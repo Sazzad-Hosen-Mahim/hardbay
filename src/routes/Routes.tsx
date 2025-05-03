@@ -103,7 +103,7 @@ const routes = createBrowserRouter([
         element: <Checkout />,
       },
       {
-        path: "/partners",
+        path: "/solutions",
         element: <PartnersLayout />,
         children: [
           {
@@ -149,11 +149,11 @@ const routes = createBrowserRouter([
         ],
       },
       {
-        path: "/blog",
+        path: "/partners",
         element: <Blog />,
       },
       {
-        path: "/blog/:id",
+        path: "/partners/:id",
         element: <PartnerDetailsPage />,
       },
       {

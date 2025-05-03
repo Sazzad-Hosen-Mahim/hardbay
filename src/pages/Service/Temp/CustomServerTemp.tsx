@@ -1,9 +1,10 @@
 import { useContext, useEffect } from "react";
-import { ViewContext } from "../ServiceLayout";
+
 
 import ProductsView from "@/components/Product/ProductView";
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
 import { fetchProducts } from "@/store/Slices/ProductSlice/productSlice";
+import { ViewContext } from "../ViewContext";
 
 const CustomServerTemp = () => {
   const { currentView } = useContext(ViewContext);
