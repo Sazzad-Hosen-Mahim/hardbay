@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { ArrowRight } from "lucide-react"
-import { partners } from "./partners" 
+import { partners } from "./partners"
 
 import {
   Card,
@@ -60,19 +60,19 @@ export default function PartnersPage() {
                   <CardContent>
                     <h3 className="font-medium mb-2 pt-2 text-primary-orange text-lg">Our Partnership</h3>
                     <p className="text-gray-600">
-  {partner.partnershipDetails.length > 180
-    ? partner.partnershipDetails.slice(0, 180) + "..."
-    : partner.partnershipDetails}
-</p>
+                      {partner.partnershipDetails.length > 180
+                        ? partner.partnershipDetails.slice(0, 180) + "..."
+                        : partner.partnershipDetails}
+                    </p>
                   </CardContent>
                   <CardFooter>
-                  <Link
-  to={`/blog/${partner.id}`} // <-- changed this line
-  className="inline-flex items-center mt-3 px-4 py-2 bg-primary-blue text-white rounded-md hover:bg-primary-orange transition group"
->
- See More 
-  <ArrowRight className="ml-2 h-4 w-4 text-primary-orange group-hover:text-white" />
-</Link>
+                    <Link
+                      to={`/partners/${partner.id}`} // <-- changed this line
+                      className="inline-flex items-center mt-3 px-4 py-2 bg-primary-blue text-white rounded-md hover:bg-primary-orange transition group"
+                    >
+                      See More
+                      <ArrowRight className="ml-2 h-4 w-4 text-primary-orange group-hover:text-white" />
+                    </Link>
                   </CardFooter>
                 </div>
               </div>
