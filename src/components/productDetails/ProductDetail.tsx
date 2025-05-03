@@ -1,8 +1,11 @@
 import { Product } from '@/types/ProductInterface';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useAppDispatch } from '@/hooks/useRedux';
+import { addToCart } from '@/store/Slices/CartSlice/cartSlice';
 
 const ProductDetails = ({ productData }: { productData: Product }) => {
+	const dispatch = useAppDispatch();
 	const [selectedImage, setSelectedImage] = useState(0);
 	console.log(productData, 'productData in ProductDetails');
 	const {
@@ -18,6 +21,19 @@ const ProductDetails = ({ productData }: { productData: Product }) => {
 	if (!productData) {
 		return <div>No product found.</div>;
 	}
+	const handleAddToCart = () => {
+		if (productData) {
+			dispatch(
+				addToCart({
+					id: productData.id,
+					name: productData.productName,
+					price: productData.price,
+					quantity: 1,
+					image: productData.images[0],
+				})
+			);
+		}
+	};
 	return (
 		<div className="mx-auto max-w-7xl p-4 font-sans">
 			<div className="mb-6 border-b border-gray-200 pb-4">
@@ -91,7 +107,10 @@ const ProductDetails = ({ productData }: { productData: Product }) => {
 					{/* Actions */}
 					<div className="mt-4 flex justify-between items-center gap-4">
 						<Link to={`/cart`}>
-							<button className="rounded bg-primary-orange px-4 py-2 font-medium text-white transition hover:bg-primary-orange/70">
+							<button
+								onClick={handleAddToCart}
+								className="rounded bg-primary-orange px-4 py-2 font-medium text-white transition hover:bg-primary-orange/70"
+							>
 								Get Pricing
 							</button>
 						</Link>
