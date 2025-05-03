@@ -1,8 +1,9 @@
 import { useContext, useEffect } from 'react';
-import { ViewContext } from './Service/ServiceLayout';
+
 import ProductsView from '@/components/Product/ProductView';
 import { useAppDispatch, useAppSelector } from '@/hooks/useRedux';
 import { fetchProducts } from '@/store/Slices/ProductSlice/productSlice';
+import { ViewContext } from './Service/ViewContext';
 
 // import { Product } from '@/types/ProductInterface';
 
