@@ -37,6 +37,7 @@ import NewDetails from "@/pages/Service/NewDetails";
 import ForgetPassword from "@/pages/ForgetPassword";
 import ResetPassword from "@/pages/ResetPassword";
 import PartnerDetailsPage from "@/components/pertners/PartnersDetails";
+import HardwareConsulting from "@/components/hardwareConsulting/HardwareConsulting";
 
 const routes = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const routes = createBrowserRouter([
         element: <Contact />,
       },
       {
+        path: "service/it-hardware-consult",
+        element: <HardwareConsulting />,
+      },
+      {
         path: "/service",
         element: <ServiceLayout />,
         children: [
@@ -87,10 +92,6 @@ const routes = createBrowserRouter([
           {
             path: "enterprise-storage",
             element: <EnterpriseStorage />,
-          },
-          {
-            path: "it-hardware-consult",
-            element: <ITHardwareConsult />,
           },
         ],
       },

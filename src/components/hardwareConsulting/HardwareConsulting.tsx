@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
 import {
   Server,
@@ -13,55 +13,52 @@ import {
   ArrowRight,
   FileText,
   ChevronRight,
-} from "lucide-react"
-import { Link } from "react-router-dom"
-import { useState } from "react"
-import ConsultationModal from "./ConsultationModal"
-
-
-
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import ConsultationModal from "./ConsultationModal";
 
 const HardwareConsulting: React.FC = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const [formData, setFormData] = useState({
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-      date: "",
-      time: "",
-      message: "",
-    })
-  
-    const [formErrors, setFormErrors] = useState<Record<string, string>>({})
-  
-    const handleChange = (
-      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-      const { name, value } = e.target
-      setFormData((prev) => ({ ...prev, [name]: value }))
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    date: "",
+    time: "",
+    message: "",
+  });
+
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const errors: Record<string, string> = {};
+
+    if (!formData.name) errors.name = "Name is required";
+    if (!formData.email) errors.email = "Email is required";
+    if (!formData.company) errors.company = "Company is required";
+    if (!formData.date) errors.date = "Preferred date is required";
+    if (!formData.time) errors.time = "Preferred time is required";
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
     }
-  
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault()
-      const errors: Record<string, string> = {}
-  
-      if (!formData.name) errors.name = "Name is required"
-      if (!formData.email) errors.email = "Email is required"
-      if (!formData.company) errors.company = "Company is required"
-      if (!formData.date) errors.date = "Preferred date is required"
-      if (!formData.time) errors.time = "Preferred time is required"
-  
-      if (Object.keys(errors).length > 0) {
-        setFormErrors(errors)
-        return
-      }
-  
-      console.log("Submitting form:", formData)
-      setFormErrors({})
-      setIsModalOpen(false)
-    }
+
+    console.log("Submitting form:", formData);
+    setFormErrors({});
+    setIsModalOpen(false);
+  };
 
   const features = [
     {
@@ -88,38 +85,41 @@ const HardwareConsulting: React.FC = () => {
       description:
         "Expert negotiation and relationship management with hardware vendors to secure optimal pricing and support terms.",
     },
-  ]
+  ];
 
   const benefits = [
     "Reduced operational costs through optimized hardware deployment",
     "Enhanced system performance and reliability",
     "Proactive maintenance scheduling to prevent costly downtime",
-    "Streamlined procurement processes with preferred vendor networks",   
+    "Streamlined procurement processes with preferred vendor networks",
     "Expert technical guidance and 24/7 support",
-  ]
+  ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 mt-16">
       {/* Hero Section with Gradient Background */}
       <div className="bg-gradient-to-r from-gray-300  to-gray-400 text-primary-blue">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="max-w-3xl">
-            <h1 className="text-4xl font-bold mb-2 ">Enterprise <span className="text-primary-orange"> Hardware</span> Consulting</h1>
-            
+            <h1 className="text-4xl font-bold mb-2 ">
+              Enterprise <span className="text-primary-orange"> Hardware</span>{" "}
+              Consulting
+            </h1>
           </div>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <p className="text-xl text-primary-blue max-w-3xl mb-8 md:mb-0 leading-relaxed">
-              From comprehensive audits to strategic vendor management, we help you make data-driven procurement
-              decisions and optimize your hardware infrastructure for maximum efficiency and ROI.
+              From comprehensive audits to strategic vendor management, we help
+              you make data-driven procurement decisions and optimize your
+              hardware infrastructure for maximum efficiency and ROI.
             </p>
-            <button onClick={() => setIsModalOpen(true)}
+            {/* <button
+              onClick={() => setIsModalOpen(true)}
               className={`flex items-center justify-center px-8 py-6 bg-primary-blue hover:bg-primary-orange text-white rounded-lg font-medium transition-all duration-300 `}
-           
             >
               <Calendar className="w-5 h-5 mr-2" />
               Schedule Consultation
               <ChevronRight className="w-5 h-5 ml-2" />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
@@ -127,10 +127,13 @@ const HardwareConsulting: React.FC = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-slate-800 mb-4">Enterprise-Grade Hardware Solutions</h2>
+          <h2 className="text-3xl font-bold text-slate-800 mb-4">
+            Enterprise-Grade Hardware Solutions
+          </h2>
           <p className="text-slate-600 max-w-3xl mx-auto">
-            Our consulting services are designed to optimize your hardware infrastructure, reduce operational costs, and
-            enhance system performance across your organization.
+            Our consulting services are designed to optimize your hardware
+            infrastructure, reduce operational costs, and enhance system
+            performance across your organization.
           </p>
           <div className="h-1 w-20 bg-primary-orange mx-auto mt-6"></div>
         </div>
@@ -162,14 +165,18 @@ const HardwareConsulting: React.FC = () => {
         <div className="bg-white rounded-xl shadow-md p-10 mb-20">
           <div className="flex items-center mb-8">
             <BarChart className="w-7 h-7 text-primary-orange mr-4" />
-            <h2 className="text-2xl font-semibold text-primary-blue">Key Benefits</h2>
+            <h2 className="text-2xl font-semibold text-primary-blue">
+              Key Benefits
+            </h2>
           </div>
           <div className="h-px w-full bg-slate-200 mb-8"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {benefits.map((benefit, index) => (
               <div key={index} className="flex items-start group">
                 <CheckCircle className="w-5 h-5 text-primary-orange mr-3 mt-1 flex-shrink-0 " />
-                <p className="text-slate-700 group-hover:text-slate-900 transition-colors">{benefit}</p>
+                <p className="text-slate-700 group-hover:text-slate-900 transition-colors">
+                  {benefit}
+                </p>
               </div>
             ))}
           </div>
@@ -177,7 +184,9 @@ const HardwareConsulting: React.FC = () => {
 
         {/* Process Section */}
         <div className="bg-gradient-to-r from-slate-100 to-white rounded-xl p-10 shadow-md mb-20">
-          <h2 className="text-2xl font-semibold text-slate-800 mb-8">Our Consultative Process</h2>
+          <h2 className="text-2xl font-semibold text-slate-800 mb-8">
+            Our Consultative Process
+          </h2>
           <div className="space-y-8">
             <div className="flex items-start">
               <div className="relative">
@@ -187,10 +196,14 @@ const HardwareConsulting: React.FC = () => {
                 <div className="absolute top-10 bottom-0 left-1/2 w-0.5 bg-slate-200 -translate-x-1/2 h-16 hidden md:block"></div>
               </div>
               <div className="ml-6">
-                <h3 className="text-lg font-medium text-slate-800 mb-2">Discovery & Assessment</h3>
+                <h3 className="text-lg font-medium text-slate-800 mb-2">
+                  Discovery & Assessment
+                </h3>
                 <p className="text-slate-600 max-w-2xl">
-                  Comprehensive evaluation of your current hardware infrastructure, performance metrics, and business
-                  requirements to establish a baseline and identify optimization opportunities.
+                  Comprehensive evaluation of your current hardware
+                  infrastructure, performance metrics, and business requirements
+                  to establish a baseline and identify optimization
+                  opportunities.
                 </p>
               </div>
             </div>
@@ -203,10 +216,13 @@ const HardwareConsulting: React.FC = () => {
                 <div className="absolute top-10 bottom-0 left-1/2 w-0.5 bg-slate-200 -translate-x-1/2 h-16 hidden md:block"></div>
               </div>
               <div className="ml-6">
-                <h3 className="text-lg font-medium text-slate-800 mb-2">Strategic Planning & Recommendations</h3>
+                <h3 className="text-lg font-medium text-slate-800 mb-2">
+                  Strategic Planning & Recommendations
+                </h3>
                 <p className="text-slate-600 max-w-2xl">
-                  Development of a tailored hardware strategy with detailed recommendations, cost-benefit analysis, and
-                  implementation roadmap aligned with your business objectives.
+                  Development of a tailored hardware strategy with detailed
+                  recommendations, cost-benefit analysis, and implementation
+                  roadmap aligned with your business objectives.
                 </p>
               </div>
             </div>
@@ -219,10 +235,13 @@ const HardwareConsulting: React.FC = () => {
                 <div className="absolute top-10 bottom-0 left-1/2 w-0.5 bg-slate-200 -translate-x-1/2 h-16 hidden md:block"></div>
               </div>
               <div className="ml-6">
-                <h3 className="text-lg font-medium text-slate-800 mb-2">Implementation & Optimization</h3>
+                <h3 className="text-lg font-medium text-slate-800 mb-2">
+                  Implementation & Optimization
+                </h3>
                 <p className="text-slate-600 max-w-2xl">
-                  Coordinated execution of the hardware strategy, including procurement assistance, vendor negotiations,
-                  deployment oversight, and performance optimization.
+                  Coordinated execution of the hardware strategy, including
+                  procurement assistance, vendor negotiations, deployment
+                  oversight, and performance optimization.
                 </p>
               </div>
             </div>
@@ -234,10 +253,13 @@ const HardwareConsulting: React.FC = () => {
                 </span>
               </div>
               <div className="ml-6">
-                <h3 className="text-lg font-medium text-slate-800 mb-2">Continuous Support & Improvement</h3>
+                <h3 className="text-lg font-medium text-slate-800 mb-2">
+                  Continuous Support & Improvement
+                </h3>
                 <p className="text-slate-600 max-w-2xl">
-                  Ongoing monitoring, maintenance planning, performance reviews, and strategic adjustments to ensure
-                  your hardware infrastructure continues to meet evolving business needs.
+                  Ongoing monitoring, maintenance planning, performance reviews,
+                  and strategic adjustments to ensure your hardware
+                  infrastructure continues to meet evolving business needs.
                 </p>
               </div>
             </div>
@@ -248,27 +270,26 @@ const HardwareConsulting: React.FC = () => {
         <div className="bg-gradient-to-r bg-indigo-50 text-white rounded-xl p-10 shadow-lg">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-6 md:mb-0">
-              <h2 className="text-2xl font-bold mb-2 text-primary-blue">Ready to optimize your hardware infrastructure?</h2>
+              <h2 className="text-2xl font-bold mb-2 text-primary-blue">
+                Ready to optimize your hardware infrastructure?
+              </h2>
               <p className=" max-w-2xl text-primary-blue">
-                Schedule a consultation with our expert team to discover how our hardware consulting services can reduce
-                costs and improve performance across your organization.
+                Schedule a consultation with our expert team to discover how our
+                hardware consulting services can reduce costs and improve
+                performance across your organization.
               </p>
             </div>
             <div className="flex space-x-4">
-                <Link to="/case-studies">	
-                <button
-                className="bg-primary-blue text-white  px-4 py-2 rounded-lg flex items-center font-medium cursor-pointer"
-                
-              >
-                <FileText className="w-4 h-4 mr-2" />
-                View Case Studies
-              </button>
-                </Link>
-            
+              <Link to="/case-studies">
+                <button className="bg-primary-blue text-white  px-4 py-2 rounded-lg flex items-center font-medium cursor-pointer">
+                  <FileText className="w-4 h-4 mr-2" />
+                  View Case Studies
+                </button>
+              </Link>
+
               <button
-              onClick={() => setIsModalOpen(true)}
+                onClick={() => setIsModalOpen(true)}
                 className="bg-primary-orange  px-4 py-2 rounded-lg flex items-center font-medium cursor-pointer"
-              
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 Schedule Consultation
@@ -278,17 +299,17 @@ const HardwareConsulting: React.FC = () => {
           </div>
         </div>
       </div>
-      
-  <ConsultationModal
-    isOpen={isModalOpen}
-    onClose={() => setIsModalOpen(false)}
-    formData={formData}
-    formErrors={formErrors}
-    onChange={handleChange}
-    onSubmit={handleSubmit}
-  />
-    </div>
-  )
-}
 
-export default HardwareConsulting
+      <ConsultationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        formData={formData}
+        formErrors={formErrors}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+      />
+    </div>
+  );
+};
+
+export default HardwareConsulting;
