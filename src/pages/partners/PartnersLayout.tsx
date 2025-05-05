@@ -10,8 +10,7 @@ type ViewContextType = {
   setCurrentView: (view: "list" | "grid") => void;
 };
 
-export const 
-ViewContext = React.createContext<ViewContextType>({
+export const ViewContext = React.createContext<ViewContextType>({
   currentView: "list",
   setCurrentView: () => {},
 });
@@ -41,10 +40,10 @@ const PartnersLayout = () => {
                   isActive
                     ? "text-white bg-primary-orange font-bold"
                     : "text-white"
-                }` 
+                }`
                 }
               >
-              NVIDIA
+                NVIDIA
               </NavLink>
               <NavLink
                 to="micron"
@@ -57,7 +56,7 @@ const PartnersLayout = () => {
                 }`
                 }
               >
-               Micron
+                Micron
               </NavLink>
               <NavLink
                 to="supermicro"
@@ -68,10 +67,9 @@ const PartnersLayout = () => {
                     ? "text-white bg-primary-orange font-bold"
                     : "text-white"
                 }`
-                
                 }
               >
-               Supermicro
+                Supermicro
               </NavLink>
               <NavLink
                 to="gigabyte"
@@ -84,9 +82,9 @@ const PartnersLayout = () => {
                 }`
                 }
               >
-              Gigabyte
-              </NavLink>  
-               <NavLink
+                Gigabyte
+              </NavLink>
+              <NavLink
                 to="asus"
                 className={({ isActive }) =>
                   `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
@@ -97,9 +95,9 @@ const PartnersLayout = () => {
                 }`
                 }
               >
-          Asus
-              </NavLink> 
-               <NavLink
+                Asus
+              </NavLink>
+              <NavLink
                 to="intel"
                 className={({ isActive }) =>
                   `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
@@ -110,9 +108,9 @@ const PartnersLayout = () => {
                 }`
                 }
               >
-         Intel
+                Intel
               </NavLink>
-               <NavLink
+              <NavLink
                 to="amd"
                 className={({ isActive }) =>
                   `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
@@ -123,13 +121,19 @@ const PartnersLayout = () => {
                 }`
                 }
               >
-         Amd
+                Amd
               </NavLink>
-
             </div>
             <hr className="mt-3" />
             <div>
-              <CustomAccordion items={PartnersaccordionItems} allowMultiple />
+              <CustomAccordion
+                items={PartnersaccordionItems}
+                allowMultiple
+                onFilterChange={(selected) =>
+                  console.log("Filters changed:", selected)
+                }
+                selectedFilters={{}}
+              />
             </div>
           </aside>
           <main className="flex-1">
@@ -137,7 +141,6 @@ const PartnersLayout = () => {
               <ServiceTopBar />
               <Outlet />
             </ViewContext.Provider>
-           
           </main>
         </div>
       </CommonWrapper>

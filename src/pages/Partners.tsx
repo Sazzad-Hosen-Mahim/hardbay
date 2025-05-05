@@ -1,10 +1,19 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ViewContext } from "../pages/partners/PartnersLayout";
-import { products } from "@/lib/productsData";
 import ProductsView from "@/components/Product/ProductView";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
+import { fetchProducts } from "@/store/Slices/ProductSlice/productSlice";
 
 const Partners = () => {
   const { currentView } = useContext(ViewContext);
+
+  const dispatch = useAppDispatch();
+
+  const { products } = useAppSelector((state) => state.product);
+
+  useEffect(() => {
+    dispatch(fetchProducts({ page: 1, limit: 10 }));
+  }, [dispatch]);
 
   return (
     <div className="">
