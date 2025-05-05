@@ -212,29 +212,7 @@ const ContactUsComponent = () => {
       </section>
 
       {/* Newsletter */}
-      <section className="bg-white p-6 rounded-2xl shadow-md text-center">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-          Stay Up to Date
-        </h2>
-        <form
-          onSubmit={(e) => handleSubmit(e, "Newsletter Subscription")}
-          className="flex flex-col sm:flex-row justify-center items-center gap-4"
-        >
-          <input
-            type="email"
-            name="newsletterEmail"
-            placeholder="Enter your email"
-            className="p-3 border rounded-xl w-full sm:w-96"
-            required
-          />
-          <button
-            type="submit"
-            className="text-white font-semibold text-lg bg-primary-blue rounded-xl px-4 py-2 hover:bg-primary-blue/90 hover:text-black transition"
-          >
-            Subscribe
-          </button>
-        </form>
-      </section>
+     
     </div>
   );
 };

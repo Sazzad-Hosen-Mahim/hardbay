@@ -1,19 +1,10 @@
-import CommonWrapper from "@/common/CommonWrapper";
 import { Outlet, NavLink } from "react-router-dom";
-import { PartnersaccordionItems } from "@/lib/dataPartners";
+import CommonWrapper from "@/common/CommonWrapper";
 import CustomAccordion from "@/components/CustomAccordion/CustomAccordion";
 import ServiceTopBar from "@/components/service/ServiceTopBar";
-import React, { useState } from "react";
-
-type ViewContextType = {
-  currentView: "list" | "grid";
-  setCurrentView: (view: "list" | "grid") => void;
-};
-
-export const ViewContext = React.createContext<ViewContextType>({
-  currentView: "list",
-  setCurrentView: () => {},
-});
+import { useState } from "react";
+import { PartnersaccordionItems } from "@/lib/dataPartners";
+import { ViewContext } from "../Service/ViewContext";
 
 const PartnersLayout = () => {
   const [currentView, setCurrentView] = useState<"list" | "grid">("list");
@@ -32,110 +23,40 @@ const PartnersLayout = () => {
           <aside className="flex flex-col md:w-1/4 space-y-1 border border-gray-300 rounded-sm p-2">
             <h2 className="text-lg font-semibold mb-2">Our Partners</h2>
             <div className="flex flex-col space-y-1 ">
-              <NavLink
-                to="NVIDIA"
-                className={({ isActive }) =>
-                  `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
-                ${
-                  isActive
-                    ? "text-white bg-primary-orange font-bold"
-                    : "text-white"
-                }`
-                }
-              >
-                NVIDIA
-              </NavLink>
-              <NavLink
-                to="micron"
-                className={({ isActive }) =>
-                  `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
-                ${
-                  isActive
-                    ? "text-white bg-primary-orange font-bold"
-                    : "text-white"
-                }`
-                }
-              >
-                Micron
-              </NavLink>
-              <NavLink
-                to="supermicro"
-                className={({ isActive }) =>
-                  `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
-                ${
-                  isActive
-                    ? "text-white bg-primary-orange font-bold"
-                    : "text-white"
-                }`
-                }
-              >
-                Supermicro
-              </NavLink>
-              <NavLink
-                to="gigabyte"
-                className={({ isActive }) =>
-                  `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
-                ${
-                  isActive
-                    ? "text-white bg-primary-orange font-bold"
-                    : "text-white"
-                }`
-                }
-              >
-                Gigabyte
-              </NavLink>
-              <NavLink
-                to="asus"
-                className={({ isActive }) =>
-                  `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
-                ${
-                  isActive
-                    ? "text-white bg-primary-orange font-bold"
-                    : "text-white"
-                }`
-                }
-              >
-                Asus
-              </NavLink>
-              <NavLink
-                to="intel"
-                className={({ isActive }) =>
-                  `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
-                ${
-                  isActive
-                    ? "text-white bg-primary-orange font-bold"
-                    : "text-white"
-                }`
-                }
-              >
-                Intel
-              </NavLink>
-              <NavLink
-                to="amd"
-                className={({ isActive }) =>
-                  `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
-                ${
-                  isActive
-                    ? "text-white bg-primary-orange font-bold"
-                    : "text-white"
-                }`
-                }
-              >
-                Amd
-              </NavLink>
+              {[
+                "NVIDIA",
+                "micron",
+                "supermicro",
+                "gigabyte",
+                "asus",
+                "intel",
+                "amd",
+              ].map((partner) => (
+                <NavLink
+                  key={partner}
+                  to={partner}
+                  className={({ isActive }) =>
+                    `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
+                    ${
+                      isActive
+                        ? "text-white bg-primary-orange font-bold"
+                        : "text-white"
+                    }`
+                  }
+                >
+                  {partner.charAt(0).toUpperCase() + partner.slice(1)}
+                </NavLink>
+              ))}
             </div>
             <hr className="mt-3" />
-            <div>
-              <CustomAccordion
-                items={PartnersaccordionItems}
-                allowMultiple
-                onFilterChange={(selected) =>
-                  console.log("Filters changed:", selected)
-                }
-                selectedFilters={{}}
-              />
-            </div>
+            <CustomAccordion
+              items={PartnersaccordionItems}
+              allowMultiple
+              onFilterChange={(filters) => console.log("Filters:", filters)}
+              selectedFilters={{}}
+            />
           </aside>
+
           <main className="flex-1">
             <ViewContext.Provider value={{ currentView, setCurrentView }}>
               <ServiceTopBar />

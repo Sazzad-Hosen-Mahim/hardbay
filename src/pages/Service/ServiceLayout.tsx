@@ -7,16 +7,9 @@ import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
 import { fetchService } from "@/store/Slices/ServiceSlice/serviceSlice";
 import { fetchProducts } from "@/store/Slices/ProductSlice/productSlice";
 import { Product } from "@/types/ProductInterface";
+import { ViewContext } from "./ViewContext";
 
-type ViewContextType = {
-  currentView: "list" | "grid";
-  setCurrentView: (view: "list" | "grid") => void;
-};
 
-export const ViewContext = React.createContext<ViewContextType>({
-  currentView: "list",
-  setCurrentView: () => {},
-});
 
 const ServiceLayout = () => {
   const [currentView, setCurrentView] = useState<"list" | "grid">("list");
