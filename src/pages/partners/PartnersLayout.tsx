@@ -1,9 +1,9 @@
 import { Outlet, NavLink } from "react-router-dom";
 import CommonWrapper from "@/common/CommonWrapper";
-import CustomAccordion from "@/components/CustomAccordion/CustomAccordion";
+// import CustomAccordion from "@/components/CustomAccordion/CustomAccordion";
 import ServiceTopBar from "@/components/service/ServiceTopBar";
 import { useState } from "react";
-import { PartnersaccordionItems } from "@/lib/dataPartners";
+// import { PartnersaccordionItems } from "@/lib/dataPartners";
 import { ViewContext } from "../Service/ViewContext";
 
 const PartnersLayout = () => {
@@ -16,7 +16,7 @@ const PartnersLayout = () => {
         <div className="text-sm text-gray-600 mb-4 mt-4">
           <span>Home</span> &gt; <span>Partners</span>
         </div>
-        <hr className="w-full" />
+        {/* <hr className="w-full" /> */}
 
         <div className="flex flex-col md:flex-row gap-6 mt-12">
           {/* Sidebar Filter */}
@@ -49,12 +49,12 @@ const PartnersLayout = () => {
               ))}
             </div>
             <hr className="mt-3" />
-            <CustomAccordion
+            {/* <CustomAccordion
               items={PartnersaccordionItems}
               allowMultiple
               onFilterChange={(filters) => console.log("Filters:", filters)}
               selectedFilters={{}}
-            />
+            /> */}
           </aside>
 
           <main className="flex-1">
