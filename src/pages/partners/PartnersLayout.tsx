@@ -2,10 +2,9 @@ import { Outlet, NavLink } from "react-router-dom";
 import CommonWrapper from "@/common/CommonWrapper";
 import CustomAccordion from "@/components/CustomAccordion/CustomAccordion";
 import ServiceTopBar from "@/components/service/ServiceTopBar";
-import  { useState } from "react";
+import { useState } from "react";
 import { PartnersaccordionItems } from "@/lib/dataPartners";
 import { ViewContext } from "../Service/ViewContext";
-
 
 const PartnersLayout = () => {
   const [currentView, setCurrentView] = useState<"list" | "grid">("list");
@@ -24,13 +23,25 @@ const PartnersLayout = () => {
           <aside className="flex flex-col md:w-1/4 space-y-1 border border-gray-300 rounded-sm p-2">
             <h2 className="text-lg font-semibold mb-2">Our Partners</h2>
             <div className="flex flex-col space-y-1 ">
-              {["NVIDIA", "micron", "supermicro", "gigabyte", "asus", "intel", "amd"].map((partner) => (
+              {[
+                "NVIDIA",
+                "micron",
+                "supermicro",
+                "gigabyte",
+                "asus",
+                "intel",
+                "amd",
+              ].map((partner) => (
                 <NavLink
                   key={partner}
                   to={partner}
                   className={({ isActive }) =>
                     `bg-primary-blue py-2 px-4 hover:bg-primary-orange hover:text-white 
-                    ${isActive ? "text-white bg-primary-orange font-bold" : "text-white"}`
+                    ${
+                      isActive
+                        ? "text-white bg-primary-orange font-bold"
+                        : "text-white"
+                    }`
                   }
                 >
                   {partner.charAt(0).toUpperCase() + partner.slice(1)}

@@ -1,15 +1,129 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import CommonWrapper from "@/common/CommonWrapper";
 import CustomAccordion from "@/components/CustomAccordion/CustomAccordion";
 import ServiceTopBar from "@/components/service/ServiceTopBar";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
 import { fetchService } from "@/store/Slices/ServiceSlice/serviceSlice";
 import { fetchProducts } from "@/store/Slices/ProductSlice/productSlice";
 import { Product } from "@/types/ProductInterface";
 import { ViewContext } from "./ViewContext";
+import { fetchFilteredProducts } from "@/store/Slices/ProductSlice/dynamicProductSlice";
 
+const ProductFilterAccordion = React.memo(
+  ({ productsToFilter }: { productsToFilter: Product[] }) => {
+    const [selectedFilters, setSelectedFilters] = useState<
+      Record<string, string[]>
+    >({});
+    const dispatch = useAppDispatch();
+    const location = useLocation();
+    const navigate = useNavigate();
 
+    // Initialize filters from URL on component mount
+    useEffect(() => {
+      const searchParams = new URLSearchParams(location.search);
+      const initialFilters: Record<string, string[]> = {};
+
+      // Get all unique parameter names from URL
+      const paramNames = Array.from(new Set(searchParams.keys()));
+
+      paramNames.forEach((key) => {
+        const values = searchParams.getAll(key);
+        if (values.length > 0) {
+          initialFilters[key] = values;
+        }
+      });
+
+      setSelectedFilters(initialFilters);
+    }, [location.search]);
+
+    // Update URL and fetch filtered products when filters change
+    useEffect(() => {
+      const handler = setTimeout(() => {
+        const searchParams = new URLSearchParams();
+
+        // Add all selected filters to URL (using multiple params for same key)
+        for (const key in selectedFilters) {
+          selectedFilters[key].forEach((value) => {
+            searchParams.append(key, value);
+          });
+        }
+
+        // Update URL without page reload
+        navigate(`?${searchParams.toString()}`, { replace: true });
+
+        // Dispatch the action with the raw filter object
+        dispatch(
+          fetchFilteredProducts(
+            Object.fromEntries(
+              Object.entries(selectedFilters).map(([key, value]) => [
+                key,
+                value,
+              ])
+            )
+          )
+        );
+      }, 500);
+
+      return () => clearTimeout(handler);
+    }, [dispatch, selectedFilters, navigate]);
+
+    // Rest of your component remains the same...
+    const extractFilterOptions = useMemo(() => {
+      const filtersMap: Record<string, Set<string>> = {};
+
+      productsToFilter?.forEach((product) => {
+        product.filters?.forEach(({ name, value }) => {
+          if (!filtersMap[name]) {
+            filtersMap[name] = new Set();
+          }
+          filtersMap[name].add(String(value));
+        });
+      });
+
+      const finalFilters: Record<string, string[]> = {};
+      for (const key in filtersMap) {
+        finalFilters[key] = Array.from(filtersMap[key]);
+      }
+
+      return finalFilters;
+    }, [productsToFilter]);
+
+    const items = Object.entries(extractFilterOptions).map(
+      ([name, values]) => ({
+        id: name,
+        title: name,
+        filters: values,
+      })
+    );
+
+    const handleFilterChange = (
+      name: string,
+      value: string,
+      checked: boolean
+    ) => {
+      setSelectedFilters((prev) => {
+        const values = new Set(prev[name] || []);
+        if (checked) values.add(value);
+        else values.delete(value);
+
+        return {
+          ...prev,
+          [name]: Array.from(values),
+        };
+      });
+    };
+
+    return (
+      <CustomAccordion
+        items={items}
+        onFilterChange={handleFilterChange}
+        selectedFilters={selectedFilters}
+        allowMultiple
+      />
+    );
+  }
+);
 
 const ServiceLayout = () => {
   const [currentView, setCurrentView] = useState<"list" | "grid">("list");
@@ -18,6 +132,9 @@ const ServiceLayout = () => {
 
   const { service, loading, error } = useAppSelector((state) => state.service);
   const { products } = useAppSelector((state) => state.product);
+  const { filteredProducts } = useAppSelector((state) => state.dynamicProduct);
+
+  console.log(filteredProducts, "Filtered Products");
 
   useEffect(() => {
     dispatch(fetchService());
@@ -38,83 +155,6 @@ const ServiceLayout = () => {
 
   // Check if we're inside a product details page
   const isProductDetailsPage = location.pathname.includes("product-details");
-
-  const ProductFilterAccordion = ({
-    productsToFilter,
-  }: {
-    productsToFilter: Product[];
-  }) => {
-    const [selectedFilters, setSelectedFilters] = useState<
-      Record<string, string[]>
-    >({});
-
-    const extractFilterOptions = (products: Product[]) => {
-      if (!products || !Array.isArray(products)) {
-        return {};
-      }
-
-      const filtersMap: Record<string, Set<string>> = {};
-      products.forEach((product) => {
-        if (!product.filters || !Array.isArray(product.filters)) {
-          return;
-        }
-
-        product.filters.forEach(
-          (filter: { name: string; value: string | number }) => {
-            if (!filtersMap[filter.name]) {
-              filtersMap[filter.name] = new Set<string>();
-            }
-            filtersMap[filter.name].add(String(filter.value));
-          }
-        );
-      });
-
-      const finalFilters: Record<string, string[]> = {};
-      for (const key in filtersMap) {
-        finalFilters[key] = Array.from(filtersMap[key]);
-      }
-
-      return finalFilters;
-    };
-
-    const allFilterOptions = extractFilterOptions(productsToFilter);
-
-    const items = Object.entries(allFilterOptions).map(([name, values]) => ({
-      id: name,
-      title: name,
-      filters: values,
-    }));
-
-    const handleFilterChange = (
-      name: string,
-      value: string,
-      checked: boolean
-    ) => {
-      setSelectedFilters((prev) => {
-        const values = new Set(prev[name] || []);
-        if (checked) {
-          values.add(value);
-        } else {
-          values.delete(value);
-        }
-        return {
-          ...prev,
-          [name]: Array.from(values),
-        };
-      });
-    };
-
-    console.log(selectedFilters, "Selected Filters");
-
-    return (
-      <CustomAccordion
-        items={items}
-        onFilterChange={handleFilterChange}
-        selectedFilters={selectedFilters}
-        allowMultiple
-      />
-    );
-  };
 
   const getProductsForFilters = () => {
     if (location.pathname.includes("custom-server")) {

@@ -9,9 +9,10 @@ const GpuRental = () => {
   const { currentView } = useContext(ViewContext);
   const dispatch = useAppDispatch();
 
-  const { products } = useAppSelector((state) => state.product);
+  // const { products } = useAppSelector((state) => state.product);
+  const { filteredProducts } = useAppSelector((state) => state.dynamicProduct);
 
-  const gpuRentalProd = products
+  const gpuRentalProd = filteredProducts
     .filter((p) => p.service && p.service.title === "GPU rental")
     .map((p) => ({
       ...p,

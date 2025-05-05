@@ -9,9 +9,10 @@ const EnterpriseStorage = () => {
   const { currentView } = useContext(ViewContext);
   const dispatch = useAppDispatch();
 
-  const { products } = useAppSelector((state) => state.product);
+  // const { products } = useAppSelector((state) => state.product);
+  const { filteredProducts } = useAppSelector((state) => state.dynamicProduct);
 
-  const enterpriseStorageProd = products
+  const enterpriseStorageProd = filteredProducts
     .filter((p) => p.service && p.service.title === "Enterprise Storage")
     .map((p) => ({
       ...p,
