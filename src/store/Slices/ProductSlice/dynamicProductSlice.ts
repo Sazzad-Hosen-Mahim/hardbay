@@ -51,31 +51,32 @@ const initialState: DynamicProductSliceState = {
 };
 
 // Util to build query string
-const buildQueryString = (
-  params: Record<string, string | number | undefined>
-) => {
+// src/redux/slices/dynamicProductSlice.ts
+const buildQueryString = (params: Record<string, string[]>) => {
   const searchParams = new URLSearchParams();
-  Object.entries(params).forEach(([key, value]) => {
-    if (value !== undefined && value !== "") {
-      searchParams.append(key, String(value));
-    }
-  });
+
+  for (const key in params) {
+    params[key].forEach((value) => {
+      searchParams.append(key, value);
+    });
+  }
+
   return searchParams.toString();
 };
 
-// Thunk for fetching filtered products
 export const fetchFilteredProducts = createAsyncThunk<
   DynamicProduct[],
-  Record<string, string | number | undefined>,
+  Record<string, string[]>,
   { rejectValue: string }
 >("dynamicProducts/fetch", async (queryParams, { rejectWithValue }) => {
   try {
     const queryString = buildQueryString(queryParams);
+    console.log("Query String:", queryString); // Debugging line
     const response = await axios.get(`${baseURL}/products?${queryString}`);
-    return response.data.data; // adapt as per your backend response
+    return response.data.data;
   } catch (error: unknown) {
-    if (axios.isAxiosError(error) && error.message) {
-      return rejectWithValue(error.message);
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.response?.data?.message || error.message);
     }
     return rejectWithValue("Unknown error");
   }
