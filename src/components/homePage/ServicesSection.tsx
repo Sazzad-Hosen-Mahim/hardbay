@@ -31,7 +31,7 @@ const ServicesSection = () => {
                 <div>
                   <div className="flex items-center mb-4">
                     <service.icon className="w-6 h-6 text-primary-orange mr-2" />
-                    <h3 className="text-xl font-semibold text-gray-900">
+                    <h3 className="text-xl font-semibold text-primary-blue">
                       {service.title}
                     </h3>
                   </div>

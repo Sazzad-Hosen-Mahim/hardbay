@@ -103,17 +103,17 @@ function CaseStudyComponent() {
             <div className="max-w-7xl mx-auto px-4 py-16">
                 {/* Client Overview */}
                 <div className="mb-16">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-6">Client Overview</h2>
+                    <h2 className="text-3xl font-bold text-primary-blue mb-6">Client Overview</h2>
                     <div className="bg-white rounded-xl shadow-lg p-8">
                         <div className="flex flex-col md:flex-row gap-8">
                             <div className="flex-1">
-                                <h3 className="text-xl font-semibold mb-4">The Challenge</h3>
+                                <h3 className="text-xl font-semibold mb-4 text-primary-orange">The Challenge</h3>
                                 <p className="text-gray-600 leading-relaxed">
                                     {currentStudy.challenge}
                                 </p>
                             </div>
-                            <div className="flex-1 md:border-l md:pl-8 border-orange-200">
-                                <h3 className="text-xl font-semibold mb-4">The Solution</h3>
+                            <div className="flex-1 md:border-l md:pl-8 border-gray-600">
+                                <h3 className="text-xl font-semibold mb-4 text-primary-orange">The Solution</h3>
                                 <p className="text-gray-600 leading-relaxed">
                                     {currentStudy.solution}
                                 </p>
@@ -169,8 +169,8 @@ function CaseStudyComponent() {
                         Let us help you achieve similar results with our proven expertise in infrastructure optimization.
                     </p>
                     <Link to="/contact">
-                        <button className="bg-primary-orange
-                         text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors cursor-pointer">
+                        <button className="bg-primary-blue
+                         text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-orange transition-colors cursor-pointer">
                             Contact Us Today
                         </button>
                     </Link>

@@ -46,7 +46,7 @@ const Testimonials = () => {
           ))}
         </div>
 
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 md:mb-10 mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-primary-blue md:mb-10 mb-4">
           Trusted by Industry Leaders
         </h2>
         
@@ -58,13 +58,13 @@ const Testimonials = () => {
             >
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="font-bold text-lg text-gray-900">{testimonial.company}</h3>
+                  <h3 className="font-bold text-lg text-primary-blue">{testimonial.company}</h3>
                   <p className="text-[#4ECDC4] font-medium text-sm">{testimonial.stats}</p>
                 </div>
                 <Quote className="w-8 h-8 text-primary-orange" />
               </div>
               
-              <blockquote className="text-gray-700 text-lg mb-4 flex-grow">
+              <blockquote className="text-gray-600 text-lg mb-4 flex-grow">
                 "{testimonial.quote}"
               </blockquote>
               
