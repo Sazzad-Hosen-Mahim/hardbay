@@ -136,7 +136,7 @@ const Navbar: React.FC = () => {
                 to="/solutions"
                 className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
               >
-            Solutions
+                Solutions
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
               <Link
@@ -270,7 +270,7 @@ const Navbar: React.FC = () => {
               to="/solutions"
               className="text-white block hover:bg-purple-700 px-3 py-2 rounded-md text-base font-medium"
             >
-            Solutions
+              Solutions
             </Link>
             <Link
               to="/contact"
