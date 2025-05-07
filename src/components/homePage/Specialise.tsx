@@ -9,7 +9,7 @@ function Specialise() {
       <div className="container mx-auto px-4 md:py-10 py-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-2xl md:text-4xl font-semibold mb-6 ">
+          <h1 className="text-2xl md:text-4xl font-semibold mb-6 text-primary-blue">
             What We Specialise In
           </h1>
         </div>

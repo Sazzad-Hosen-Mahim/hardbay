@@ -20,7 +20,7 @@ export default function PartnersPage() {
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-primary-blue">
             Our <span className="text-primary-orange">Technology</span> Partners
           </h1>
-          <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+          <p className="mx-auto max-w-[700px]  md:text-xl text-gray-600">
             We collaborate with industry-leading technology companies to deliver innovative solutions for our customers.
           </p>
         </div>
@@ -54,8 +54,8 @@ export default function PartnersPage() {
                 </div>
                 <div className="md:w-3/4">
                   <CardHeader>
-                    <CardTitle className="text-2xl">{partner.name}</CardTitle>
-                    <CardDescription className="text-base">{partner.description}</CardDescription>
+                    <CardTitle className="text-2xl text-primary-blue">{partner.name}</CardTitle>
+                    <CardDescription className="text-base text-gray-600">{partner.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <h3 className="font-medium mb-2 pt-2 text-primary-orange text-lg">Our Partnership</h3>
