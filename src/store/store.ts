@@ -7,6 +7,7 @@ import productReducer from "./Slices/ProductSlice/productSlice";
 import productDetailsReducer from "./Slices/ProductSlice/productDetailsSlice";
 import cartReducer from "./Slices/CartSlice/cartSlice";
 import dynamicProductReducer from "./Slices/ProductSlice/dynamicProductSlice";
+import searchedProductReducer from "./Slices/ProductSlice/searchedProductSlice";
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
     productDetails: productDetailsReducer,
     cart: cartReducer,
     dynamicProduct: dynamicProductReducer,
+    searchedProduct: searchedProductReducer,
   },
 });
 
