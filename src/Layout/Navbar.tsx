@@ -212,7 +212,7 @@ const Navbar: React.FC = () => {
                 <input
                   type="text"
                   placeholder="Search products"
-                  className="bg-white text-black px-4 py-2 rounded-md outline-none w-48 transition-all duration-300"
+                  className="bg-white text-black px-4 py-2 rounded-md outline-none w-48 lg:w-[300px] transition-all duration-300"
                   value={query}
                   onChange={handleInputChange}
                   onFocus={handleInputFocus}
@@ -228,7 +228,7 @@ const Navbar: React.FC = () => {
                       <div
                         key={product.id}
                         onClick={() => handleNavigate(product.id)}
-                        className="p-3 hover:bg-gray-100 cursor-pointer border-b last:border-b-0"
+                        className="p-3 hover:bg-primary-orange cursor-pointer border-b last:border-b-0"
                       >
                         {product.productName}
                       </div>
