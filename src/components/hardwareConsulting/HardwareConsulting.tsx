@@ -31,7 +31,7 @@ const HardwareConsulting: React.FC = () => {
     message: "",
   });
 
-  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [formErrors] = useState<Record<string, string>>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -40,25 +40,25 @@ const HardwareConsulting: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const errors: Record<string, string> = {};
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   const errors: Record<string, string> = {};
 
-    if (!formData.name) errors.name = "Name is required";
-    if (!formData.email) errors.email = "Email is required";
-    if (!formData.company) errors.company = "Company is required";
-    if (!formData.date) errors.date = "Preferred date is required";
-    if (!formData.time) errors.time = "Preferred time is required";
+  //   if (!formData.name) errors.name = "Name is required";
+  //   if (!formData.email) errors.email = "Email is required";
+  //   if (!formData.company) errors.company = "Company is required";
+  //   if (!formData.date) errors.date = "Preferred date is required";
+  //   if (!formData.time) errors.time = "Preferred time is required";
 
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
+  //   if (Object.keys(errors).length > 0) {
+  //     setFormErrors(errors);
+  //     return;
+  //   }
 
-    console.log("Submitting form:", formData);
-    setFormErrors({});
-    setIsModalOpen(false);
-  };
+  //   console.log("Submitting form:", formData);
+  //   setFormErrors({});
+  //   setIsModalOpen(false);
+  // };
 
   const features = [
     {
@@ -300,14 +300,22 @@ const HardwareConsulting: React.FC = () => {
         </div>
       </div>
       <Toaster position="top-right" reverseOrder={false} />
-      <ConsultationModal
+      {/* <ConsultationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         formData={formData}
         formErrors={formErrors}
         onChange={handleChange}
         onSubmit={handleSubmit}
-      />
+      /> */}
+
+<ConsultationModal
+  isOpen={isModalOpen}
+  onClose={() => setIsModalOpen(false)}
+  formData={formData}
+  formErrors={formErrors}
+  onChange={handleChange}
+/>
     </div>
   );
 };
