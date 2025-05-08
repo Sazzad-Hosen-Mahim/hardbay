@@ -127,10 +127,10 @@ const HardwareConsulting: React.FC = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-slate-800 mb-4">
+          <h2 className="text-3xl font-bold text-primary-blue mb-4">
             Enterprise-Grade Hardware Solutions
           </h2>
-          <p className="text-slate-600 max-w-3xl mx-auto">
+          <p className="text-primary-blue max-w-3xl mx-auto">
             Our consulting services are designed to optimize your hardware
             infrastructure, reduce operational costs, and enhance system
             performance across your organization.
@@ -150,10 +150,10 @@ const HardwareConsulting: React.FC = () => {
                     {feature.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-3 text-slate-800 group-hover:text-slate-900 transition-colors">
+                    <h3 className="text-xl font-semibold mb-3 text-primary-blue group-hover:text-primary-blue/90 transition-colors">
                       {feature.title}
                     </h3>
-                    <p className="text-slate-600">{feature.description}</p>
+                    <p className="text-primary-blue">{feature.description}</p>
                   </div>
                 </div>
               </div>
@@ -174,7 +174,7 @@ const HardwareConsulting: React.FC = () => {
             {benefits.map((benefit, index) => (
               <div key={index} className="flex items-start group">
                 <CheckCircle className="w-5 h-5 text-primary-orange mr-3 mt-1 flex-shrink-0 " />
-                <p className="text-slate-700 group-hover:text-slate-900 transition-colors">
+                <p className="text-slate-700 group-hover:text-primary-blue/90 transition-colors">
                   {benefit}
                 </p>
               </div>
@@ -184,7 +184,7 @@ const HardwareConsulting: React.FC = () => {
 
         {/* Process Section */}
         <div className="bg-gradient-to-r from-slate-100 to-white rounded-xl p-10 shadow-md mb-20">
-          <h2 className="text-2xl font-semibold text-slate-800 mb-8">
+          <h2 className="text-2xl font-semibold text-primary-blue mb-8">
             Our Consultative Process
           </h2>
           <div className="space-y-8">
@@ -196,10 +196,10 @@ const HardwareConsulting: React.FC = () => {
                 <div className="absolute top-10 bottom-0 left-1/2 w-0.5 bg-slate-200 -translate-x-1/2 h-16 hidden md:block"></div>
               </div>
               <div className="ml-6">
-                <h3 className="text-lg font-medium text-slate-800 mb-2">
+                <h3 className="text-lg font-medium text-primary-blue mb-2">
                   Discovery & Assessment
                 </h3>
-                <p className="text-slate-600 max-w-2xl">
+                <p className="text-primary-blue max-w-2xl">
                   Comprehensive evaluation of your current hardware
                   infrastructure, performance metrics, and business requirements
                   to establish a baseline and identify optimization
@@ -216,10 +216,10 @@ const HardwareConsulting: React.FC = () => {
                 <div className="absolute top-10 bottom-0 left-1/2 w-0.5 bg-slate-200 -translate-x-1/2 h-16 hidden md:block"></div>
               </div>
               <div className="ml-6">
-                <h3 className="text-lg font-medium text-slate-800 mb-2">
+                <h3 className="text-lg font-medium text-primary-blue mb-2">
                   Strategic Planning & Recommendations
                 </h3>
-                <p className="text-slate-600 max-w-2xl">
+                <p className="text-primary-blue max-w-2xl">
                   Development of a tailored hardware strategy with detailed
                   recommendations, cost-benefit analysis, and implementation
                   roadmap aligned with your business objectives.
@@ -235,10 +235,10 @@ const HardwareConsulting: React.FC = () => {
                 <div className="absolute top-10 bottom-0 left-1/2 w-0.5 bg-slate-200 -translate-x-1/2 h-16 hidden md:block"></div>
               </div>
               <div className="ml-6">
-                <h3 className="text-lg font-medium text-slate-800 mb-2">
+                <h3 className="text-lg font-medium text-primary-blue mb-2">
                   Implementation & Optimization
                 </h3>
-                <p className="text-slate-600 max-w-2xl">
+                <p className="text-primary-blue max-w-2xl">
                   Coordinated execution of the hardware strategy, including
                   procurement assistance, vendor negotiations, deployment
                   oversight, and performance optimization.
@@ -253,10 +253,10 @@ const HardwareConsulting: React.FC = () => {
                 </span>
               </div>
               <div className="ml-6">
-                <h3 className="text-lg font-medium text-slate-800 mb-2">
+                <h3 className="text-lg font-medium text-primary-blue mb-2">
                   Continuous Support & Improvement
                 </h3>
-                <p className="text-slate-600 max-w-2xl">
+                <p className="text-primary-blue max-w-2xl">
                   Ongoing monitoring, maintenance planning, performance reviews,
                   and strategic adjustments to ensure your hardware
                   infrastructure continues to meet evolving business needs.
