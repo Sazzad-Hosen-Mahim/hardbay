@@ -1,5 +1,6 @@
 
 import type React from "react";
+import { Toaster } from "react-hot-toast";
 
 import {
   Server,
@@ -298,7 +299,7 @@ const HardwareConsulting: React.FC = () => {
           </div>
         </div>
       </div>
-
+      <Toaster position="top-right" reverseOrder={false} />
       <ConsultationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
