@@ -74,7 +74,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({
       console.log("Submitted successfully:", result)
       toast.success("Consultation request submitted successfully!");
       onClose()
-      onSubmitSuccess?.e.preventDefault()
+      onSubmitSuccess?.()
     } catch (error) {
       console.error("Submission error:", error)
     }
