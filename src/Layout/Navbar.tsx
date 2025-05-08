@@ -14,7 +14,7 @@ interface NavLink {
 
 // Services dropdown items
 const serviceLinks = [
-  { to: "/service/custom-server-build", text: "Custom Server Build" },
+  { to: "/service/custom-server", text: "Custom Server Build" },
   { to: "/service/gpu-rental", text: "GPU Rental" },
   { to: "/service/enterprise-storage", text: "Enterprise Storage" },
   { to: "/service/it-hardware-consult", text: "IT Hardware Consult" },
