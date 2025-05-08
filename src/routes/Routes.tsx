@@ -97,7 +97,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: <Cart />,  
       },
       {
         path: "/checkout",

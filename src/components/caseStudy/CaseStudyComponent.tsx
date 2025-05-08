@@ -93,7 +93,7 @@ function CaseStudyComponent() {
                     <h1 className="text-4xl md:text-6xl font-bold mb-6">
                         {currentStudy.title}
                     </h1>
-                    <p className="text-xl md:text-2xl text-indigo-200 max-w-3xl">
+                    <p className="text-xl md:text-2xl text-white max-w-3xl">
                         {currentStudy.subtitle}
                     </p>
                 </div>
