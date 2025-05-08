@@ -1,6 +1,7 @@
 "use client"
 
-import React from "react"
+import React from "react";
+import toast from "react-hot-toast";
 import {
   Calendar,
   X,
@@ -26,7 +27,7 @@ interface ConsultationModalProps {
   }
   formErrors: Record<string, string>
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
-  onSubmit: (e: React.FormEvent) => void
+  onSubmitSuccess?: () => void // Optional callback on successful submission
 }
 
 const ConsultationModal: React.FC<ConsultationModalProps> = ({
@@ -35,9 +36,49 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({
   formData,
   formErrors,
   onChange,
-  onSubmit,
+  onSubmitSuccess,
 }) => {
   if (!isOpen) return null
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    const payload = {
+      fullName: formData.name,
+      email: formData.email,
+      company: formData.company,
+      phone: formData.phone,
+      preferredDate: new Date(formData.date).toISOString(),
+      preferredTime: formData.time,
+      message: formData.message,
+    }
+
+    console.log("Sending payload:", payload)
+
+    try {
+      const response = await fetch("https://tortuga7-backend.onrender.com/consultants", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      })
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error("Backend response:", errorText)
+        throw new Error("Failed to submit form")
+        toast.error("Failed to submit the consultation request. Please try again.");
+      }
+
+      const result = await response.json()
+      console.log("Submitted successfully:", result)
+      toast.success("Consultation request submitted successfully!");
+      onClose()
+      onSubmitSuccess?.e.preventDefault()
+    } catch (error) {
+      console.error("Submission error:", error)
+    }
+  }
 
   return (
     <div
@@ -70,7 +111,6 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({
         {/* Modal Body */}
         <form onSubmit={onSubmit} className="p-5 sm:p-6">
           <div className="space-y-4">
-            {/* Fields */}
             {[
               { id: "name", label: "Full Name", icon: User, type: "text" },
               { id: "email", label: "Email Address", icon: Mail, type: "email" },
