@@ -48,7 +48,7 @@ const ProductContent = ({ product }: ProductContentProps) => {
       <div className="mt-auto flex justify-between items-center">
         <span className="font-bold text-lg">${price.toLocaleString()}</span>
         <Link to={`/service/product-details/${id}`}>
-          <button className="bg-primary-blue text-white px-4 py-2 rounded hover:bg-blue-700">
+          <button className="bg-primary-blue text-white px-4 py-2 rounded hover:bg-primary-orange">
             Configure
           </button>
         </Link>
