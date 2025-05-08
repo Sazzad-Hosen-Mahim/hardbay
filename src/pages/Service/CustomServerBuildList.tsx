@@ -3,7 +3,8 @@ import ProductCardList from '@/components/Product/ProductCardList';
 import ProductContent from '@/components/Product/ProductContent';
 import ProductsView from '@/components/Product/ProductView';
 import { useContext, useEffect, useState } from 'react';
-import { ViewContext } from './ServiceLayout';
+import { ViewContext } from './ViewContext';
+
 
 
 function CustomServerBuildList() {

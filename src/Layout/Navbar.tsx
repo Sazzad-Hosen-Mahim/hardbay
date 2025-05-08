@@ -1,40 +1,131 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { IoSearchSharp } from "react-icons/io5";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { IoSearchSharp, IoBagSharp, IoPersonOutline } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
-import { IoBagSharp } from "react-icons/io5";
-import { IoPersonOutline } from "react-icons/io5";
-import { motion, AnimatePresence } from "framer-motion";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
+import debounce from "lodash.debounce";
+import { searchedProduct } from "@/store/Slices/ProductSlice/searchedProductSlice";
+
+// Navigation link interface
+interface NavLink {
+  to: string;
+  text: string;
+}
+
+// Services dropdown items
+const serviceLinks = [
+  { to: "/service/custom-server", text: "Custom Server Build" },
+  { to: "/service/gpu-rental", text: "GPU Rental" },
+  { to: "/service/enterprise-storage", text: "Enterprise Storage" },
+  { to: "/service/it-hardware-consult", text: "IT Hardware Consult" },
+];
+
+// Main navigation links
+const navLinks: NavLink[] = [
+  { to: "/", text: "Home" },
+  { to: "/partners", text: "Partners" },
+  { to: "/case-studies", text: "Case Studies" },
+  { to: "/solutions", text: "Solutions" },
+  { to: "/contact", text: "Contact Us" },
+];
 
 const Navbar: React.FC = () => {
+  // State management
   const [isOpen, setIsOpen] = useState(false);
-
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [query, setQuery] = useState("");
+  const [showPopover, setShowPopover] = useState(false);
+  const [showServices, setShowServices] = useState(false);
 
+  const searchRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { searchedResults } = useAppSelector((state) => state.searchedProduct);
+
+  // Debounced search function
+  const debouncedSearch = useMemo(
+    () =>
+      debounce((value: string) => {
+        if (value) {
+          dispatch(searchedProduct(value)).then(() => {
+            setShowPopover(true);
+          });
+        } else {
+          setShowPopover(false);
+        }
+      }, 400),
+    [dispatch]
+  );
+
+  // Click outside handler for search popover
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target as Node)
+      ) {
+        setShowPopover(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Scroll handler for navbar visibility
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setShowNavbar(false); // Scrolling down
-      } else {
-        setShowNavbar(true); // Scrolling up
-      }
-
+      setShowNavbar(currentScrollY <= lastScrollY || currentScrollY <= 100);
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  // Search effect
+  useEffect(() => {
+    debouncedSearch(query);
+    return () => debouncedSearch.cancel();
+  }, [query, debouncedSearch]);
+
+  // Event handlers
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setQuery(value);
+    setShowPopover(!!value);
   };
+
+  const handleInputFocus = () => query && setShowPopover(true);
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const handleNavigate = (id: string) => {
+    navigate(`/service/product-details/${id}`);
+    setShowPopover(false);
+  };
+
+  // NavLink component for consistent styling
+  const NavLinkItem = ({ to, text }: NavLink) => (
+    <Link
+      to={to}
+      className="relative group text-white hover:text-primary-orange px-3 py-2 rounded-md text-md font-medium"
+    >
+      {text}
+      <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
+    </Link>
+  );
+
+  // MobileNavLink component for mobile menu
+  const MobileNavLink = ({ to, text }: NavLink) => (
+    <Link
+      to={to}
+      className="text-white block hover:bg-purple-700 px-3 py-2 rounded-md text-base font-medium"
+      onClick={() => setIsOpen(false)}
+    >
+      {text}
+    </Link>
+  );
 
   return (
     <nav
@@ -42,114 +133,43 @@ const Navbar: React.FC = () => {
         showNavbar ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex gap-16">
-            <div>
-              <Link to="/" className="text-white text-2xl font-bold ms-8">
-                Hard<span className="text-primary-orange">bay</span>
-              </Link>
-            </div>
-            <div className="hidden md:flex space-x-4">
-              <Link
-                to="/"
-                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
-              >
-                Home
-                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
-              {/* <Link
-                to="/about"
-                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
-              >
-                About Us
-                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-              </Link> */}
-              {/* <Link
-                to="/products"
-                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
-              >
-                Products
-                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-              </Link> */}
+            <Link to="/" className="text-white text-2xl font-bold ms-8">
+              Hard<span className="text-primary-orange">bay</span>
+            </Link>
 
-              {/* Services Link with Popover */}
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex space-x-4">
+              {navLinks.map((link) => (
+                <NavLinkItem key={link.to} to={link.to} text={link.text} />
+              ))}
+
+              {/* Services Dropdown */}
               <div
                 className="relative group flex items-center"
-                onMouseEnter={() => setIsOpen(true)}
-                onMouseLeave={() => setIsOpen(false)}
+                onMouseEnter={() => setShowServices(true)}
+                onMouseLeave={() => setShowServices(false)}
               >
-                <Link
-                  to="/service"
-                  className="relative mb-1 text-white hover:text-primary-orange px-3 py-2 rounded-none text-md font-medium"
-                >
-                  Services
-                  <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-                </Link>
-                {/* Custom Popover Menu */}
-                {isOpen && (
+                <NavLinkItem to="/service" text="Services" />
+                {showServices && (
                   <div className="absolute left-0 top-10 mt-2 w-[180px] bg-primary-blue text-white z-50 shadow-lg">
-                    <Link
-                      to="/service/custom-server-build"
-                      className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
-                    >
-                      Custom Server Build
-                    </Link>
-                    <Link
-                      to="/service/gpu-rental"
-                      className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
-                    >
-                      GPU Rental
-                    </Link>
-                    <Link
-                      to="/service/enterprise-storage"
-                      className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
-                    >
-                      Enterprise Storage
-                    </Link>
-                    <Link
-                      to="/service/it-hardware-consult"
-                      className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
-                    >
-                      IT Hardware Consult
-                    </Link>
+                    {serviceLinks.map((link) => (
+                      <Link
+                        key={link.to}
+                        to={link.to}
+                        className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
+                      >
+                        {link.text}
+                      </Link>
+                    ))}
                   </div>
                 )}
               </div>
-
-              <Link
-                to="/blog"
-                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
-              >
-                Partners
-                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
-              <Link
-                to="/case-studies"
-                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
-              >
-                Case Studies
-                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
-              <Link
-                to="/partners"
-                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
-              >
-            Solutions
-                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
-              <Link
-                to="/contact"
-                className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-md font-medium"
-              >
-                Contact Us
-                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-orange transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
             </div>
           </div>
-
-          {/* Desktop Menu */}
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
@@ -157,6 +177,7 @@ const Navbar: React.FC = () => {
               onClick={toggleMenu}
               type="button"
               className="text-white hover:text-gray-300 focus:outline-none"
+              aria-label="Toggle menu"
             >
               <svg
                 className="h-6 w-6"
@@ -182,51 +203,68 @@ const Navbar: React.FC = () => {
               </svg>
             </button>
           </div>
-          <div className="hidden md:flex items-center me-10 gap-3">
-            <div className="relative flex items-center">
-              {/* Search Trigger */}
-              <motion.div
-                initial={{ x: 0 }}
-                animate={{ x: isSearchOpen ? -155 : 0 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                className="z-10"
-              >
-                <button
-                  onClick={() => setIsSearchOpen(!isSearchOpen)}
-                  className="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none"
-                >
-                  <IoSearchSharp className="text-2xl text-primary-orange hover:text-primary-bg" />
-                </button>
-              </motion.div>
 
+          {/* Search and User Actions */}
+          <div className="hidden md:flex items-center me-10 gap-3">
+            <div className="relative flex items-center" ref={searchRef}>
               {/* Search Input */}
-              <AnimatePresence>
-                {isSearchOpen && (
-                  <motion.input
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: "200px", opacity: 1 }}
-                    exit={{ width: 0, opacity: 0 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    type="text"
-                    placeholder="Search products"
-                    className="absolute -left-38 bg-white text-black px-10 py-2 rounded-md outline-none shadow-lg"
-                    style={{ zIndex: 0 }}
-                  />
-                )}
-              </AnimatePresence>
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search products"
+                  className="bg-white text-black px-4 py-2 rounded-md outline-none w-48 lg:w-[300px] transition-all duration-300"
+                  value={query}
+                  onChange={handleInputChange}
+                  onFocus={handleInputFocus}
+                />
+                <IoSearchSharp className="absolute right-3 top-2.5 text-xl text-primary-orange" />
+              </div>
+
+              {/* Search Results Popover */}
+              {showPopover && (
+                <div className="absolute top-full left-0 w-full bg-white border shadow-lg z-50 mt-1 rounded-md max-h-60 overflow-y-auto">
+                  {searchedResults.data.length > 0 ? (
+                    searchedResults.data.map((product) => (
+                      <div
+                        className="flex items-center px-2 py-2 hover:bg-primary-orange"
+                        key={product.id}
+                      >
+                        <div className="">
+                          <img
+                            src={product.images[0]}
+                            alt={product.productName}
+                            className="w-10 h-10 rounded-full"
+                          />
+                        </div>
+                        <div
+                          onClick={() => handleNavigate(product.id)}
+                          className="p-3  hover:text-white cursor-pointer border-b last:border-b-0"
+                        >
+                          {product.productName}
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="p-3 text-center text-gray-500 h-24 flex items-center justify-center">
+                      No products found
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
-            <button className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium">
-              <FaHeart className="text-2xl text-primary-orange hover:text-primary-bg" />
+            {/* Action Icons */}
+            <button className="text-primary-orange hover:text-primary-bg px-3 py-2">
+              <FaHeart className="text-2xl" />
             </button>
             <Link
               to="/cart"
-              className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium"
+              className="text-primary-orange hover:text-primary-bg px-3 py-2"
             >
-              <IoBagSharp className="text-2xl text-primary-orange hover:text-primary-bg" />
+              <IoBagSharp className="text-2xl" />
             </Link>
-            <button className="relative group text-white hover:text-primary-orange  px-3 py-2 rounded-md text-sm font-medium">
-              <IoPersonOutline className="text-2xl text-primary-orange hover:text-primary-bg" />
+            <button className="text-primary-orange hover:text-primary-bg px-3 py-2">
+              <IoPersonOutline className="text-2xl" />
             </button>
           </div>
         </div>
@@ -234,50 +272,12 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link
-              to="/"
-              className="text-white block hover:bg-purple-700 px-3 py-2 rounded-md text-base font-medium"
-            >
-              Home
-            </Link>
-            {/* <Link
-              to="/about"
-              className="text-white block hover:bg-purple-700 px-3 py-2 rounded-md text-base font-medium"
-            >
-              About
-            </Link> */}
-            <Link
-              to="/service"
-              className="text-white block hover:bg-purple-700 px-3 py-2 rounded-md text-base font-medium"
-            >
-              Services
-            </Link>
-            <Link
-              to="/blog"
-              className="text-white block hover:bg-purple-700 px-3 py-2 rounded-md text-base font-medium"
-            >
-              Partners
-            </Link>
-            <Link
-              to="/case-studies"
-              className="text-white block hover:bg-purple-700 px-3 py-2 rounded-md text-base font-medium"
-            >
-              Case Studies
-            </Link>
-            <Link
-              to="/partners"
-              className="text-white block hover:bg-purple-700 px-3 py-2 rounded-md text-base font-medium"
-            >
-            Solutions
-            </Link>
-            <Link
-              to="/contact"
-              className="text-white block hover:bg-purple-700 px-3 py-2 rounded-md text-base font-medium"
-            >
-              Contact
-            </Link>
+        <div className="md:hidden bg-primary-blue pb-3">
+          <div className="px-2 pt-2 space-y-1 sm:px-3">
+            {navLinks.map((link) => (
+              <MobileNavLink key={link.to} to={link.to} text={link.text} />
+            ))}
+            <MobileNavLink to="/service" text="Services" />
           </div>
         </div>
       )}

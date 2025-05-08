@@ -3,7 +3,7 @@ import ProductCardGrid from './ProductCardGrid';
 import { ProductsViewProps } from '@/types/ProductInterface';
 
 const ProductsView = ({ products, view }: ProductsViewProps) => {
-	// console.log('ProductsView', products, view);
+	// console.log('ProductsView', products);
 	return (
 		<div
 			className={`mt-5 ${

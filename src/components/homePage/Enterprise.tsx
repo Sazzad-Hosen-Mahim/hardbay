@@ -1,5 +1,6 @@
 import CommonWrapper from "@/common/CommonWrapper";
 import { Server, Cpu, HardDrive } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Enterprise = () => {
   return (
@@ -37,13 +38,19 @@ const Enterprise = () => {
                 configuration for your specific needs.
               </p>
               <div className="flex flex-wrap gap-4">
-                <button className="bg-primary-blue hover:bg-primary-orange group text-white font-semibold py-3 px-8 rounded-lg transition duration-300 text-lg flex items-center gap-2">
+             <Link to="/service/custom-server">
+             <button className="bg-primary-blue hover:bg-primary-orange group text-white font-semibold py-3 px-8 rounded-lg transition duration-300 text-lg flex items-center gap-2">
                   <Server className="w-5 h-5 text-primary-orange group-hover:text-white" />
                   Browse Servers
                 </button>
-                <button className="bg-transparent border-2 border-white hover:bg-white hover:text-slate-900 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 text-lg">
-                  Custom Builds
-                </button>
+                </Link>
+                <Link
+                  to="/solutions"
+                  className="bg-transparent border-2 border-white hover:bg-white hover:text-slate-900 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 text-lg"
+                >
+                  Browse Solutions
+
+                </Link>
               </div>
             </div>
 

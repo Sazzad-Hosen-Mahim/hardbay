@@ -32,7 +32,7 @@ const ContactUsComponent = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10 mt-20 space-y-5">
-      <h1 className="text-4xl font-bold text-center text-black-800">
+      <h1 className="text-4xl font-bold text-center text-primary-blue">
         Contact <span className="text-primary-orange">HardBay</span>
       </h1>
       <p className="text-center text-gray-600">
@@ -42,7 +42,7 @@ const ContactUsComponent = () => {
       <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2">
         {/* General Inquiry */}
         <section className="bg-white p-6 rounded-2xl w-full shadow-md">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h2 className="text-2xl font-semibold text-primary-blue mb-4">
             General Inquiry
           </h2>
           <form
@@ -74,12 +74,12 @@ const ContactUsComponent = () => {
               name="message"
               placeholder="How can we help you?"
               className="w-full p-3 border rounded-xl resize-none"
-              rows={5}
+              rows={3 }
               required
             ></textarea>
             <button
               type="submit"
-              className="text-white font-semibold text-lg bg-primary-blue rounded-xl px-4 py-2 hover:bg-primary-blue/90 hover:text-black transition"
+              className="text-white font-semibold text-lg bg-primary-blue rounded-xl px-4 py-2 hover:bg-primary-orange  transition"
             >
               Send Message
             </button>
@@ -89,7 +89,7 @@ const ContactUsComponent = () => {
         <div className="grid gap-8 md:grid-rows-2">
           {/* Support Section */}
           <section className="bg-white p-6 rounded-2xl shadow-md">
-            <h2 className="text-4xl font-bold text-center text-black-800 my-3">
+            <h2 className="text-4xl font-bold text-center text-primary-blue my-3">
               <span className="text-primary-orange">HardBay</span> Support
             </h2>
             <p className="text-gray-600 mb-4">
@@ -124,12 +124,12 @@ const ContactUsComponent = () => {
                 name="message"
                 placeholder="Describe your issue"
                 className="w-full p-3 border rounded-xl resize-none"
-                rows={5}
+                rows={3}
                 required
               ></textarea>
               <button
                 type="submit"
-                className="text-white font-semibold text-lg bg-primary-blue rounded-xl px-4 py-2 hover:bg-primary-blue/90 hover:text-black transition"
+                className="text-white font-semibold text-lg bg-primary-blue rounded-xl px-4 py-2 hover:bg-primary-orange transition"
               >
                 Submit Support Request
               </button>
@@ -138,7 +138,7 @@ const ContactUsComponent = () => {
 
           {/* Product Return Section */}
           <section className="bg-white p-6 rounded-2xl shadow-md">
-            <h2 className="text-4xl font-bold text-center text-black-800 my-3">
+            <h2 className="text-4xl font-bold text-center text-primary-blue my-3">
               Product <span className="text-primary-orange">Returns</span>
             </h2>
             <p className="text-gray-600 mb-4">
@@ -173,12 +173,12 @@ const ContactUsComponent = () => {
                 name="message"
                 placeholder="Product details and reason for return"
                 className="w-full p-3 border rounded-xl resize-none"
-                rows={5}
+                rows={3}
                 required
               ></textarea>
               <button
                 type="submit"
-                className="text-white font-semibold text-lg bg-primary-blue rounded-xl px-4 py-2 hover:bg-primary-blue/90 hover:text-black transition"
+                className="text-white font-semibold text-lg bg-primary-blue rounded-xl px-4 py-2 hover:bg-primary-orange  transition"
               >
                 Submit Return Request
               </button>
@@ -211,30 +211,7 @@ const ContactUsComponent = () => {
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="bg-white p-6 rounded-2xl shadow-md text-center">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-          Stay Up to Date
-        </h2>
-        <form
-          onSubmit={(e) => handleSubmit(e, "Newsletter Subscription")}
-          className="flex flex-col sm:flex-row justify-center items-center gap-4"
-        >
-          <input
-            type="email"
-            name="newsletterEmail"
-            placeholder="Enter your email"
-            className="p-3 border rounded-xl w-full sm:w-96"
-            required
-          />
-          <button
-            type="submit"
-            className="text-white font-semibold text-lg bg-primary-blue rounded-xl px-4 py-2 hover:bg-primary-blue/90 hover:text-black transition"
-          >
-            Subscribe
-          </button>
-        </form>
-      </section>
+     
     </div>
   );
 };
