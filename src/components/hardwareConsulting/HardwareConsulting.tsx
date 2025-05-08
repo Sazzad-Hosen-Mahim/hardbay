@@ -1,4 +1,3 @@
-"use client";
 
 import type React from "react";
 
@@ -97,29 +96,29 @@ const HardwareConsulting: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 mt-16">
-      {/* Hero Section with Gradient Background */}
-      <div className="bg-gradient-to-r from-gray-300  to-gray-400 text-primary-blue">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl font-bold mb-2 ">
-              Enterprise <span className="text-primary-orange"> Hardware</span>{" "}
-              Consulting
+     
+      <div className="relative overflow-hidden">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg" 
+            alt="Enterprise Hardware Infrastructure" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-800/70"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+          <div className="max-w-xl text-center mx-auto">
+            <h1 className="md:text-5xl text-3xl font-bold mb-4 text-white">
+              Enterprise <span className="text-orange-500">Hardware</span> Consulting
             </h1>
-          </div>
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-            <p className="text-xl text-primary-blue max-w-3xl mb-8 md:mb-0 leading-relaxed">
+            <p className="text-xl text-white mb-8 leading-relaxed">
               From comprehensive audits to strategic vendor management, we help
               you make data-driven procurement decisions and optimize your
               hardware infrastructure for maximum efficiency and ROI.
             </p>
-            {/* <button
-              onClick={() => setIsModalOpen(true)}
-              className={`flex items-center justify-center px-8 py-6 bg-primary-blue hover:bg-primary-orange text-white rounded-lg font-medium transition-all duration-300 `}
-            >
-              <Calendar className="w-5 h-5 mr-2" />
-              Schedule Consultation
-              <ChevronRight className="w-5 h-5 ml-2" />
-            </button> */}
+        
           </div>
         </div>
       </div>
