@@ -14,7 +14,7 @@ interface NavLink {
 
 // Services dropdown items
 const serviceLinks = [
-  { to: "/service/custom-server-build", text: "Custom Server Build" },
+  { to: "/service/custom-server", text: "Custom Server Build" },
   { to: "/service/gpu-rental", text: "GPU Rental" },
   { to: "/service/enterprise-storage", text: "Enterprise Storage" },
   { to: "/service/it-hardware-consult", text: "IT Hardware Consult" },
@@ -226,11 +226,22 @@ const Navbar: React.FC = () => {
                   {searchedResults.data.length > 0 ? (
                     searchedResults.data.map((product) => (
                       <div
+                        className="flex items-center px-2 py-2 hover:bg-primary-orange"
                         key={product.id}
-                        onClick={() => handleNavigate(product.id)}
-                        className="p-3 hover:bg-primary-orange cursor-pointer border-b last:border-b-0"
                       >
-                        {product.productName}
+                        <div className="">
+                          <img
+                            src={product.images[0]}
+                            alt={product.productName}
+                            className="w-10 h-10 rounded-full"
+                          />
+                        </div>
+                        <div
+                          onClick={() => handleNavigate(product.id)}
+                          className="p-3  hover:text-white cursor-pointer border-b last:border-b-0"
+                        >
+                          {product.productName}
+                        </div>
                       </div>
                     ))
                   ) : (
