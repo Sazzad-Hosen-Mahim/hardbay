@@ -50,8 +50,6 @@ const initialState: DynamicProductSliceState = {
   filteredProducts: [],
 };
 
-// Util to build query string
-// src/redux/slices/dynamicProductSlice.ts
 const buildQueryString = (params: Record<string, string[]>) => {
   const searchParams = new URLSearchParams();
 

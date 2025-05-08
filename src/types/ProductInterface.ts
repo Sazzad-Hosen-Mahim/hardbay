@@ -50,3 +50,10 @@ export interface ProductsViewProps {
 export type ProductDetailProps = {
   product: Product;
 };
+
+export interface SearchResponse {
+  data: Product[];
+  total: number;
+  currentPage: null | number;
+  totalPages: null | number;
+}
