@@ -1,8 +1,8 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 
-import { products } from "@/lib/productsData";
-import ProductsView from "@/components/Product/ProductView";
-import { ViewContext } from "./ViewContext";
+// import { products } from "@/lib/productsData";
+// import ProductsView from "@/components/Product/ProductView";
+// import { ViewContext } from "./ViewContext";
 
 const ITHardwareConsult = () => {
   // const { currentView } = useContext(ViewContext);

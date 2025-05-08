@@ -17,7 +17,7 @@ import ServiceLayout from "@/pages/Service/ServiceLayout";
 import CustomServer from "@/pages/Service/CustomServer";
 import GpuRental from "@/pages/Service/GpuRental";
 import EnterpriseStorage from "@/pages/Service/EnterpriseStorage";
-import ITHardwareConsult from "@/pages/Service/ITHardwareConsult";
+// import ITHardwareConsult from "@/pages/Service/ITHardwareConsult";
 import PartnersLayout from "@/pages/partners/PartnersLayout";
 
 import NVIDIA from "@/pages/partners/NVIDIA";
