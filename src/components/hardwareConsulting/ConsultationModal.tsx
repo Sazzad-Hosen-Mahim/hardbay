@@ -1,4 +1,5 @@
-"use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
 
 import React from "react";
 import toast from "react-hot-toast";
@@ -11,23 +12,25 @@ import {
   Phone,
   Clock,
   MessageSquare,
-} from "lucide-react"
+} from "lucide-react";
 
 interface ConsultationModalProps {
-  isOpen: boolean
-  onClose: () => void
+  isOpen: boolean;
+  onClose: () => void;
   formData: {
-    name: string
-    email: string
-    company: string
-    phone: string
-    date: string
-    time: string
-    message: string
-  }
-  formErrors: Record<string, string>
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
-  onSubmitSuccess?: () => void // Optional callback on successful submission
+    name: string;
+    email: string;
+    company: string;
+    phone: string;
+    date: string;
+    time: string;
+    message: string;
+  };
+  formErrors: Record<string, string>;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  onSubmitSuccess?: () => void; // Optional callback on successful submission
 }
 
 const ConsultationModal: React.FC<ConsultationModalProps> = ({
@@ -38,10 +41,10 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({
   onChange,
   onSubmitSuccess,
 }) => {
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const payload = {
       fullName: formData.name,
@@ -51,34 +54,39 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({
       preferredDate: new Date(formData.date).toISOString(),
       preferredTime: formData.time,
       message: formData.message,
-    }
+    };
 
-    console.log("Sending payload:", payload)
+    console.log("Sending payload:", payload);
 
     try {
-      const response = await fetch("https://tortuga7-backend.onrender.com/consultants", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      })
+      const response = await fetch(
+        "https://tortuga7-backend.onrender.com/consultants",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
       if (!response.ok) {
-        const errorText = await response.text()
-        console.error("Backend response:", errorText)
-        throw new Error("Failed to submit form")
-        toast.error("Failed to submit the consultation request. Please try again.");
+        const errorText = await response.text();
+        console.error("Backend response:", errorText);
+        throw new Error("Failed to submit form");
+        toast.error(
+          "Failed to submit the consultation request. Please try again."
+        );
       }
 
-      const result = await response.json()
-      console.log("Submitted successfully:", result)
+      const result = await response.json();
+      console.log("Submitted successfully:", result);
       toast.success("Consultation request submitted successfully!");
-      onClose()
-      onSubmitSuccess?.()
+      onClose();
+      onSubmitSuccess?.();
     } catch (error) {
-      console.error("Submission error:", error)
+      console.error("Submission error:", error);
     }
-  }
+  };
 
   return (
     <div
@@ -104,7 +112,8 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({
             </button>
           </div>
           <p className="text-slate-300 mt-1 sm:mt-2 text-sm">
-            Complete the form below and our team will contact you to confirm your appointment.
+            Complete the form below and our team will contact you to confirm
+            your appointment.
           </p>
         </div>
 
@@ -113,14 +122,42 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({
           <div className="space-y-4">
             {[
               { id: "name", label: "Full Name", icon: User, type: "text" },
-              { id: "email", label: "Email Address", icon: Mail, type: "email" },
-              { id: "company", label: "Company", icon: Building2, type: "text" },
-              { id: "phone", label: "Phone (optional)", icon: Phone, type: "tel" },
-              { id: "date", label: "Preferred Date", icon: Calendar, type: "date" },
-              { id: "time", label: "Preferred Time", icon: Clock, type: "time" },
+              {
+                id: "email",
+                label: "Email Address",
+                icon: Mail,
+                type: "email",
+              },
+              {
+                id: "company",
+                label: "Company",
+                icon: Building2,
+                type: "text",
+              },
+              {
+                id: "phone",
+                label: "Phone (optional)",
+                icon: Phone,
+                type: "tel",
+              },
+              {
+                id: "date",
+                label: "Preferred Date",
+                icon: Calendar,
+                type: "date",
+              },
+              {
+                id: "time",
+                label: "Preferred Time",
+                icon: Clock,
+                type: "time",
+              },
             ].map(({ id, label, icon: Icon, type }) => (
               <div key={id}>
-                <label htmlFor={id} className="text-sm font-medium text-slate-700 mb-1 flex items-center">
+                <label
+                  htmlFor={id}
+                  className="text-sm font-medium text-slate-700 mb-1 flex items-center"
+                >
                   <Icon className="w-4 h-4 mr-1" />
                   {label}
                 </label>
@@ -134,13 +171,18 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     formErrors[id] ? "border-red-500" : "border-slate-300"
                   } focus:outline-none focus:ring-2 focus:ring-orange-300`}
                 />
-                {formErrors[id] && <p className="text-sm text-red-500 mt-1">{formErrors[id]}</p>}
+                {formErrors[id] && (
+                  <p className="text-sm text-red-500 mt-1">{formErrors[id]}</p>
+                )}
               </div>
             ))}
 
             {/* Message */}
             <div>
-              <label htmlFor="message" className="text-sm font-medium text-slate-700 mb-1 flex items-center">
+              <label
+                htmlFor="message"
+                className="text-sm font-medium text-slate-700 mb-1 flex items-center"
+              >
                 <MessageSquare className="w-4 h-4 mr-1" />
                 Message (optional)
               </label>
@@ -166,7 +208,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ConsultationModal
+export default ConsultationModal;
