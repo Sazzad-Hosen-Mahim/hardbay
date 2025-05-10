@@ -33,7 +33,7 @@ const ContactUsComponent = () => {
   return (
     <div className="max-w-5xl mx-auto px-4 py-10 mt-20 space-y-5">
       <h1 className="text-4xl font-bold text-center text-primary-blue">
-        Contact <span className="text-primary-orange">HardBay</span>
+        Contact <span className="text-primary-orange">Tortuga7</span>
       </h1>
       <p className="text-center text-gray-600">
         Get in touch by selecting one of the options below.
@@ -74,7 +74,7 @@ const ContactUsComponent = () => {
               name="message"
               placeholder="How can we help you?"
               className="w-full p-3 border rounded-xl resize-none"
-              rows={3 }
+              rows={3}
               required
             ></textarea>
             <button
@@ -90,7 +90,7 @@ const ContactUsComponent = () => {
           {/* Support Section */}
           <section className="bg-white p-6 rounded-2xl shadow-md">
             <h2 className="text-4xl font-bold text-center text-primary-blue my-3">
-              <span className="text-primary-orange">HardBay</span> Support
+              <span className="text-primary-orange">Tortuga7</span> Support
             </h2>
             <p className="text-gray-600 mb-4">
               Submit a technical question or problem to our support team.
@@ -210,8 +210,6 @@ const ContactUsComponent = () => {
           ))}
         </div>
       </section>
-
-     
     </div>
   );
 };

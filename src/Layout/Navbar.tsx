@@ -138,7 +138,7 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <div className="flex gap-16">
             <Link to="/" className="text-white text-2xl font-bold ms-8">
-              Hard<span className="text-primary-orange">bay</span>
+              Totuga<span className="text-primary-orange">7</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -148,14 +148,29 @@ const Navbar: React.FC = () => {
               ))}
 
               {/* Services Dropdown */}
-              <div
-                className="relative group flex items-center"
-                onMouseEnter={() => setShowServices(true)}
-                onMouseLeave={() => setShowServices(false)}
-              >
-                <NavLinkItem to="/service" text="Services" />
+              <div className="relative group">
+                <div
+                  className="flex items-center"
+                  onMouseEnter={() => setShowServices(true)}
+                  onMouseLeave={() => {
+                    setTimeout(() => {
+                      setShowServices(false);
+                    }, 300);
+                  }}
+                >
+                  <NavLinkItem to="/service" text="Services" />
+                </div>
+
                 {showServices && (
-                  <div className="absolute left-0 top-10 mt-2 w-[180px] bg-primary-blue text-white z-50 shadow-lg">
+                  <div
+                    className="absolute left-0 top-10 mt-2 w-[180px] bg-primary-blue text-white z-50 shadow-lg"
+                    onMouseEnter={() => {
+                      setTimeout(() => {
+                        setShowServices(true);
+                      }, 300);
+                    }}
+                    onMouseLeave={() => setShowServices(false)}
+                  >
                     {serviceLinks.map((link) => (
                       <Link
                         key={link.to}

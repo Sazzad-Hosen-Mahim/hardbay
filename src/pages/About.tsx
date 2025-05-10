@@ -102,7 +102,7 @@ const AboutPage = () => {
               className="rounded-lg shadow-md w-full h-auto"
             />
             <p className="italic text-gray-600 mt-2">
-              "Making an impact, together" – HardBay Founder
+              "Making an impact, together" – Tortuga7 Founder
             </p>
           </motion.div>
         </div>
@@ -278,7 +278,7 @@ export default AboutPage;
 //               className="rounded-lg shadow-md"
 //             />
 //             <p className="italic text-gray-600 mt-2">
-//               "Making an impact, together" – HardBay Founder
+//               "Making an impact, togethTortuga7 Founder
 //             </p>
 //           </motion.div>
 //         </div>
