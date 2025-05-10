@@ -138,7 +138,7 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <div className="flex gap-16">
             <Link to="/" className="text-white text-2xl font-bold ms-8">
-              Totuga<span className="text-primary-orange">7</span>
+              Tortuga<span className="text-primary-orange">7</span>
             </Link>
 
             {/* Desktop Navigation */}
