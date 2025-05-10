@@ -16,7 +16,7 @@ export const slides: Slide[] = [
     title: "Powering Infrastructure, Enabling Innovation.",
     highlight: "Infrastructure,",
     description:
-      "Hardbay is a UK-based IT consultancy specialising in enterprise-grade hardware solutions. We deliver high-performance servers, scalable GPU infrastructure, and cutting-edge storage systems to fuel your most demanding workloads.",
+      "Tortuga7 is a UK-based IT consultancy specialising in enterprise-grade hardware solutions. We deliver high-performance servers, scalable GPU infrastructure, and cutting-edge storage systems to fuel your most demanding workloads.",
     image:
       "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=2000",
     buttons: [
