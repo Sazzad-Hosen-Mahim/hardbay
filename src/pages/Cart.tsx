@@ -1,12 +1,16 @@
+import CartModal from "@/components/cart/cartModal";
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import {
   updateQuantity,
   // removeFromCart,
 } from "@/store/Slices/CartSlice/cartSlice";
+import { useState } from "react";
 
 const CartPage = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
   const dispatch = useAppDispatch();
+
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const handleQuantityChange = (id: string, delta: number) => {
     dispatch(updateQuantity({ id, delta }));
@@ -73,10 +77,17 @@ const CartPage = () => {
       </div>
       <div className="flex justify-between items-center mt-6">
         <h3 className="text-xl font-semibold">Total: ${total}</h3>
-        <button className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600">
-          Proceed to Payment
+        <button
+          onClick={() => setIsPaymentModalOpen(true)}
+          disabled={cartItems.length === 0}
+          className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600"
+        >
+          Proceed to Booking
         </button>
       </div>
+      {isPaymentModalOpen && (
+        <CartModal setIsPaymentModalOpen={setIsPaymentModalOpen} />
+      )}
     </div>
   );
 };
