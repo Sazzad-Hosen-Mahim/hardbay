@@ -148,7 +148,7 @@ const Navbar: React.FC = () => {
               ))}
 
               {/* Services Dropdown */}
-              <div className="relative group">
+              {/* <div className="relative group">
                 <div
                   className="flex items-center"
                   onMouseEnter={() => setShowServices(true)}
@@ -182,6 +182,35 @@ const Navbar: React.FC = () => {
                     ))}
                   </div>
                 )}
+              </div> */}
+              {/* Services Dropdown */}
+              <div className="relative group">
+                <div
+                  className="flex items-center"
+                  onMouseEnter={() => setShowServices(true)}
+                  onMouseLeave={() => setShowServices(false)}
+                >
+                  <NavLinkItem to="/service" text="Services" />
+                </div>
+
+                {/* Dropdown Container - add these classes */}
+                <div
+                  className={`absolute left-0 top-full mt-0 w-[180px] bg-primary-blue text-white z-50 shadow-lg transition-all duration-300 ${
+                    showServices ? "visible opacity-100" : "invisible opacity-0"
+                  }`}
+                  onMouseEnter={() => setShowServices(true)}
+                  onMouseLeave={() => setShowServices(false)}
+                >
+                  {serviceLinks.map((link) => (
+                    <Link
+                      key={link.to}
+                      to={link.to}
+                      className="flex items-center px-4 py-2 text-sm font-medium hover:bg-primary-orange w-full transition-all duration-300"
+                    >
+                      {link.text}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

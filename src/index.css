@@ -143,7 +143,31 @@
 }
 
 @layer base {
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply tracking-tight;
   }
+}
+
+.service-dropdown-container {
+  position: relative;
+}
+
+.service-dropdown-container:hover .service-dropdown-menu,
+.service-dropdown-menu:hover {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-dropdown-menu {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  pointer-events: auto;
 }
