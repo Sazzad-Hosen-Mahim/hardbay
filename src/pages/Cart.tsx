@@ -1,4 +1,4 @@
-import CartModal from "@/components/cart/cartModal";
+import CartModal from "@/components/cart/CartModal";
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import {
   updateQuantity,
