@@ -1,4 +1,3 @@
-
 import type React from "react";
 import { Toaster } from "react-hot-toast";
 
@@ -31,7 +30,7 @@ const HardwareConsulting: React.FC = () => {
     message: "",
   });
 
-  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [formErrors] = useState<Record<string, string>>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -40,25 +39,25 @@ const HardwareConsulting: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const errors: Record<string, string> = {};
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   const errors: Record<string, string> = {};
 
-    if (!formData.name) errors.name = "Name is required";
-    if (!formData.email) errors.email = "Email is required";
-    if (!formData.company) errors.company = "Company is required";
-    if (!formData.date) errors.date = "Preferred date is required";
-    if (!formData.time) errors.time = "Preferred time is required";
+  //   if (!formData.name) errors.name = "Name is required";
+  //   if (!formData.email) errors.email = "Email is required";
+  //   if (!formData.company) errors.company = "Company is required";
+  //   if (!formData.date) errors.date = "Preferred date is required";
+  //   if (!formData.time) errors.time = "Preferred time is required";
 
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
+  //   if (Object.keys(errors).length > 0) {
+  //     setFormErrors(errors);
+  //     return;
+  //   }
 
-    console.log("Submitting form:", formData);
-    setFormErrors({});
-    setIsModalOpen(false);
-  };
+  //   console.log("Submitting form:", formData);
+  //   setFormErrors({});
+  //   setIsModalOpen(false);
+  // };
 
   const features = [
     {
@@ -97,29 +96,28 @@ const HardwareConsulting: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 mt-16">
-     
       <div className="relative overflow-hidden">
         {/* Hero Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg" 
-            alt="Enterprise Hardware Infrastructure" 
+          <img
+            src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg"
+            alt="Enterprise Hardware Infrastructure"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-800/70"></div>
         </div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="max-w-xl text-center mx-auto">
             <h1 className="md:text-5xl text-3xl font-bold mb-4 text-white">
-              Enterprise <span className="text-orange-500">Hardware</span> Consulting
+              Enterprise <span className="text-orange-500">Hardware</span>{" "}
+              Consulting
             </h1>
             <p className="text-xl text-white mb-8 leading-relaxed">
               From comprehensive audits to strategic vendor management, we help
               you make data-driven procurement decisions and optimize your
               hardware infrastructure for maximum efficiency and ROI.
             </p>
-        
           </div>
         </div>
       </div>
@@ -300,13 +298,21 @@ const HardwareConsulting: React.FC = () => {
         </div>
       </div>
       <Toaster position="top-right" reverseOrder={false} />
-      <ConsultationModal
+      {/* <ConsultationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         formData={formData}
         formErrors={formErrors}
         onChange={handleChange}
         onSubmit={handleSubmit}
+      /> */}
+
+      <ConsultationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        formData={formData}
+        formErrors={formErrors}
+        onChange={handleChange}
       />
     </div>
   );

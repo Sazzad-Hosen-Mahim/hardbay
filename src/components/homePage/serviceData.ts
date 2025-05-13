@@ -1,4 +1,4 @@
-import { Server, Cpu, Database, Users } from 'lucide-react';
+import { Server, Cpu, Database, Users } from "lucide-react";
 
 export interface Service {
   icon: React.ElementType;
@@ -21,14 +21,10 @@ export const serviceData: Service[] = [
   },
   {
     icon: Cpu,
-    title: "GPU Rental & AI Compute",
+    title: "GPU Rental & AI Compute Up",
     description:
       "Need scalable AI infrastructure without the upfront capital? We rent NVIDIA H100, L40S, and A100 Ada GPUs, hosted in high-density data centres for ultra-low latency.",
-    features: [
-      "ML model training",
-      "Data inference",
-      "Real-time rendering",
-    ],
+    features: ["ML model training", "Data inference", "Real-time rendering"],
   },
   {
     icon: Database,

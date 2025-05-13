@@ -4,7 +4,6 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
-
     <footer className="bg-[#212a31] text-white py-8">
       <CommonWrapper>
         <div className="mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -28,12 +27,12 @@ const Footer: React.FC = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="/about" className="hover:text-gray-300">
-                    About
+                  <a href="/partners" className="hover:text-gray-300">
+                    Partners
                   </a>
                 </li>
                 <li>
-                  <a href="/services" className="hover:text-gray-300">
+                  <a href="/service" className="hover:text-gray-300">
                     Services
                   </a>
                 </li>
@@ -44,7 +43,6 @@ const Footer: React.FC = () => {
                 </li>
               </ul>
             </div>
-
 
             {/* Social Media Section */}
             <div>
@@ -110,7 +108,7 @@ const Footer: React.FC = () => {
           {/* Copyright */}
           <div className="border-t border-gray-700 mt-8 pt-8 text-center">
             <p className="text-sm">
-              &copy; {new Date().getFullYear()} Hardbay. All rights reserved.
+              &copy; {new Date().getFullYear()} Tortuga7. All rights reserved.
             </p>
           </div>
         </div>
