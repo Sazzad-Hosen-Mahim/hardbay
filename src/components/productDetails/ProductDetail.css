@@ -1,0 +1,204 @@
+.product-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		sans-serif;
+}
+
+.product-header {
+	margin-bottom: 30px;
+	border-bottom: 1px solid #e5e7eb;
+	padding-bottom: 15px;
+}
+
+.product-header h1 {
+	font-size: 24px;
+	font-weight: 600;
+	margin: 0 0 10px 0;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.status {
+	color: #1e40af;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.description {
+	color: #4b5563;
+	margin: 0;
+}
+
+.product-content {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 30px;
+}
+
+@media (min-width: 768px) {
+	.product-content {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.product-gallery {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+@media (min-width: 768px) {
+	.product-gallery {
+		flex-direction: row;
+		gap: 20px;
+	}
+}
+
+.thumbnails {
+	display: flex;
+	gap: 10px;
+	margin-top: 15px;
+	overflow-x: auto;
+	padding-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+	.thumbnails {
+		flex-direction: column;
+		margin-top: 0;
+		overflow-x: visible;
+		padding-bottom: 0;
+	}
+}
+
+.thumbnail {
+	width: 60px;
+	height: 60px;
+	border: 1px solid #e5e7eb;
+	border-radius: 4px;
+	overflow: hidden;
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.thumbnail.active {
+	border-color: #1e40af;
+}
+
+.thumbnail img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.main-image {
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	overflow: hidden;
+	flex-grow: 1;
+}
+
+.main-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.product-info {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.info-section h2 {
+	font-size: 18px;
+	font-weight: 600;
+	margin: 0 0 15px 0;
+}
+
+.applications-list,
+.features-list {
+	margin: 0;
+	padding: 0 0 0 20px;
+	list-style-type: none;
+}
+
+.applications-list li,
+.features-list li {
+	margin-bottom: 8px;
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	line-height: 1.5;
+}
+
+.features-list {
+	list-style-type: decimal;
+	padding-left: 25px;
+}
+
+.icon {
+	color: #1e40af;
+	display: inline-flex;
+	align-items: center;
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	margin-top: 10px;
+}
+
+.pricing-btn {
+	background-color: #991b1b;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 4px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.pricing-btn:hover {
+	background-color: #7f1d1d;
+}
+
+.compare {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.product-tabs {
+	margin-top: 40px;
+}
+
+.tabs {
+	display: flex;
+	border-bottom: 2px solid #e5e7eb;
+}
+
+.tab {
+	padding: 10px 20px;
+	background: none;
+	border: none;
+	font-weight: 500;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.tab.active {
+	color: #1e40af;
+	border-bottom: 2px solid #1e40af;
+	margin-bottom: -2px;
+}
+
+.tab-content {
+	padding: 20px 0;
+}
