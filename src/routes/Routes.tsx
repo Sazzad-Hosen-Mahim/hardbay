@@ -38,6 +38,7 @@ import ForgetPassword from "@/pages/ForgetPassword";
 import ResetPassword from "@/pages/ResetPassword";
 import PartnerDetailsPage from "@/components/pertners/PartnersDetails";
 import HardwareConsulting from "@/components/hardwareConsulting/HardwareConsulting";
+import DynamicService from "@/pages/Service/DynamicService";
 
 const routes = createBrowserRouter([
   {
@@ -78,6 +79,10 @@ const routes = createBrowserRouter([
             element: <Service />,
           },
           {
+            path: ":dynamicService",
+            element: <DynamicService />,
+          },
+          {
             path: "product-details/:id",
             element: <ProductDetails />,
           },
@@ -97,7 +102,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart />,  
+        element: <Cart />,
       },
       {
         path: "/checkout",
